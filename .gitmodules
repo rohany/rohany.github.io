@@ -1,0 +1,3 @@
+[submodule "course-selection"]
+	path = course-selection
+	url = git@github.com:STE5/course-selection.git
