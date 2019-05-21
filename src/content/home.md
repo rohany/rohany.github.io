@@ -5,9 +5,11 @@ title = "Home"
 # About
 
 I am a software engineering intern at [Cockroach Labs](https://www.cockroachlabs.com/).
-I have previously worked at Facebook, Uber ATG and the CMU Software Engineering Institute.
+I have previously worked at Uber ATG, where I worked on systems/cloud infrastructure, and
+Facebook, where I worked on networks.
 
-I recently completed my undergraduate at Carnegie Mellon University, School of Computer Science.
+I recently finished my undergraduate at Carnegie Mellon University,
+with a B.S. in Computer Science and a minor in Machine Learning.
 
 You can find my CV [here](rohan_resume.pdf).
 
@@ -15,7 +17,15 @@ You can find my CV [here](rohan_resume.pdf).
 
 I'm broadly interested in algorithms, computer systems, and programming languages.
 My recent research focuses on the intersection of these fields, in the topic of parallel computing.
+My research aims to present parallel algorithms for difficult problems, and to create
+efficient, easy to use, and scalable systems to programmers to write parallel code.
 I was fortunate for the opportunity to be advised by [Umut Acar](http://www.umut-acar.org/) and to work with [Sam Westrick](http://www.cs.cmu.edu/~swestric/) at Carnegie Mellon on these topics.
+
+Previous projects I have been involved with include parallel algorithms for
+[subgraph isomorphism](https://en.wikipedia.org/wiki/Subgraph_isomorphism_problem),
+memory management systems for parallel functional languages,
+and parallel functional sequence data structures.
+
 
 ## Publications
 
