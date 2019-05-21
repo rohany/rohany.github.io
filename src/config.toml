@@ -1,4 +1,4 @@
-baseurl = "https://example.com/"
+baseurl = "rohany.github.io"
 theme = "cocoa-eh"
 builddrafts = true
 canonifyurls = true

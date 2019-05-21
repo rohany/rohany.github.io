@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rohan Yadav</title>
-    <link>https://example.com/</link>
+    <link>rohany.github.io/</link>
     <description>Recent content on Rohan Yadav</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     
-	<atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="rohany.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Home</title>
-      <link>https://example.com/home/</link>
+      <link>rohany.github.io/home/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/home/</guid>
+      <guid>rohany.github.io/home/</guid>
       <description>About I am a software engineering intern at Cockroach Labs. I have previously worked at Facebook, Uber ATG and the CMU Software Engineering Institute.
 I recently completed my undergraduate at Carnegie Mellon University, School of Computer Science.
 You can find my CV here.
