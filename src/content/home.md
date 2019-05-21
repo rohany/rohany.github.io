@@ -5,7 +5,7 @@ title = "Home"
 # About
 
 I am a software engineering intern at [Cockroach Labs](https://www.cockroachlabs.com/).
-I have previously worked at Uber ATG, where I worked on systems/cloud infrastructure, and
+I have spent time at Uber ATG, where I worked on systems/cloud infrastructure, and
 Facebook, where I worked on networks.
 
 I recently finished my undergraduate at Carnegie Mellon University,

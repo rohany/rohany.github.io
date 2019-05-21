@@ -1,0 +1,9 @@
+<head>
+{{ partial "meta.html" . }}
+<title>
+{{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
+{{ .Site.Title }}
+</title>
+<link rel="canonical" href="{{ .Permalink }}">
+{{ partial "head_includes.html" . }}
+</head>
