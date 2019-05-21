@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+{{ partial "head.html" . }}
+
+<body>
+
+{{ if (or (.Site.Params.small_banner_logo) (and (.IsPage) (not (.Site.Params.large_banner_logo)))) }}
+<div class="header column">
+{{ else }}
+<div class="header header-home column">
+{{ end }}
+    <div class="container">
+        <img class="logo" src="{{ .Site.Params.logofile }}" alt="photo">
+        <div class="content titlestuff">
+            <a href="/">
+              <div class="name">
+                <h1>
+                  {{ .Site.Title }}
+                </h1>
+              </div>
+            </a>
+            <nav>
+                <ul>
+                  rohandotyadav AT gmail DOT com
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
