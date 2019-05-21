@@ -21,11 +21,11 @@ I was fortunate for the opportunity to be advised by [Umut Acar](http://www.umut
 
 * Disentanglement, Theory and Practice. 
 Undergraduate Thesis.
-**Rohan Yadav** (PDF).
+**Rohan Yadav** ([PDF](publications/senior_thesis.pdf)).
 
 * Brief Announcement: A Parallel Algorithm for Subgraph Isomorphism, 
 ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019. 
-**Rohan Yadav**, Umut A. Acar (PDF).
+**Rohan Yadav**, Umut A. Acar ([PDF](publications/spaa19-ba-iso.pdf)).
 
 # Teaching
 
