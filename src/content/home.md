@@ -57,4 +57,4 @@ I develop and manage the cloud infrastructure for the project.
 
 * **May 2019** I presented my undergraduate senior thesis, entitled Disentanglement, Theory and Practice at Carnegie Mellon's Meeting of the Minds Conference.
 
-* **March 2019** Our paper, A Parallel Algorithm for Subgraph Isomorphism was accepted to SPAA '19.
+* **March 2019** Our paper, A Parallel Algorithm for Subgraph Isomorphism was accepted as a Brief Announcement to SPAA '19.
