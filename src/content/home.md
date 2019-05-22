@@ -49,10 +49,12 @@ Additionally, I contributed to the starting and development of the
 platform developed at Carnegie Mellon that is used by over 500 students daily.
 I develop and manage the cloud infrastructure for the project.
 
-# Recent News
+# News
 
-* [May 2019] I graduated from Carnegie Mellon
+* **May 2019** I started working as a software engineering intern at Cockroach Labs.
 
-* [May 2019] I presented my undergraduate senior thesis, entitled Disentanglement, Theory and Practice at Carnegie Mellon's Meeting of the Minds Conference
+* **May 2019** I graduated from Carnegie Mellon.
 
-* [March 2019] Our paper, A Parallel Algorithm for Subgraph Isomorphism was accepted to SPAA '19
+* **May 2019** I presented my undergraduate senior thesis, entitled Disentanglement, Theory and Practice at Carnegie Mellon's Meeting of the Minds Conference.
+
+* **March 2019** Our paper, A Parallel Algorithm for Subgraph Isomorphism was accepted to SPAA '19.
