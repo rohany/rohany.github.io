@@ -48,3 +48,11 @@ Additionally, I contributed to the starting and development of the
 [Diderot](http://www.umut-acar.org/diderot) project, a new educational 
 platform developed at Carnegie Mellon that is used by over 500 students daily.
 I develop and manage the cloud infrastructure for the project.
+
+# Recent News
+
+* [May 2019] I graduated from Carnegie Mellon
+
+* [May 2019] I presented my undergraduate senior thesis, entitled Disentanglement, Theory and Practice at Carnegie Mellon's Meeting of the Minds Conference
+
+* [March 2019] Our paper, A Parallel Algorithm for Subgraph Isomorphism was accepted to SPAA '19
