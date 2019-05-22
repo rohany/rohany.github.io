@@ -4,14 +4,13 @@ title = "Home"
 
 # About
 
-I am a software engineering intern at [Cockroach Labs](https://www.cockroachlabs.com/).
-I have spent time at Uber ATG, where I worked on systems/cloud infrastructure, and
+I am a software engineering intern at 
+[Cockroach Labs](https://www.cockroachlabs.com/).
+I have spent time at Uber self-driving working on
+systems/cloud infrastructure, and
 Facebook, where I worked on networks.
-
-I recently finished my undergraduate at Carnegie Mellon University,
-with a B.S. in Computer Science and a minor in Machine Learning.
-
-You can find my CV [here](rohan_resume.pdf).
+I recently finished my undergraduate at Carnegie Mellon University.
+Take a look at my [resume](rohan_resume.pdf)!
 
 # Research
 
@@ -57,4 +56,4 @@ I develop and manage the cloud infrastructure for the project.
 
 * **May 2019:** I presented my undergraduate senior thesis, entitled Disentanglement, Theory and Practice at Carnegie Mellon's Meeting of the Minds Conference.
 
-* **March 2019:** Our paper, A Parallel Algorithm for Subgraph Isomorphism was accepted as a Brief Announcement to SPAA '19.
+* **March 2019:** Our paper, A Parallel Algorithm for Subgraph Isomorphism was accepted as a Brief Announcement at SPAA '19.
