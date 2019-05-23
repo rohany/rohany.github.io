@@ -38,19 +38,21 @@ ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019.
 
 # Teaching
 
-At Carnegie Mellon, I was a teaching assistant
+At Carnegie Mellon, I served as a teaching assistant
 for [Principles of Functional Programming](http://www.cs.cmu.edu/~15150/), and 
 a multiple time head teaching assistant for
 [Parallel and Sequential Algorithms and Data Structures](https://www.cs.cmu.edu/~15210/).
 
 Additionally, I contributed to the starting and development of the
 [Diderot](http://www.umut-acar.org/diderot) project, a new educational 
-platform developed at Carnegie Mellon that is used by over 500 students daily.
-I develop and manage the cloud infrastructure for the project.
+platform developed at Carnegie Mellon that is used by over 500 students and faculty daily.
+I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
 
-* **May 2019:** I started working as a software engineering intern at Cockroach Labs.
+* **June 2019:** I will present a talk on our paper "Brief Announcement: A Parallel Algorithm for Subgraph Isomorphism" at SPAA '19 in Pheonix, Arizona.
+
+* **May 2019:** I began working as a software engineering intern at Cockroach Labs.
 
 * **May 2019:** I completed my undergraduate at Carnegie Mellon University.
 
