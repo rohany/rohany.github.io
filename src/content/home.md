@@ -5,7 +5,8 @@ title = "Home"
 # About
 
 I am a software engineering intern at 
-[Cockroach Labs](https://www.cockroachlabs.com/).
+[Cockroach Labs](https://www.cockroachlabs.com/) working
+on the SQL execution team.
 I have spent time at Uber self-driving working on
 systems/cloud infrastructure, and
 Facebook, where I worked on networks.
