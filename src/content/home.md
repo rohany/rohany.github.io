@@ -35,7 +35,7 @@ Undergraduate Thesis.
 
 * Brief Announcement: A Parallel Algorithm for Subgraph Isomorphism, 
 ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019. 
-**Rohan Yadav**, Umut A. Acar ([PDF](publications/spaa19-ba-iso.pdf)).
+**Rohan Yadav**, Umut A. Acar ([PDF](https://dl.acm.org/citation.cfm?id=3323170)).
 
 # Teaching
 
