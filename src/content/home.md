@@ -51,7 +51,7 @@ I develop and manage the cloud infrastructure for the project on an ongoing basi
 
 # News
 
-* **June 2019:** I will present a talk on our paper "Brief Announcement: A Parallel Algorithm for Subgraph Isomorphism" at [SPAA '19](https://spaa.acm.org/2019/).
+* **June 2019:** I presented a talk on our paper "Brief Announcement: A Parallel Algorithm for Subgraph Isomorphism" at [SPAA '19](https://spaa.acm.org/2019/) ([slides](talks/spaa-ba-talk.key)).
 
 * **May 2019:** I began working as a software engineering intern at Cockroach Labs.
 
