@@ -4,9 +4,10 @@ title = "Home"
 
 # About
 
-I am a software engineering intern at 
+I am a software engineer at 
 [Cockroach Labs](https://www.cockroachlabs.com/) working
 on the SQL execution team.
+I previously was an intern at Cockroach Labs on the same team.
 I have spent time at Uber self-driving working on
 systems/cloud infrastructure, and
 Facebook, where I worked on networks.
@@ -50,6 +51,8 @@ platform developed at Carnegie Mellon that is used by over 500 students and facu
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
+
+* **July 2019:** I joined Cockroach Labs as full time software engineer.
 
 * **June 2019:** I presented a talk on our paper "Brief Announcement: A Parallel Algorithm for Subgraph Isomorphism" at [SPAA '19](https://spaa.acm.org/2019/) ([slides](talks/spaa-ba-talk.pdf)).
 
