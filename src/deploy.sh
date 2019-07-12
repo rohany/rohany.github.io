@@ -4,12 +4,12 @@ echo "Deploying update"
 
 CWD="$(pwd)"
 
-hugo
-
 cd /Users/rohany/Documents/resume
 make
 cd $CWD
 cp /Users/rohany/Documents/resume/rohan_resume.pdf static/
+
+hugo
 
 cp -r public/* ../
 cd ../
