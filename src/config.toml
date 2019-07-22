@@ -1,5 +1,5 @@
 baseurl = "rohany.github.io"
-theme = "cocoa-eh"
+theme = "hyde-hyde"
 builddrafts = true
 canonifyurls = true
 contentdir = "content"
