@@ -6,7 +6,7 @@ title = "Home"
 
 I am a software engineer at 
 [Cockroach Labs](https://www.cockroachlabs.com/) working
-on the SQL execution team.
+on distributed SQL execution.
 I have spent time at Uber self-driving working on
 systems/cloud infrastructure, and
 Facebook, where I worked on networks.
