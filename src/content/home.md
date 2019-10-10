@@ -29,6 +29,10 @@ and parallel functional sequence data structures.
 
 ## Publications
 
+* Disentanglement in Race-Free Nested-Parallel Programs, 
+ACM SIGPLAN Symposium on Principles of Programming Languages (POPL) 2020.
+Sam Westrick, **Rohan Yadav**, Matthew Fluet, Umut A. Acar (Preprint coming soon!).
+
 * Disentanglement, Theory and Practice. 
 Undergraduate Thesis.
 **Rohan Yadav** ([PDF](publications/senior_thesis.pdf)).
@@ -50,6 +54,8 @@ platform developed at Carnegie Mellon that is used by over 500 students and facu
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
+
+* **October 2019:** Our paper, Disentanglement in Race-Free Nested-Parallel Programs was accepted to POPL '20.
 
 * **July 2019:** I joined Cockroach Labs as full time software engineer.
 
