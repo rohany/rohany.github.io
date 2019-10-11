@@ -41,6 +41,10 @@ Undergraduate Thesis.
 ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019. 
 **Rohan Yadav**, Umut A. Acar ([PDF](https://dl.acm.org/citation.cfm?id=3323170)).
 
+## Other writings
+
+* Blog post about `cockroach demo`, a demo database for CockroachDB ([link](https://www.cockroachlabs.com/blog/get-started-geo-partitioning-data-with-our-command-line-cockroachdb-demo/)).
+
 # Teaching
 
 At Carnegie Mellon, I served as a teaching assistant
