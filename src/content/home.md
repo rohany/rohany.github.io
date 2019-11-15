@@ -29,7 +29,7 @@ and parallel functional sequence data structures.
 
 ## Publications
 
-* Disentanglement in Race-Free Nested-Parallel Programs, 
+* Disentanglement in Nested-Parallel Programs, 
 ACM SIGPLAN Symposium on Principles of Programming Languages (POPL) 2020.
 Sam Westrick, **Rohan Yadav**, Matthew Fluet, Umut A. Acar (Preprint coming soon!).
 
