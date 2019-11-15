@@ -59,7 +59,7 @@ I develop and manage the cloud infrastructure for the project on an ongoing basi
 
 # News
 
-* **October 2019:** Our paper, Disentanglement in Race-Free Nested-Parallel Programs was accepted to POPL '20.
+* **October 2019:** Our paper, Disentanglement in Nested-Parallel Programs was accepted to POPL '20.
 
 * **July 2019:** I joined Cockroach Labs as full time software engineer.
 
