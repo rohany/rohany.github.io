@@ -31,7 +31,7 @@ and parallel functional sequence data structures.
 
 * Disentanglement in Nested-Parallel Programs, 
 ACM SIGPLAN Symposium on Principles of Programming Languages (POPL) 2020.
-Sam Westrick, **Rohan Yadav**, Matthew Fluet, Umut A. Acar (Preprint coming soon!).
+Sam Westrick, **Rohan Yadav**, Matthew Fluet, Umut A. Acar ([PDF](publications/popl2020-disentanglement.pdf)).
 
 * Disentanglement, Theory and Practice. 
 Undergraduate Thesis.
