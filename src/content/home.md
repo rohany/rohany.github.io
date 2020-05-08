@@ -44,7 +44,7 @@ ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019.
 ## Other writings
 
 * Blog post about `cockroach demo`, a demo database for CockroachDB ([link](https://www.cockroachlabs.com/blog/get-started-geo-partitioning-data-with-our-command-line-cockroachdb-demo/)).
-* Some RFC's for major features in CockroachDB that I wrote or contributed to:
+* Some RFC's for major features in CockroachDB:
   * [Primary Key Changes](https://github.com/cockroachdb/cockroach/blob/master/docs/RFCS/20180413_alter_primary_key.md)
   * [Enums and Infrastructure for User Defined Types](https://github.com/cockroachdb/cockroach/blob/master/docs/RFCS/20200331_enums.md)
 
@@ -61,6 +61,8 @@ platform developed at Carnegie Mellon that is used by over 500 students and facu
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
+
+* **May 2020** Cockroach Labs raised an [86.6$ million Series D](https://www.datanami.com/2020/05/05/cockroach-snags-87-million-to-grow-cloud-database-biz/)!
 
 * **October 2019:** Our paper, Disentanglement in Nested-Parallel Programs was accepted to POPL '20.
 
