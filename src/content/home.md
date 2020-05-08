@@ -44,6 +44,9 @@ ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019.
 ## Other writings
 
 * Blog post about `cockroach demo`, a demo database for CockroachDB ([link](https://www.cockroachlabs.com/blog/get-started-geo-partitioning-data-with-our-command-line-cockroachdb-demo/)).
+* Some RFC's for major features in CockroachDB that I wrote or contributed to:
+  * [Primary Key Changes](https://github.com/cockroachdb/cockroach/blob/master/docs/RFCS/20180413_alter_primary_key.md)
+  * [Enums and Infrastructure for User Defined Types](https://github.com/cockroachdb/cockroach/blob/master/docs/RFCS/20200331_enums.md)
 
 # Teaching
 
