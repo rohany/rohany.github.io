@@ -8,7 +8,7 @@ I am a software engineer at [Cockroach Labs](https://www.cockroachlabs.com/)
 working on [CockroachDB](https://github.com/cockroachdb/cockroach).
 Before that, I spent some time at Uber self-driving and Facebook.
 I recently finished my undergraduate at Carnegie Mellon University.
-You can find my resume [here](rohan_resume.pdf)!
+You can find my resume [here](rohan_resume.pdf).
 
 # Research
 
