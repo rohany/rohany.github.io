@@ -4,14 +4,11 @@ title = "Home"
 
 # About
 
-I am a software engineer at 
-[Cockroach Labs](https://www.cockroachlabs.com/) working
-on distributed SQL execution.
-I have spent time at Uber self-driving working on
-systems/cloud infrastructure, and
-Facebook, where I worked on networks.
+I am a software engineer at [Cockroach Labs](https://www.cockroachlabs.com/)
+working on [CockroachDB](https://github.com/cockroachdb/cockroach).
+Before that, I spent some time at Uber self-driving and Facebook.
 I recently finished my undergraduate at Carnegie Mellon University.
-Take a look at my [resume](rohan_resume.pdf)!
+You can find my resume [here](rohan_resume.pdf)!
 
 # Research
 
