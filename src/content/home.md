@@ -45,6 +45,7 @@ ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019.
 * Some RFC's for major features in CockroachDB:
   * [Primary Key Changes](https://github.com/cockroachdb/cockroach/blob/master/docs/RFCS/20180413_alter_primary_key.md)
   * [Enums and Infrastructure for User Defined Types](https://github.com/cockroachdb/cockroach/blob/master/docs/RFCS/20200331_enums.md)
+  * [User Defined Schemas](https://github.com/cockroachdb/cockroach/blob/master/docs/RFCS/20200501_user_defined_schemas.md)
 
 # Teaching
 
