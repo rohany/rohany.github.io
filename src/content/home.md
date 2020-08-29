@@ -4,11 +4,15 @@ title = "Home"
 
 # About
 
-I am a software engineer at [Cockroach Labs](https://www.cockroachlabs.com/)
-working on [CockroachDB](https://github.com/cockroachdb/cockroach).
-Before that, I spent some time at Uber self-driving and Facebook.
-I recently finished my undergraduate at Carnegie Mellon University.
-You can find my resume [here](rohan_resume.pdf).
+I am a computer science PhD Candidate at Stanford University, working on parallel 
+and distributed systems. Before that, I was a software engineer at 
+[Cockroach Labs](https://www.cockroachlabs.com/) working on 
+[CockroachDB](https://github.com/cockroachdb/cockroach).
+I am fortunate to be supported by an NSF Graduate Research Fellowship. 
+
+Outside of work, you can find me lifting weights, playing tennis, and over eating.
+
+My resume is available [here](rohan_resume.pdf).
 
 # Research
 
@@ -16,7 +20,9 @@ I'm broadly interested in algorithms, computer systems, and programming language
 My recent research focuses on the intersection of these fields, in the topic of parallel computing.
 My research aims to present parallel algorithms for difficult problems, and to create
 efficient, easy to use, and scalable systems to programmers to write parallel code.
-I was fortunate for the opportunity to be advised by [Umut Acar](http://www.umut-acar.org/) and to work with [Sam Westrick](http://www.cs.cmu.edu/~swestric/) at Carnegie Mellon on these topics.
+I was fortunate for the opportunity to be advised by [Umut Acar](http://www.umut-acar.org/) and 
+to work with [Sam Westrick](http://www.cs.cmu.edu/~swestric/) at Carnegie Mellon on these topics.
+Recently, I have become interested in databases and data intensive systems, like CockroachDB.
 
 Previous projects I have been involved with include parallel algorithms for
 [subgraph isomorphism](https://en.wikipedia.org/wiki/Subgraph_isomorphism_problem),
@@ -60,6 +66,8 @@ platform developed at Carnegie Mellon that is used by over 500 students and facu
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
+
+* **September 2020** I've started a PhD at Stanford University!
 
 * **May 2020** Cockroach Labs raised an [86.6$ million Series D](https://www.datanami.com/2020/05/05/cockroach-snags-87-million-to-grow-cloud-database-biz/)!
 

@@ -16,8 +16,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>rohany.github.io/home/</guid>
-      <description>About I am a software engineer at Cockroach Labs working on CockroachDB. Before that, I spent some time at Uber self-driving and Facebook. I recently finished my undergraduate at Carnegie Mellon University. You can find my resume here.
-Research I&amp;rsquo;m broadly interested in algorithms, computer systems, and programming languages. My recent research focuses on the intersection of these fields, in the topic of parallel computing. My research aims to present parallel algorithms for difficult problems, and to create efficient, easy to use, and scalable systems to programmers to write parallel code.</description>
+      <description>About I am a computer science PhD Candidate at Stanford University, working on parallel and distributed systems. Before that, I was a software engineer at Cockroach Labs working on CockroachDB. I am fortunate to be supported by an NSF Graduate Research Fellowship.
+Outside of work, you can find me lifting weights, playing tennis, and over eating.
+My resume is available here.
+Research I&amp;rsquo;m broadly interested in algorithms, computer systems, and programming languages.</description>
     </item>
     
   </channel>
