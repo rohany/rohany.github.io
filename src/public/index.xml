@@ -5,18 +5,14 @@
     <link>rohany.github.io/</link>
     <description>Recent content on Rohan Yadav</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
-    
-	<atom:link href="rohany.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-US</language><atom:link href="rohany.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Home</title>
       <link>rohany.github.io/home/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>rohany.github.io/home/</guid>
-      <description>About I am a computer science PhD Candidate at Stanford University working on parallel and distributed systems. Before that, I was a software engineer at Cockroach Labs working on CockroachDB. I am fortunate to be supported by an NSF Graduate Research Fellowship.
+      <description>About I am a computer science PhD Candidate at Stanford University working on parallel and distributed systems, currently rotating with Alex Aiken. Before that, I was a software engineer at Cockroach Labs working on CockroachDB. I am fortunate to be supported by an NSF Graduate Research Fellowship.
 Outside of work, you can find me lifting weights, playing tennis, and over eating.
 My resume is available here.
 Research I&amp;rsquo;m broadly interested in algorithms, computer systems, and programming languages.</description>
