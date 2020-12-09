@@ -11,7 +11,8 @@ Before that, I was a software engineer at
 [CockroachDB](https://github.com/cockroachdb/cockroach).
 I am fortunate to be supported by an NSF Graduate Research Fellowship. 
 
-Outside of work, you can find me lifting weights, playing tennis, and over eating.
+Outside of work, you can find me lifting weights, playing tennis, 
+[cooking](https://www.instagram.com/the_wizard_of_zoz/) and (over) eating.
 
 My resume is available [here](rohan_resume.pdf).
 
@@ -25,10 +26,11 @@ I was fortunate for the opportunity to be advised by [Umut Acar](http://www.umut
 to work with [Sam Westrick](http://www.cs.cmu.edu/~swestric/) at Carnegie Mellon on these topics.
 Recently, I have become interested in databases and data intensive systems, like CockroachDB.
 
-Previous projects I have been involved with include parallel algorithms for
-[subgraph isomorphism](https://en.wikipedia.org/wiki/Subgraph_isomorphism_problem),
-memory management systems for parallel functional languages,
-and parallel functional sequence data structures.
+Some projects I've worked on include:
+* Automatic mapping of computation and data onto heterogenous architectures
+* Memory management systems for parallel functional languages
+* Parallel algorithms for [subgraph isomorphism](https://en.wikipedia.org/wiki/Subgraph_isomorphism_problem)
+* Parallel sequence data structures
 
 
 ## Publications
