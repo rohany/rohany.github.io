@@ -5,7 +5,8 @@ title = "Home"
 # About
 
 I am a computer science PhD Candidate at Stanford University working on parallel 
-and distributed systems, currently rotating with [Alex Aiken](http://theory.stanford.edu/~aiken/). 
+and distributed systems, currently rotating with [Fredrik Kjolstad](http://fredrikbk.com/) and
+previously [Alex Aiken](http://theory.stanford.edu/~aiken/). 
 Before that, I was a software engineer at 
 [Cockroach Labs](https://www.cockroachlabs.com/) working on 
 [CockroachDB](https://github.com/cockroachdb/cockroach).
