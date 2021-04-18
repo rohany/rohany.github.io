@@ -4,8 +4,8 @@ title = "Home"
 
 # About
 
-I am a computer science PhD Candidate at Stanford University working on parallel 
-and distributed systems, advised by [Alex Aiken](http://theory.stanford.edu/~aiken/)
+I am a computer science PhD student at Stanford University,
+advised by [Alex Aiken](http://theory.stanford.edu/~aiken/)
 and [Fredrik Kjolstad](http://fredrikbk.com/). Before that, I was a software engineer at 
 [Cockroach Labs](https://www.cockroachlabs.com/) working on 
 [CockroachDB](https://github.com/cockroachdb/cockroach).
@@ -18,20 +18,17 @@ My resume is available [here](rohan_resume.pdf).
 
 # Research
 
-I'm broadly interested in algorithms, computer systems, and programming languages.
+I'm broadly interested in programming langauges and computer systems.
 My recent research focuses on the intersection of these fields, in the topic of parallel computing.
-My research aims to present parallel algorithms for difficult problems, and to create
-efficient, easy to use, and scalable systems to programmers to write parallel code.
+
 I was fortunate for the opportunity to be advised by [Umut Acar](http://www.umut-acar.org/) and 
 to work with [Sam Westrick](http://www.cs.cmu.edu/~swestric/) at Carnegie Mellon on these topics.
-Recently, I have become interested in databases and data intensive systems, like CockroachDB.
 
 Some projects I've worked on include:
 * Automatic mapping of computation and data onto heterogenous architectures
 * Memory management systems for parallel functional languages
 * Parallel algorithms for [subgraph isomorphism](https://en.wikipedia.org/wiki/Subgraph_isomorphism_problem)
-* Parallel sequence data structures
-
+* Parallel functional sequence data structures
 
 ## Publications
 
