@@ -18,7 +18,7 @@ My resume is available [here](rohan_resume.pdf).
 
 # Research
 
-I'm broadly interested in programming langauges and computer systems.
+I'm broadly interested in programming languages and computer systems.
 My recent research focuses on the intersection of these fields, in the topic of parallel computing.
 
 I was fortunate for the opportunity to be advised by [Umut Acar](http://www.umut-acar.org/) and 
