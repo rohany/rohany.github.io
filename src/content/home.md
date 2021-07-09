@@ -5,9 +5,10 @@ title = "Home"
 # About
 
 I am a computer science PhD student at Stanford University,
+working on compilers and parallel programming systems. I am
 advised by [Alex Aiken](http://theory.stanford.edu/~aiken/)
 and [Fredrik Kjolstad](http://fredrikbk.com/). Before that, I was a software engineer at 
-[Cockroach Labs](https://www.cockroachlabs.com/) working on 
+[Cockroach Labs](https://www.cockroachlabs.com/) helping to build
 [CockroachDB](https://github.com/cockroachdb/cockroach).
 I am fortunate to be supported by an NSF Graduate Research Fellowship. 
 
@@ -21,10 +22,11 @@ My resume is available [here](rohan_resume.pdf).
 I'm broadly interested in programming languages and computer systems.
 My recent research focuses on the intersection of these fields, in the topic of parallel computing.
 
-I was fortunate for the opportunity to be advised by [Umut Acar](http://www.umut-acar.org/) and 
-to work with [Sam Westrick](http://www.cs.cmu.edu/~swestric/) at Carnegie Mellon on these topics.
+I also worked in this area at Carnegie Mellon, where I collaborated with [Sam Westrick](http://www.cs.cmu.edu/~swestric/)
+and was advised by [Umut Acar](http://www.umut-acar.org/).
 
 Some projects I've worked on include:
+* Compiling tensor algebra DSLs to supercomputers
 * Automatic mapping of computation and data onto heterogenous architectures
 * Memory management systems for parallel functional languages
 * Parallel algorithms for [subgraph isomorphism](https://en.wikipedia.org/wiki/Subgraph_isomorphism_problem)
