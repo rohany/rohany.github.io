@@ -34,6 +34,11 @@ Some projects I've worked on include:
 
 ## Publications
 
+* Compilation of Sparse Array Programming Models,
+ACM SIGPLAN conference on Systems, Programming, Languages, and Applications (SPLASH/OOPLSA) 2021.
+Rawn Henry, Olivia Hsu, **Rohan Yadav**, Stephen Chou, Kunle Olukotun, Saman Amarasinghe, Fredrik Kjolstad
+(Preprint coming soon!)
+
 * Disentanglement in Nested-Parallel Programs, 
 ACM SIGPLAN Symposium on Principles of Programming Languages (POPL) 2020.
 Sam Westrick, **Rohan Yadav**, Matthew Fluet, Umut A. Acar ([PDF](publications/popl2020-disentanglement.pdf)).
