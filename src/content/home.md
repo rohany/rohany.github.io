@@ -37,7 +37,7 @@ Some projects I've worked on include:
 * Compilation of Sparse Array Programming Models,
 ACM SIGPLAN conference on Systems, Programming, Languages, and Applications (SPLASH/OOPLSA) 2021.
 Rawn Henry, Olivia Hsu, **Rohan Yadav**, Stephen Chou, Kunle Olukotun, Saman Amarasinghe, Fredrik Kjolstad
-(Preprint coming soon!)
+([PDF](publications/ooplsa2021-sparse-arrays.pdf)).
 
 * Disentanglement in Nested-Parallel Programs, 
 ACM SIGPLAN Symposium on Principles of Programming Languages (POPL) 2020.
@@ -66,6 +66,7 @@ At Carnegie Mellon, I served as a teaching assistant
 for [Principles of Functional Programming](http://www.cs.cmu.edu/~15150/), and 
 a multiple time head teaching assistant for
 [Parallel and Sequential Algorithms and Data Structures](https://www.cs.cmu.edu/~15210/).
+At Stanford, I've been a CA for [Programming Languages](https://web.stanford.edu/class/cs242/).
 
 Additionally, I contributed to the starting and development of the
 [Diderot](http://www.umut-acar.org/diderot) project, a new educational 
@@ -73,6 +74,7 @@ platform developed at Carnegie Mellon that is used by over 500 students and facu
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
+* **September 2021** Our paper, Compilation of Sparse Array Programming Models was accepted to OOPLSA '21.
 
 * **September 2020** I've started a PhD at Stanford University!
 
