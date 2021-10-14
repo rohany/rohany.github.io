@@ -12,7 +12,7 @@ and [Fredrik Kjolstad](http://fredrikbk.com/). Before that, I was a software eng
 [CockroachDB](https://github.com/cockroachdb/cockroach).
 I am fortunate to be supported by an NSF Graduate Research Fellowship. 
 
-Outside of work, you can find me lifting weights, playing tennis, 
+Outside of work, you can find me lifting weights, playing [tennis](https://clubtennis.stanford.edu/), 
 [cooking](https://www.instagram.com/the_wizard_of_zoz/) and (over) eating.
 
 My resume is available [here](rohan_resume.pdf).
