@@ -74,6 +74,8 @@ platform developed at Carnegie Mellon that is used by over 500 students and facu
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
+* **November 2021** I presented a talk about some recent research at the Oxford Tensor Computations Seminar. ([video link](https://www.youtube.com/watch?v=P2Tt2yhnWk8), [slides](talks/tensor-computations.key))
+
 * **September 2021** Our paper, Compilation of Sparse Array Programming Models was accepted to OOPLSA '21.
 
 * **September 2020** I've started a PhD at Stanford University!
