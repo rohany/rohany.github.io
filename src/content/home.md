@@ -34,8 +34,11 @@ Some projects I've worked on include:
 
 ## Publications
 
+* DISTAL: The Distributed Tensor Algebra Compiler, ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI) 2022.
+**Rohan Yadav**, Alex Aiken, Fredrik Kjolstad (Preprint coming soon, Conditionally accepted!)
+
 * Compilation of Sparse Array Programming Models,
-ACM SIGPLAN conference on Systems, Programming, Languages, and Applications (SPLASH/OOPLSA) 2021.
+ACM SIGPLAN Conference on Systems, Programming, Languages, and Applications (SPLASH/OOPLSA) 2021.
 Rawn Henry, Olivia Hsu, **Rohan Yadav**, Stephen Chou, Kunle Olukotun, Saman Amarasinghe, Fredrik Kjolstad
 ([PDF](publications/ooplsa2021-sparse-arrays.pdf)).
 
@@ -74,6 +77,8 @@ platform developed at Carnegie Mellon that is used by over 500 students and facu
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
+* **February 2022** Our paper on DISTAL was conditionally accepted to PLDI 2022!
+
 * **December 2021** I was invited to give my talk on [DISTAL](talks/tensor-computations.key) at [Cerebras Systems](https://cerebras.net/)!
 
 * **November 2021** I presented a talk about some recent research at the Oxford Tensor Computations Seminar. ([video link](https://www.youtube.com/watch?v=P2Tt2yhnWk8), [slides](talks/tensor-computations.key))
