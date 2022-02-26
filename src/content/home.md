@@ -77,6 +77,7 @@ platform developed at Carnegie Mellon that is used by over 500 students and facu
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
+
 * **February 2022** Our paper on DISTAL was conditionally accepted to PLDI 2022!
 
 * **December 2021** I was invited to give my talk on [DISTAL](talks/tensor-computations.key) at [Cerebras Systems](https://cerebras.net/)!
