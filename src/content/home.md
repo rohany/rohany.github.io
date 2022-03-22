@@ -78,7 +78,7 @@ I develop and manage the cloud infrastructure for the project on an ongoing basi
 
 # News
 
-* **February 2022** Our paper on DISTAL was conditionally accepted to PLDI 2022!
+* **February 2022** Our paper on DISTAL was accepted to PLDI 2022!
 
 * **December 2021** I was invited to give my talk on [DISTAL](talks/tensor-computations.key) at [Cerebras Systems](https://cerebras.net/)!
 
