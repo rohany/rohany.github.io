@@ -56,6 +56,7 @@ ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019.
 
 ## Other writings
 
+* My qualifying examination report on distributed task-based runtime systems ([PDF](reports/quals.pdf)).
 * Blog post about online schema changes in CockroachDB ([link](https://www.cockroachlabs.com/blog/online-primary-key-changes/)).
 * Blog post about `cockroach demo`, a demo database for CockroachDB ([link](https://www.cockroachlabs.com/blog/get-started-geo-partitioning-data-with-our-command-line-cockroachdb-demo/)).
 * Some RFC's for major features in CockroachDB:
