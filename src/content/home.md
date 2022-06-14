@@ -34,6 +34,9 @@ Some projects I've worked on include:
 
 ## Publications
 
+* SpDISTAL: Compiling Distributed Sparse Tensor Computations, Proceedings of the International Conference on Supercomputing (SC) 2022.
+**Rohan Yadav**, Alex Aiken, Fredrik Kjolstad (Conditionally accepted, preprint coming soon.)
+
 * DISTAL: The Distributed Tensor Algebra Compiler, ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI) 2022.
 **Rohan Yadav**, Alex Aiken, Fredrik Kjolstad ([pdf](publications/pldi2022-distal.pdf)).
 
@@ -78,6 +81,10 @@ platform developed at Carnegie Mellon that is used by over 500 students and facu
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
+
+* **June 2022** I'm starting as a research intern at Nvidia.
+
+* **June 2022** Our paper on SpDISTAL was accepted to SC 2022!
 
 * **February 2022** Our paper on DISTAL was accepted to PLDI 2022!
 
