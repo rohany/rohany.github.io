@@ -7,7 +7,10 @@ title = "Home"
 I am a computer science PhD student at Stanford University,
 working on compilers and parallel programming systems. I am
 advised by [Alex Aiken](http://theory.stanford.edu/~aiken/)
-and [Fredrik Kjolstad](http://fredrikbk.com/). Before that, I was a software engineer at 
+and [Fredrik Kjolstad](http://fredrikbk.com/). Currently,
+I'm a research intern at Nvidia working with [Michael Garland](https://mgarland.org/)
+and [Mike Bauer](https://lightsighter.org/) on [Legate](https://github.com/nv-legate). 
+Before that, I was a software engineer at 
 [Cockroach Labs](https://www.cockroachlabs.com/) helping to build
 [CockroachDB](https://github.com/cockroachdb/cockroach).
 I am fortunate to be supported by an NSF Graduate Research Fellowship. 
