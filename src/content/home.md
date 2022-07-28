@@ -41,16 +41,16 @@ Some projects I've worked on include:
 **Rohan Yadav**, Alex Aiken, Fredrik Kjolstad (Conditionally accepted, preprint coming soon.)
 
 * DISTAL: The Distributed Tensor Algebra Compiler, ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI) 2022.
-**Rohan Yadav**, Alex Aiken, Fredrik Kjolstad ([pdf](publications/pldi2022-distal.pdf)).
+**Rohan Yadav**, Alex Aiken, Fredrik Kjolstad ([PDF](publications/pldi2022-distal.pdf), [PLDI 2022 slides](slides/DISTAL-PLDI-22.key), [60 minute talk slides](slides/DISTAL-long-talk.key)).
 
 * Compilation of Sparse Array Programming Models,
 ACM SIGPLAN Conference on Systems, Programming, Languages, and Applications (SPLASH/OOPLSA) 2021.
 Rawn Henry, Olivia Hsu, **Rohan Yadav**, Stephen Chou, Kunle Olukotun, Saman Amarasinghe, Fredrik Kjolstad
-([PDF](publications/ooplsa2021-sparse-arrays.pdf)).
+([PDF](publications/ooplsa2021-sparse-arrays.pdf), [video](https://www.youtube.com/watch?v=sY_jEfaP8f4)).
 
 * Disentanglement in Nested-Parallel Programs, 
 ACM SIGPLAN Symposium on Principles of Programming Languages (POPL) 2020.
-Sam Westrick, **Rohan Yadav**, Matthew Fluet, Umut A. Acar ([PDF](publications/popl2020-disentanglement.pdf)).
+Sam Westrick, **Rohan Yadav**, Matthew Fluet, Umut A. Acar ([PDF](publications/popl2020-disentanglement.pdf), [video](https://www.youtube.com/watch?v=e3iQYBo1nQ0)).
 
 * Disentanglement, Theory and Practice. 
 Undergraduate Thesis.
