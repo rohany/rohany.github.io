@@ -28,6 +28,32 @@
                   rohany AT cs DOT stanford DOT edu
                 </ul>
             </nav>
+            <div class="icons">
+                {{ if .Site.Params.scholar }}
+                    <a href="{{ .Site.Params.scholar}}" rel=me target="_blank">
+                        <img class="icon" src="img/scholar.svg" alt="scholar" />
+                    </a>
+                {{ end }}
+
+                {{ if .Site.Params.github }}
+                    <a href="https://github.com/{{ .Site.Params.github }}" rel=me target="_blank">
+                        <img class="icon" src="img/github.svg" alt="github" />
+                    </a>
+                {{ end }}
+
+                {{ if .Site.Params.twitter }}
+                    <a href="https://twitter.com/{{ .Site.Params.twitter }}" rel=me target="_blank">
+                        <img class="icon" src="img/twitter.svg" alt="twitter" />
+                    </a>
+                {{ end }}
+
+                {{ if .Site.Params.linkedin }}
+                    <a href="https://www.linkedin.com/in/{{ .Site.Params.linkedin }}" rel=me target="_blank">
+                        <img class="icon" src="img/linkedin.svg" alt="linkedin" />
+                    </a>
+                {{ end }}
+            </div>
         </div>
     </div>
+
 </div>
