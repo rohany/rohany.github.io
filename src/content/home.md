@@ -38,7 +38,7 @@ Some projects I've worked on include:
 ## Publications
 
 * SpDISTAL: Compiling Distributed Sparse Tensor Computations, Proceedings of the International Conference on Supercomputing (SC) 2022.
-**Rohan Yadav**, Alex Aiken, Fredrik Kjolstad (Conditionally accepted, preprint coming soon.)
+**Rohan Yadav**, Alex Aiken, Fredrik Kjolstad (preprint coming soon!)
 
 * DISTAL: The Distributed Tensor Algebra Compiler, ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI) 2022.
 **Rohan Yadav**, Alex Aiken, Fredrik Kjolstad ([PDF](publications/pldi2022-distal.pdf), [PLDI 2022 slides](slides/DISTAL-PLDI-22.key), [60 minute talk slides](slides/DISTAL-long-talk.key)).
