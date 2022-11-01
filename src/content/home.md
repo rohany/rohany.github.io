@@ -86,6 +86,8 @@ I develop and manage the cloud infrastructure for the project on an ongoing basi
 
 # News
 
+* **November 2022** I was invited to give a talk on DISTAL at Google Research!
+
 * **June 2022** I'm starting as a research intern at Nvidia.
 
 * **June 2022** Our paper on SpDISTAL was accepted to SC 2022!
