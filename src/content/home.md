@@ -13,7 +13,8 @@ and [Mike Bauer](https://lightsighter.org/) on [Legate](https://github.com/nv-le
 Before that, I was a software engineer at 
 [Cockroach Labs](https://www.cockroachlabs.com/) helping to build
 [CockroachDB](https://github.com/cockroachdb/cockroach).
-I am fortunate to be supported by an NSF Graduate Research Fellowship. 
+I am fortunate to be supported by an NSF Graduate Research Fellowship and an NVIDIA
+Graduate Fellowship.
 
 Outside of work, you can find me lifting weights, playing [tennis](https://clubtennis.stanford.edu/), 
 [cooking](https://www.instagram.com/the_wizard_of_zoz/) and (over) eating.
@@ -85,6 +86,8 @@ platform developed at Carnegie Mellon that is used by over 500 students and facu
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
 # News
+
+* **December 2022** I was awarded an NVIDIA Graduate Fellowship!
 
 * **November 2022** I was invited to give a talk on DISTAL at Google Research!
 
