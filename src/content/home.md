@@ -38,6 +38,12 @@ Some projects I've worked on include:
 
 ## Publications
 
+* Legate Sparse: Distributed Sparse Computing in Python, Proceedings of the International Conference on Supercomputing (SC) 2023.
+**Rohan Yadav**, Wonchan Lee, Melih Elibol, Manolis Papadakis, Taylor Lee-Patti, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer (PDF coming soon!)
+
+* Automated Mapping of Task-Based Programs onto Distributed and Heterogeneous Machines, Proceedings of the International Conference on Supercomputing (SC) 2023.
+Thiago S. F. X. Teixeira, Alexandra Henzinger, **Rohan Yadav**, Alex Aiken (PDF coming soon!)
+
 * SpDISTAL: Compiling Distributed Sparse Tensor Computations, Proceedings of the International Conference on Supercomputing (SC) 2022.
 **Rohan Yadav**, Alex Aiken, Fredrik Kjolstad ([PDF](publications/sc2022-spdistal.pdf), [SC 2022 slides](slides/SpDISTAL-SC-22.key)).
 
