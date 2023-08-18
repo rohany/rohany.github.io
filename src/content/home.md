@@ -30,6 +30,7 @@ I also worked in this area at Carnegie Mellon, where I collaborated with [Sam We
 and was advised by [Umut Acar](http://www.umut-acar.org/).
 
 Some projects I've worked on include:
+* Composable parallel programming
 * Compiling tensor algebra DSLs to supercomputers
 * Automatic mapping of computation and data onto heterogenous architectures
 * Memory management systems for parallel functional languages
@@ -39,7 +40,7 @@ Some projects I've worked on include:
 ## Publications
 
 * Legate Sparse: Distributed Sparse Computing in Python, Proceedings of the International Conference on Supercomputing (SC) 2023.
-**Rohan Yadav**, Wonchan Lee, Melih Elibol, Manolis Papadakis, Taylor Lee-Patti, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer (PDF coming soon!)
+**Rohan Yadav**, Wonchan Lee, Melih Elibol, Manolis Papadakis, Taylor Lee-Patti, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/sc2023-legate-sparse.pdf))
 
 * Automated Mapping of Task-Based Programs onto Distributed and Heterogeneous Machines, Proceedings of the International Conference on Supercomputing (SC) 2023.
 Thiago S. F. X. Teixeira, Alexandra Henzinger, **Rohan Yadav**, Alex Aiken (PDF coming soon!)
