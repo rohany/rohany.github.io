@@ -95,11 +95,15 @@ I develop and manage the cloud infrastructure for the project on an ongoing basi
 
 # News
 
+* **July 2023** I've returned as research intern at NVIDIA.
+
+* **June 2023** Our papers on Legate Sparse and AutoMap were accepted to SC 2023!
+
 * **December 2022** I was awarded an NVIDIA Graduate Fellowship!
 
 * **November 2022** I was invited to give a talk on DISTAL at Google Research!
 
-* **June 2022** I'm starting as a research intern at Nvidia.
+* **June 2022** I'm starting as a research intern at NVIDIA.
 
 * **June 2022** Our paper on SpDISTAL was accepted to SC 2022!
 
