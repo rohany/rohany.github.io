@@ -43,7 +43,7 @@ Some projects I've worked on include:
 **Rohan Yadav**, Wonchan Lee, Melih Elibol, Manolis Papadakis, Taylor Lee-Patti, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/sc2023-legate-sparse.pdf))
 
 * Automated Mapping of Task-Based Programs onto Distributed and Heterogeneous Machines, Proceedings of the International Conference on Supercomputing (SC) 2023.
-Thiago S. F. X. Teixeira, Alexandra Henzinger, **Rohan Yadav**, Alex Aiken (PDF coming soon!)
+Thiago S. F. X. Teixeira, Alexandra Henzinger, **Rohan Yadav**, Alex Aiken ([PDF](publications/sc2023-automap.pdf))
 
 * SpDISTAL: Compiling Distributed Sparse Tensor Computations, Proceedings of the International Conference on Supercomputing (SC) 2022.
 **Rohan Yadav**, Alex Aiken, Fredrik Kjolstad ([PDF](publications/sc2022-spdistal.pdf), [SC 2022 slides](slides/SpDISTAL-SC-22.key)).
@@ -71,6 +71,7 @@ ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019.
 
 ## Other writings
 
+* My application statement for the NVIDIA Graduate Fellowship ([PDF](reports/nvidia-fellowship-proposal.pdf)).
 * My qualifying examination report on distributed task-based runtime systems ([PDF](reports/quals.pdf)).
 * Blog post about online schema changes in CockroachDB ([link](https://www.cockroachlabs.com/blog/online-primary-key-changes/)).
 * Blog post about `cockroach demo`, a demo database for CockroachDB ([link](https://www.cockroachlabs.com/blog/get-started-geo-partitioning-data-with-our-command-line-cockroachdb-demo/)).
