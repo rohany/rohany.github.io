@@ -40,7 +40,7 @@ Some projects I've worked on include:
 ## Publications
 
 * Legate Sparse: Distributed Sparse Computing in Python, Proceedings of the International Conference on Supercomputing (SC) 2023.
-**Rohan Yadav**, Wonchan Lee, Melih Elibol, Manolis Papadakis, Taylor Lee-Patti, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/sc2023-legate-sparse.pdf))
+**Rohan Yadav**, Wonchan Lee, Melih Elibol, Manolis Papadakis, Taylor Lee-Patti, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/sc2023-legate-sparse.pdf), [60 Minute Talk Video](https://www.dropbox.com/scl/fi/j155jok490maryfkmwgxi/MIT-CSAIL-FastCodeSeminar-RohanYadav-10-17-23.mp4?rlkey=6x1yl180s8i5m3qet25fe12i6&dl=0))
 
 * Automated Mapping of Task-Based Programs onto Distributed and Heterogeneous Machines, Proceedings of the International Conference on Supercomputing (SC) 2023.
 Thiago S. F. X. Teixeira, Alexandra Henzinger, **Rohan Yadav**, Alex Aiken ([PDF](publications/sc2023-automap.pdf))
