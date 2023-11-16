@@ -37,10 +37,17 @@ Some projects I've worked on include:
 * Parallel algorithms for [subgraph isomorphism](https://en.wikipedia.org/wiki/Subgraph_isomorphism_problem)
 * Parallel functional sequence data structures
 
+Some links to software projects I have taken a part in developing, some more than others:
+
+* The Legate ecosystem ([Legate Core](https://github.com/nv-legate/legate.core), [cuNumeric](https://github.com/nv-legate/cunumeric/), [Legate Sparse](https://github.com/nv-legate/legate.sparse))
+* [DISTAL/SpDISTAL](https://github.com/rohany/taco/tree/DISTAL)
+* [TACO](https://github.com/tensor-compiler/taco)
+* [Legion](https://gitlab.com/StanfordLegion/legion/)
+
 ## Publications
 
 * Legate Sparse: Distributed Sparse Computing in Python, Proceedings of the International Conference on Supercomputing (SC) 2023.
-**Rohan Yadav**, Wonchan Lee, Melih Elibol, Manolis Papadakis, Taylor Lee-Patti, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/sc2023-legate-sparse.pdf), [60 Minute Talk Video](https://www.dropbox.com/scl/fi/j155jok490maryfkmwgxi/MIT-CSAIL-FastCodeSeminar-RohanYadav-10-17-23.mp4?rlkey=6x1yl180s8i5m3qet25fe12i6&dl=0))
+**Rohan Yadav**, Wonchan Lee, Melih Elibol, Manolis Papadakis, Taylor Lee-Patti, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/sc2023-legate-sparse.pdf), [60 Minute Talk Video](https://www.dropbox.com/scl/fi/j155jok490maryfkmwgxi/MIT-CSAIL-FastCodeSeminar-RohanYadav-10-17-23.mp4?rlkey=6x1yl180s8i5m3qet25fe12i6&dl=0), [SC 2023 slides](slides/legate-sparse-SC-23.key))
 
 * Automated Mapping of Task-Based Programs onto Distributed and Heterogeneous Machines, Proceedings of the International Conference on Supercomputing (SC) 2023.
 Thiago S. F. X. Teixeira, Alexandra Henzinger, **Rohan Yadav**, Alex Aiken ([PDF](publications/sc2023-automap.pdf))
