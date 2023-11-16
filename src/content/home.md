@@ -43,6 +43,7 @@ Some links to software projects I have taken a part in developing, some more tha
 * [DISTAL/SpDISTAL](https://github.com/rohany/taco/tree/DISTAL)
 * [TACO](https://github.com/tensor-compiler/taco)
 * [Legion](https://gitlab.com/StanfordLegion/legion/)
+* [CockroachDB](https://github.com/cockroachdb/cockroach)
 
 ## Publications
 
