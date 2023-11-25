@@ -14,7 +14,7 @@
                     {{ partial "page-heading" . }}
                 </div>
                 <div class="meta">
-                    <div class="date" title="{{ .Date.Format .Site.Params.dateformfull }}">{{ .Date.Format .Site.Params.dateform }}</div>
+                    <div class="date" title="{{ .Date.Format .Site.Params.dateformfull }}">{{ dateFormat "January 2, 2006" .Params.date }}</div>
                     {{ if not .Params.noauthor }}
                         {{ if .Params.author }}
                         <div class="author middot" title="{{ .Params.Author }}">{{ .Params.author }}</div>

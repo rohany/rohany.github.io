@@ -13,7 +13,7 @@
 
                 {{ $sectionTitle := .Title }}
                 <ul>
-                    {{ range .Data.Pages.GroupByDate "January, 2006" "desc"}}
+                    {{ range .Data.Pages.GroupByDate "Jan, 2006" "desc"}}
                         <li class="groupby">{{ .Key }}</li>
                         {{ range sort .Pages "Date" "desc" }}
                           {{ if (not (eq $sectionTitle .Title)) }}

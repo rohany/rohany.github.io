@@ -1,5 +1,5 @@
 <li class="post-item">
-    <span class="meta">{{ .Date.Format .Site.Params.dateform }}</span>
+    <span class="meta">{{ dateFormat "January 2" .Params.date }}</span>
     {{ if .Params.draft }}
     <a href="{{ .RelPermalink }}"><span>Draft::{{ .Title }}</span></a>
     {{ else }}
