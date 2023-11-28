@@ -21,6 +21,8 @@ Outside of work, you can find me lifting weights, playing [tennis](https://clubt
 
 My resume is available [here](rohan_resume.pdf).
 
+(New) I've started a blog, which is available [here](https://rohany.github.io/blog/).
+
 # Research
 
 I'm broadly interested in programming languages and computer systems.
