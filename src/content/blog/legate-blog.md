@@ -306,4 +306,4 @@ There are many related projects that readers might be interested in. I've listed
 
 # Acknowledgments
 
-I'd like to thank Mike Bauer and Shriram Janardhan for feedback and comments on this post.
+I'd like to thank Mike Bauer, Shriram Janardhan, Shriram Jagannathan and Jacob Faibussowitsch for feedback and comments on this post.
