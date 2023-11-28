@@ -152,8 +152,10 @@ in the [SC 2023 publication](https://rohany.github.io/publications/sc2023-legate
 # Legate Core
 
 Having discussed some user-facing Legate libraries, I'll now discuss how these libraries are implemented using
-the Legate runtime. The concepts I'll introduce about the Legate runtime are not necessary to understand to
-use the user-facing Legate libraries like cuNumeric and Legate Sparse.
+the Legate runtime. The concepts I'll introduce about the Legate runtime are not necessary to understand in order to
+use the user-facing Legate libraries like cuNumeric and Legate Sparse. However, they are important to understand if the
+reader wants to learn about the internals of these libraries, or wants to develop Legate libraries of their own.
+
 The Legate runtime (called the [Legate Core](https://github.com/nv-legate/legate.core)) is the glue that enables
 independent Legate libraries to share distributed data and abstracts away many details about distributed
 computing, such as data movement and synchronization. Categorically, Legate Core is a *task-based runtime system* with
