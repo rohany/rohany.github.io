@@ -6,6 +6,8 @@
   </style>
 {{ end }}
 
+{{ partial "mathjax.html" . }}
+
 <div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
@@ -17,7 +19,7 @@
                     <div class="date" title="{{ .Date.Format .Site.Params.dateformfull }}">{{ dateFormat "January 2, 2006" .Params.date }}</div>
                     {{ if not .Params.noauthor }}
                         {{ if .Params.author }}
-                        <div class="author middot" title="{{ .Params.Author }}">{{ .Params.author }}</div>
+                        <div class="author middot" title="{{ .Params.Author }}"><a href="https://rohany.github.io">{{ .Params.author }}</a></div>
                         {{ end }}
                     {{ end }}
                     {{ if not .Site.Params.noreadingtime }}

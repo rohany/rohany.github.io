@@ -314,7 +314,7 @@ div.main .content .posts {
   {{ end }}
 }
 div.main .content .page-heading {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 700;
   font-family: 'Helvetica Neue', 'Arial', sans-serif;
   letter-spacing: -0.005rem;

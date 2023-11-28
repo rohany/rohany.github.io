@@ -25,6 +25,9 @@ max-width: 825px;
 max-width: 750px;
 {{ end }}
 }
+div.post {
+max-width: 1250px;
+}
 div.header {
 background-color: transparent;
 }

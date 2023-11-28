@@ -13,7 +13,7 @@
       <pubDate>Sat, 25 Nov 2023 14:00:10 -0800</pubDate>
       
       <guid>rohany.github.io/blog/legate-blog/</guid>
-      <description>In progress&amp;hellip;</description>
+      <description>Modern machines are increasing in their complexity: it is common to have multiple GPUs attached to a single node, and multiple GPU-accelerated nodes connected by different interconnects throughout the memory hierarchy, such as NVLink within a single node and Infiniband across multiple nodes. As machines have become more complicated, developing software that achieves high performance on these machines has also become more difficult than before. Programmers must reason about how their program data is partitioned and distributed across GPUs and how to utilize the proper communication APIs to move data between memories in their machine, all while overlapping as much computation with data movement as possible.</description>
     </item>
     
   </channel>
