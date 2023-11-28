@@ -73,8 +73,8 @@ communication pattern between GPUs, where only the data at the edges of each til
 With cuNumeric and Legate, this Python program can weak scale with high efficiency to large numbers of GPUs.
 Below is a weak scaling plot of the stencil program out to 1024 GPUs. In weak-scaling, we start with a fixed
 problem size on a single GPU, and then increase the number of GPUs while keeping the problem size per GPU the
-same. We then measure the ratio of time needed to run the application with \\(P\\) GPUs versus 1 GPU. An ideal
-weak-scaling plot is a flat line at 100% efficiency, meaning that we could run the application on a problem
+same. We then plot the throughput per GPU achieved by the system. An ideal weak-scaling plot is a flat line
+that maintains the same throughput achieved at a single GPU, meaning that we could run the application on a problem
 size \\(P * N\\) on \\(P\\) GPUs in the same amount of time as problem size \\(N\\) on 1 GPU.
 
 
@@ -83,7 +83,8 @@ size \\(P * N\\) on \\(P\\) GPUs in the same amount of time as problem size \\(N
 While the shown example is a very small program,
 we have been able to port large scientific applications to cuNumeric. The largest example to date is
 [TorchSWE](https://github.com/shriram-jagan/TorchSWE/tree/cunumeric-no-mpi4py), a GPU-accelerated
-shallow-water equation solver. The original version of the application used [CuPy](https://cupy.dev/)
+shallow-water equation solver developed by Pi-Yueh Chuang and Lorena Barba. 
+The original version of the application used [CuPy](https://cupy.dev/)
 for GPU operations and MPI for distribution. The Legate team ported TorchSWE to cuNumeric by removing
 all of the MPI code and letting cuNumeric and Legate perform all distribution and communication. The
 resulting pure NumPy code when run with cuNumeric yields respectable weak-scaling performance, as seen
@@ -136,8 +137,7 @@ libraries is almost never seen in distributed, high performance computing. Legat
 this interoperability while delivering competitive performance with state-of-the-art sparse linear algebra
 libraries like [PETSc](https://petsc.org/release/). A weak-scaling plot comparing the throughput achieved
 in a [Conjugate Gradient solve](https://en.wikipedia.org/wiki/Conjugate_gradient_method) by Legate Sparse
-and PETSc. Unlike parallel efficiency as used in previous plots, this plot's y-axis is the throughput per
-GPU achieved by each library.
+and PETSc.
 
 ![Conjugate Gradient weak-scaling throughput](https://rohany.github.io/blog/legate/legate-sparse-cg-petsc.png)
 
