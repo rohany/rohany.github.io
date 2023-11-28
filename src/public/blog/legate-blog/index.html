@@ -1183,10 +1183,10 @@ communication pattern between GPUs, where only the data at the edges of each til
 <p>With cuNumeric and Legate, this Python program can weak scale with high efficiency to large numbers of GPUs.
 Below is a weak scaling plot of the stencil program out to 1024 GPUs. In weak-scaling, we start with a fixed
 problem size on a single GPU, and then increase the number of GPUs while keeping the problem size per GPU the
-same. We then measure the ratio of time needed to run the application with $P$ GPUs versus 1 GPU. An ideal
+same. We then measure the ratio of time needed to run the application with \(P\) GPUs versus 1 GPU. An ideal
 weak-scaling plot is a flat line at 100% efficiency, meaning that we could run the application on a problem
 size \(P * N\) on \(P\) GPUs in the same amount of time as problem size \(N\) on 1 GPU.</p>
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="rohany.github.ioblog/legate/stencil-cunumeric-gtc.png" src="rohany.github.ioblog/legate/low/stencil-cunumeric-gtc.png" alt="Weak scaling of cuNumeric 5-point stencil computation"></p></figure>
+<p><img src="https://rohany.github.io/blog/legate/stencil-cunumeric-gtc.png" alt="Weak scaling of cuNumeric 5-point stencil computation"></p>
 <p>While the shown example is a very small program,
 we have been able to port large scientific applications to cuNumeric. The largest example to date is
 <a href="https://github.com/shriram-jagan/TorchSWE/tree/cunumeric-no-mpi4py">TorchSWE</a>, a GPU-accelerated
@@ -1197,7 +1197,7 @@ resulting pure NumPy code when run with cuNumeric yields respectable weak-scalin
 below. Importantly, cuNumeric allows domain scientists with knowledge about physics to develop
 simulations in a high-level language like NumPy, and then execute that same code with high performance
 on a cluster of GPUs without expert knowledge of MPI.</p>
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="rohany.github.ioblog/legate/torchswe-cunumeric-gtc.png" src="rohany.github.ioblog/legate/low/torchswe-cunumeric-gtc.png" alt="Weak scaling of TorchSWE"></p></figure>
+<p><img src="https://rohany.github.io/blog/legate/torchswe-cunumeric-gtc.png" alt="Weak scaling of TorchSWE"></p>
 <p>While I&rsquo;ve mostly touched on scientific use-cases of cuNumeric so far, we are also working with
 users of cuNumeric who are applying it to large data analysis workloads. cuNumeric supports a large
 subset of NumPy and has a unique set of features, which is (to my knowledge) not offered by any other
@@ -1238,7 +1238,7 @@ libraries like <a href="https://petsc.org/release/">PETSc</a>. A weak-scaling pl
 in a <a href="https://en.wikipedia.org/wiki/Conjugate_gradient_method">Conjugate Gradient solve</a> by Legate Sparse
 and PETSc. Unlike parallel efficiency as used in previous plots, this plot&rsquo;s y-axis is the throughput per
 GPU achieved by each library.</p>
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="rohany.github.ioblog/legate/legate-sparse-cg-petsc.png" src="rohany.github.ioblog/legate/low/legate-sparse-cg-petsc.png" alt="Conjugate Gradient weak-scaling throughput"></p></figure>
+<p><img src="https://rohany.github.io/blog/legate/legate-sparse-cg-petsc.png" alt="Conjugate Gradient weak-scaling throughput"></p>
 <p>We&rsquo;ve developed some complex pieces of code that use Legate Sparse and cuNumeric together, including geometric
 and algebraic multi-grid solvers, a sparse matrix factorization algorithm, and a Runge-Kutta integration method.
 Legate Sparse is currently in the process of transitioning from a research prototype to an NVIDIA-supported library.
@@ -1264,7 +1264,7 @@ whether it will read from, write to, or reduce to each argument store. As tasks 
 into Legate Core, the runtime performs a series of analyses that automatically partition stores
 into pieces for distributed execution, find dependencies between tasks to extract parallelism, and
 insert communication between processors to keep store data up to date.</p>
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="rohany.github.ioblog/legate/legate-task-decomp.png" src="rohany.github.ioblog/legate/low/legate-task-decomp.png" alt="Overview of Legate Library"></p></figure>
+<p><img src="https://rohany.github.io/blog/legate/legate-task-decomp.png" alt="Overview of Legate Library"></p>
 <p>The abstract program representation of tasks and stores is key to the automation and composability provided by Legate.
 Legate libraries express only what computations must be performed, and are thus free of explicit synchronization
 and data movement. This freedom enables the Legate Core to weave together tasks from multiple different libraries
@@ -1295,7 +1295,7 @@ are partitioned across the machine needs to be same. Because the Legate Runtime 
 partitioned, the partitioning constraints supplied on tasks control in what ways the Legate Runtime can choose
 to partition data. Once data has been partitioned (an example of which is below), the launched task is broken
 down into point tasks that operate on each piece of partitioned data on a separate GPU.</p>
-<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="rohany.github.ioblog/legate/legate-data-partitioning.png" src="rohany.github.ioblog/legate/low/legate-data-partitioning.png" alt="Example of Legate data partitioning"></p></figure>
+<p><img src="https://rohany.github.io/blog/legate/legate-data-partitioning.png" alt="Example of Legate data partitioning"></p>
 <p>The body of the addition task, i.e. what code the task invocation actually runs, is defined in C++/CUDA to
 target GPUs. Psuedocode with many of the details of what this implementation looks like is shown below. These
 task bodies are invoked on each partitioned piece of a store.</p>
