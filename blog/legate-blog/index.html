@@ -15,8 +15,8 @@
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="rohany.github.io/blog/legate-blog/" />
-<meta property="og:title" content="The Legate Ecosystem: Accessible High Performance Computing" />
-<meta property="twitter:title" content="The Legate Ecosystem: Accessible High Performance Computing">
+<meta property="og:title" content="The Legate Ecosystem: High Productivity High Performance Computing" />
+<meta property="twitter:title" content="The Legate Ecosystem: High Productivity High Performance Computing">
 
     <meta property="twitter:card" content="summary">
 
@@ -1098,7 +1098,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     <div class="page-heading">
 
     
-    The Legate Ecosystem: Accessible High Performance Computing
+    The Legate Ecosystem: High Productivity High Performance Computing
     
 
 </div>
@@ -1141,19 +1141,22 @@ machines, such as domain scientists or data analysts, do not have the expertise 
 that aims to make high performance computing (HPC) accessible to mainstream programmers, rather than just the
 small domain of HPC experts. The Legate project is working towards this goal in two main fronts: 1) building a
 runtime system (called the <a href="https://github.com/nv-legate/legate.core">Legate Core</a>) that automates away many
-of the difficulties in developing distributed software, and 2) building distributed drop-in replacements for popular
+of the difficulties in developing distributed software, and 2) building distributed replacements for popular
 high level libraries like NumPy (<a href="https://github.com/nv-legate/cunumeric">cuNumeric</a>), SciPy Sparse
 (<a href="https://github.com/nv-legate/legate.sparse">Legate Sparse</a>) and Pandas (<a href="https://github.com/nv-legate/legate.pandas">Legate Pandas</a>)
 that automatically scale to clusters of GPU-accelerated nodes. One of the key features that Legate enables for these libraries
 that differs from other distributed implementations is that Legate libraries can seamlessly share distributed
-data with other, similarly to how the sequential versions of these libraries can. I&rsquo;ll come back to this point in more detail later.</p>
+data with each other, similarly to how the sequential versions of these libraries can. I&rsquo;ll come back to this point in more detail later.</p>
 <p>In this blog post, I&rsquo;ll discuss both of these efforts (runtime system and library development). I&rsquo;ll start first with
-highlighting some Legate libraries and their capabilities before diving into the Legate runtime itself. By end of this
-blog post, the reader should have a good idea about some powerful Legate libraries and an overview about how to develop
-their own libraries using the Legate runtime.</p>
+highlighting some Legate libraries and their capabilities before diving into the Legate runtime itself. In terms of
+the target audience, the first section of this post should be approachable to end users looking to accelerate and distribute
+programs using common Python libraries. The second section lifts the curtain by looking at how Legate libraries are implemented
+with the Legate runtime, and is tailored to a more technical audience with some knowledge about distributed programming.
+By end of this blog post, the reader should have a good idea about some powerful Legate libraries and a high level idea
+about how to develop their own libraries using the Legate runtime.</p>
 <h1 id="legate-libraries">Legate Libraries</h1>
 <h2 id="cunumeric">cuNumeric</h2>
-<p><a href="https://github.com/nv-legate/cunumeric">cuNumeric</a> is a Legate library that acts as a drop-in
+<p><a href="https://github.com/nv-legate/cunumeric">cuNumeric</a> is a Legate library that aspires to be a drop-in
 replacement for NumPy, automatically scaling NumPy programs across clusters of GPUs. The simplest
 example to demonstrate this is the Python program below. The program tries to import cuNumeric, and
 if it fails, falls back to NumPy. The program creates a 2-D array, and performs a 5-point stencil
@@ -1201,11 +1204,11 @@ on a cluster of GPUs without expert knowledge of MPI.</p>
 <p>While I&rsquo;ve mostly touched on scientific use-cases of cuNumeric so far, we are also working with
 users of cuNumeric who are applying it to large data analysis workloads. cuNumeric supports a large
 subset of NumPy and has a unique set of features, which is (to my knowledge) not offered by any other
-competing drop-in NumPy replacement. cuNumeric is an officially supported NVIDIA product, and I
+competing NumPy replacement. cuNumeric is an NVIDIA supported product with a beta release tag, and I
 encourage you to give it a try! For readers interested in more details about cuNumeric, please check
 out the <a href="https://lightsighter.org/pdfs/legate-preprint.pdf">SC 2019 publication</a>.</p>
 <h2 id="legate-sparse">Legate Sparse</h2>
-<p>Similarly to cuNumeric, <a href="https://github.com/nv-legate/legate.sparse">Legate Sparse</a> is a drop-in
+<p>Similarly to cuNumeric, <a href="https://github.com/nv-legate/legate.sparse">Legate Sparse</a> is an aspiring drop-in
 replacement for SciPy Sparse that scales Python programs operating on sparse matrices to clusters of GPUs.
 There are a number of libraries that offer distributed sparse linear algebra
 (<a href="https://petsc.org/release/">PETSc</a>, <a href="https://trilinos.github.io/">Trilinos</a>), so just providing
@@ -1247,10 +1250,13 @@ were key to achieving performant composition with cuNumeric. I&rsquo;ll discuss 
 the blog post, but they are also covered in depth (along with other ideas behind Legate Sparse&rsquo;s design)
 in the <a href="https://rohany.github.io/publications/sc2023-legate-sparse.pdf">SC 2023 publication</a>.</p>
 <h1 id="legate-core">Legate Core</h1>
-<p>The Legate runtime (called the <a href="https://github.com/nv-legate/legate.core">Legate Core</a>) is the glue that enables
+<p>Having discussed some user-facing Legate libraries, I&rsquo;ll now discuss how these libraries are implemented using
+the Legate runtime. The concepts I&rsquo;ll introduce about the Legate runtime are not necessary to understand to
+use the user-facing Legate libraries like cuNumeric and Legate Sparse.
+The Legate runtime (called the <a href="https://github.com/nv-legate/legate.core">Legate Core</a>) is the glue that enables
 independent Legate libraries to share distributed data and abstracts away many details about distributed
 computing, such as data movement and synchronization. Categorically, Legate Core is a <em>task-based runtime system</em> with
-a <em>strong data model</em>. What this means is that Legate Core has two fundamental abstractions for programmers, where
+a <em>distributed data model</em>. What this means is that Legate Core has two fundamental abstractions for programmers, where
 the first abstraction is how programmers define computations, and the second is how programmers define their data.
 A Legate Core program organizes its computation into <em>tasks</em> and maps distributed data onto <em>stores</em>.</p>
 <p>Legate Core represents distributed data as stores, which are distributed multi-dimensional arrays. Stores
@@ -1359,7 +1365,7 @@ the machine, or relate the partitions of different stores together in data-depen
 <ul>
 <li>Techniques to further improve the performance of programs that compose multiple distributed libraries, such as fusion of tasks across libraries and better partitioning algorithms.</li>
 <li>Leveraging techniques like <a href="http://theory.stanford.edu/~aiken/publications/papers/sc18.pdf">dynamic tracing</a> to automatically optimize task-based computations.</li>
-<li>A proliferation of Legate libraries for popular Python libraries like &hellip;</li>
+<li>A proliferation of Legate libraries are being developed internally at NVIDIA. I can&rsquo;t say which ones publicly, but there&rsquo;s a flurry of activity!</li>
 </ul>
 <p>We are looking for users and collaborators! We&rsquo;re very interested in use-cases and applications
 for the Legate libraries that we have been building, as well as developers who want to
@@ -1372,7 +1378,7 @@ build their own distributed libraries that can interoperate with the rest of the
 <li><a href="https://flexflow.ai/">FlexFlow</a> is a distributed neural network training and inference engine built on top of Legion.</li>
 </ul>
 <h1 id="acknowledgments">Acknowledgments</h1>
-<p>I&rsquo;d like to thank &hellip; for feedback and comments on this post.</p>
+<p>I&rsquo;d like to thank Mike Bauer and Shriram Janardhan for feedback and comments on this post.</p>
 
 
             </div>

@@ -1,5 +1,5 @@
 ---
-title: "The Legate Ecosystem: Accessible High Performance Computing"
+title: "The Legate Ecosystem: High Productivity High Performance Computing"
 date: 2023-11-25T14:00:10-08:00
 author: Rohan Yadav
 path: "https://rohany.github.io/blog/legate-blog/"
@@ -19,23 +19,26 @@ machines, such as domain scientists or data analysts, do not have the expertise 
 that aims to make high performance computing (HPC) accessible to mainstream programmers, rather than just the
 small domain of HPC experts. The Legate project is working towards this goal in two main fronts: 1) building a
 runtime system (called the [Legate Core](https://github.com/nv-legate/legate.core)) that automates away many
-of the difficulties in developing distributed software, and 2) building distributed drop-in replacements for popular
+of the difficulties in developing distributed software, and 2) building distributed replacements for popular
 high level libraries like NumPy ([cuNumeric](https://github.com/nv-legate/cunumeric)), SciPy Sparse 
 ([Legate Sparse](https://github.com/nv-legate/legate.sparse)) and Pandas ([Legate Pandas](https://github.com/nv-legate/legate.pandas))
 that automatically scale to clusters of GPU-accelerated nodes. One of the key features that Legate enables for these libraries
 that differs from other distributed implementations is that Legate libraries can seamlessly share distributed
-data with other, similarly to how the sequential versions of these libraries can. I'll come back to this point in more detail later.
+data with each other, similarly to how the sequential versions of these libraries can. I'll come back to this point in more detail later.
 
 In this blog post, I'll discuss both of these efforts (runtime system and library development). I'll start first with
-highlighting some Legate libraries and their capabilities before diving into the Legate runtime itself. By end of this
-blog post, the reader should have a good idea about some powerful Legate libraries and an overview about how to develop
-their own libraries using the Legate runtime.
+highlighting some Legate libraries and their capabilities before diving into the Legate runtime itself. In terms of
+the target audience, the first section of this post should be approachable to end users looking to accelerate and distribute
+programs using common Python libraries. The second section lifts the curtain by looking at how Legate libraries are implemented
+with the Legate runtime, and is tailored to a more technical audience with some knowledge about distributed programming.
+By end of this blog post, the reader should have a good idea about some powerful Legate libraries and a high level idea 
+about how to develop their own libraries using the Legate runtime.
 
 # Legate Libraries
 
 ## cuNumeric
 
-[cuNumeric](https://github.com/nv-legate/cunumeric) is a Legate library that acts as a drop-in
+[cuNumeric](https://github.com/nv-legate/cunumeric) is a Legate library that aspires to be a drop-in
 replacement for NumPy, automatically scaling NumPy programs across clusters of GPUs. The simplest
 example to demonstrate this is the Python program below. The program tries to import cuNumeric, and
 if it fails, falls back to NumPy. The program creates a 2-D array, and performs a 5-point stencil
@@ -93,13 +96,13 @@ on a cluster of GPUs without expert knowledge of MPI.
 While I've mostly touched on scientific use-cases of cuNumeric so far, we are also working with
 users of cuNumeric who are applying it to large data analysis workloads. cuNumeric supports a large
 subset of NumPy and has a unique set of features, which is (to my knowledge) not offered by any other
-competing drop-in NumPy replacement. cuNumeric is an officially supported NVIDIA product, and I 
+competing NumPy replacement. cuNumeric is an NVIDIA supported product with a beta release tag, and I 
 encourage you to give it a try! For readers interested in more details about cuNumeric, please check
 out the [SC 2019 publication](https://lightsighter.org/pdfs/legate-preprint.pdf).
 
 ## Legate Sparse
 
-Similarly to cuNumeric, [Legate Sparse](https://github.com/nv-legate/legate.sparse) is a drop-in
+Similarly to cuNumeric, [Legate Sparse](https://github.com/nv-legate/legate.sparse) is an aspiring drop-in
 replacement for SciPy Sparse that scales Python programs operating on sparse matrices to clusters of GPUs.
 There are a number of libraries that offer distributed sparse linear algebra 
 ([PETSc](https://petsc.org/release/), [Trilinos](https://trilinos.github.io/)), so just providing
@@ -148,10 +151,13 @@ in the [SC 2023 publication](https://rohany.github.io/publications/sc2023-legate
 
 # Legate Core
 
+Having discussed some user-facing Legate libraries, I'll now discuss how these libraries are implemented using
+the Legate runtime. The concepts I'll introduce about the Legate runtime are not necessary to understand to
+use the user-facing Legate libraries like cuNumeric and Legate Sparse.
 The Legate runtime (called the [Legate Core](https://github.com/nv-legate/legate.core)) is the glue that enables
 independent Legate libraries to share distributed data and abstracts away many details about distributed
 computing, such as data movement and synchronization. Categorically, Legate Core is a *task-based runtime system* with
-a *strong data model*. What this means is that Legate Core has two fundamental abstractions for programmers, where
+a *distributed data model*. What this means is that Legate Core has two fundamental abstractions for programmers, where
 the first abstraction is how programmers define computations, and the second is how programmers define their data.
 A Legate Core program organizes its computation into *tasks* and maps distributed data onto *stores*.
 
@@ -282,7 +288,7 @@ There is a large amount of active research and engineering going on within the L
 
 * Techniques to further improve the performance of programs that compose multiple distributed libraries, such as fusion of tasks across libraries and better partitioning algorithms.
 * Leveraging techniques like [dynamic tracing](http://theory.stanford.edu/~aiken/publications/papers/sc18.pdf) to automatically optimize task-based computations.
-* A proliferation of Legate libraries for popular Python libraries like ...
+* A proliferation of Legate libraries are being developed internally at NVIDIA. I can't say which ones publicly, but there's a flurry of activity!
 
 We are looking for users and collaborators! We're very interested in use-cases and applications
 for the Legate libraries that we have been building, as well as developers who want to
@@ -298,4 +304,4 @@ There are many related projects that readers might be interested in. I've listed
 
 # Acknowledgments
 
-I'd like to thank ... for feedback and comments on this post.
+I'd like to thank Mike Bauer and Shriram Janardhan for feedback and comments on this post.
