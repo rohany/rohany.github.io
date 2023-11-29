@@ -20,8 +20,8 @@ that aims to make high performance computing (HPC) accessible to mainstream prog
 small domain of HPC experts. The Legate project is working towards this goal in two main fronts: 1) building a
 runtime system (called the [Legate Core](https://github.com/nv-legate/legate.core)) that automates away many
 of the difficulties in developing distributed software, and 2) building distributed replacements for popular
-high level libraries like NumPy ([cuNumeric](https://github.com/nv-legate/cunumeric)), SciPy Sparse 
-([Legate Sparse](https://github.com/nv-legate/legate.sparse)) and Pandas ([Legate Pandas](https://github.com/nv-legate/legate.pandas))
+high level libraries like NumPy ([cuNumeric](https://github.com/nv-legate/cunumeric)) and SciPy Sparse 
+([Legate Sparse](https://github.com/nv-legate/legate.sparse))
 that automatically scale to clusters of GPU-accelerated nodes. One of the key features that Legate enables for these libraries
 that differs from other distributed implementations is that Legate libraries can seamlessly share distributed
 data with each other, similarly to how the sequential versions of these libraries can. I'll come back to this point in more detail later.
