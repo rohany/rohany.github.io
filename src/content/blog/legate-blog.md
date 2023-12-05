@@ -74,8 +74,10 @@ With cuNumeric and Legate, this Python program can weak scale with high efficien
 Below is a weak scaling plot of the stencil program out to 1024 GPUs. In weak-scaling, we start with a fixed
 problem size on a single GPU, and then increase the number of GPUs while keeping the problem size per GPU the
 same. We then plot the throughput per GPU achieved by the system. An ideal weak-scaling plot is a flat line
-that maintains the same throughput achieved at a single GPU, meaning that we could run the application on a problem
+that maintains the same throughput achieved at a single GPU [^1], meaning that we could run the application on a problem
 size \\(P * N\\) on \\(P\\) GPUs in the same amount of time as problem size \\(N\\) on 1 GPU.
+
+[^1]: For an application with a nearest-neighbor communication pattern (communication complexity that doesn't scale with the number of processors). Applications with communication complexities that scale with the number of processors are not expected to have flat weak-scaling curves.
 
 
 ![Weak scaling of cuNumeric 5-point stencil computation](https://rohany.github.io/blog/legate/stencil-cunumeric-gtc.png)
@@ -97,7 +99,7 @@ on a cluster of GPUs without expert knowledge of MPI.
 While I've mostly touched on scientific use-cases of cuNumeric so far, we are also working with
 users of cuNumeric who are applying it to large data analysis workloads. cuNumeric supports a large
 subset of NumPy and has a unique set of features, which is (to my knowledge) not offered by any other
-competing NumPy replacement. cuNumeric is an NVIDIA supported product with a beta release tag, and I 
+competing distributed NumPy replacement. cuNumeric is an NVIDIA supported product with a beta release tag, and I 
 encourage you to give it a try! For readers interested in more details about cuNumeric, please check
 out the [SC 2019 publication](https://lightsighter.org/pdfs/legate-preprint.pdf).
 
