@@ -34,11 +34,15 @@ challenges include understanding the existing codebase (all of the hidden assump
 and wrangling with the existing architecture and techniques already present in the code. The baggage that 
 the larger codebase brings affects how fast the implementation can be iterated on. In the beginning stages
 of a project (where the research ideas are most likely to be not correct!), the initial implementation
-effort can result in wasted time when the proposed architecture turns out not to work. The early
-stages of research are where flexibility is the most important --- it should be easy to try out a new
-algorithm or formulation of the problem without rewriting large amounts of code. An anecdote from
-my lab-mate [Haoran Xu](https://sillycross.github.io/about/) is that a good engineer is often able to
+effort can result in wasted time when the proposed architecture turns out not to work.
+An anecdote from my lab-mate [Haoran Xu](https://sillycross.github.io/about/) is that a good engineer is often able to
 develop at almost a 10x rate when working on their own code, versus working on someone else's code! 
+These "prototype prototypes" allow researchers to perform iterations of the research process on
+entirely their own code, rather than someone else's. The early stages of research are where flexibility is 
+the most important --- it should be easy to try out a new algorithm or formulation of the problem without 
+rewriting large amounts of code.
+
+
 Flexibility comes hand-in-hand with de-risking major components of the research. In a large codebase, trying to
 incorporate a new major library is a large amount of effort that might be wasted
 due to incompatibilities or deficiencies in the library unrelated to the research itself. Adding these
