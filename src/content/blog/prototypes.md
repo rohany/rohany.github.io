@@ -77,7 +77,7 @@ iterate on the algorithms used. I've already bounced between more than 5 strateg
 If the reader clicked through the links to these prototype prototypes I've mentioned, they would find
 that the code is quick messy --- I think that is fine! These early prototypes are not meant to turn
 into lasting implementations. They are only there to allow for quick iteration and de-risking. These
-prototypes give a researcher the necessary freedom to **do it wrong several times**.
+prototypes give a researcher **the necessary freedom to do it wrong several times before getting it right**.
 
 At this point, I hope that I've convinced the reader of the value in prototyping prototypes.
 It's not always possible for every project to perform the extraction and minimization that I have
