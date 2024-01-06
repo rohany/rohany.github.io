@@ -14,9 +14,9 @@
 <meta property="og:site_name" content="Rohan Yadav" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="rohany.github.io/blog/" />
-<meta property="og:title" content="Blog" />
-<meta property="twitter:title" content="Blog">
+<meta property="og:url" content="rohany.github.io/blog/prototypes/" />
+<meta property="og:title" content="PhD Lesson: Prototyping Your Prototypes" />
+<meta property="twitter:title" content="PhD Lesson: Prototyping Your Prototypes">
 
     <meta property="twitter:card" content="summary">
 
@@ -27,7 +27,7 @@
 
 Rohan Yadav
 </title>
-<link rel="canonical" href="rohany.github.io/blog/">
+<link rel="canonical" href="rohany.github.io/blog/prototypes/">
 
 
 <style media="screen">
@@ -1073,8 +1073,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="rohany.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="Rohan Yadav" />
-
 
 </head>
 
@@ -1083,99 +1081,149 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-<div class="header header-home column">
-
-    <div class="container">
-        <img class="logo" src="https://rohany.github.io/img/rohan_photo.jpg" alt="photo">
-        <div class="content titlestuff">
-            <a href="rohany.github.io/">
-              <div class="name">
-                <h1>
-                    Rohan Yadav
-                </h1>
-              </div>
-            </a>
-            <nav>
-                <ul>
-                  Computer Science PhD Candidate
-                </ul>
-                <ul>
-                  rohany AT cs DOT stanford DOT edu
-                </ul>
-            </nav>
-            <div class="icons">
-                
-                    <a href="https://scholar.google.com/citations?user=75t_IX8AAAAJ&amp;hl=en" rel=me target="_blank">
-                        <img class="icon" src="https://rohany.github.io/img/scholar.svg" alt="scholar" />
-                    </a>
-                
-
-                
-                    <a href="https://github.com/rohany" rel=me target="_blank">
-                        <img class="icon" src="https://rohany.github.io/img/github.svg" alt="github" />
-                    </a>
-                
-
-                
-                    <a href="https://twitter.com/brohanster" rel=me target="_blank">
-                        <img class="icon" src="https://rohany.github.io/img/twitter.svg" alt="twitter" />
-                    </a>
-                
-
-                
-                    <a href="https://www.linkedin.com/in/rohan-yadav-10455310b" rel=me target="_blank">
-                        <img class="icon" src="https://rohany.github.io/img/linkedin.svg" alt="linkedin" />
-                    </a>
-                
-            </div>
-        </div>
-    </div>
-
-</div>
 
 
-<div class="main column">
+
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            <div class="posts">
-                <div class="page-heading">Blog</div>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
-                
+    
+    PhD Lesson: Prototyping Your Prototypes
+    
 
-                
-                <ul>
+</div>
+
+                </div>
+                <div class="meta">
+                    <div class="date" title="Fri Jan 5 2024 10:49:07 -0500">January 5, 2024</div>
                     
-                        <li class="groupby">January, 2024</li>
                         
-                          
-                            <li class="post-item">
-    <span class="meta">January 5</span>
-    
-    <a href="https://rohany.github.io/blog/prototypes/"><span>PhD Lesson: Prototyping Your Prototypes</span></a>
-    
-</li>
-
-                          
+                        <div class="author middot" title="Rohan Yadav"><a href="https://rohany.github.io">Rohan Yadav</a></div>
                         
                     
-                        <li class="groupby">November, 2023</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">November 25</span>
-    
-    <a href="https://rohany.github.io/blog/legate-blog/"><span>The Legate Ecosystem: High Productivity High Performance Computing</span></a>
-    
-</li>
-
-                          
-                        
                     
-                </ul>
+                    <div class="tags">
+                        <ul>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <div class="markdown">
+                
+    
+    <p>As I become an older and grumpier PhD student (I&rsquo;m almost halfway through my fourth year!), I wanted
+to begin documenting some lessons that I have learned along the way to maximize effectiveness and
+the overall rate of progress. This lesson is more focused to PhD students doing systems related research,
+but perhaps future posts will be more applicable to other domains as well.</p>
+<p>As a systems researcher, the main way to iterate on and validate our ideas is to build software
+<em>prototypes</em> that implement the proposed system, programming language or more. The resulting prototype
+is an important artifact of the research; while the ideas behind the project are important,
+the fact that the ideas can be realized into real software lends necessary legitimacy. Additionally,
+the prototype must contain all of the &ldquo;implementation details&rdquo; that aren&rsquo;t able to fit into the final publication.
+So clearly, developing prototypes is important, and it can be tempting (especially as a new researcher)
+to jump in and start implementing ideas as they come.</p>
+<p>In this blog post, I argue that directly doing so can often be a bad idea, and can result in much
+slower progress than what should be possible. This slowdown is especially prominent when the research
+work is being done in the context of a larger software system, which is especially common for new researchers.
+I believe that trying to develop prototypes too early in the research process can lead to difficulties when
+attempting to <strong>rapidly iterate on core ideas</strong> and <strong>to de-risk critical components of the system</strong>. Instead,
+I find great value in &ldquo;prototyping the prototype&rdquo;, meaning finding minimal ways to see if the key ideas
+in the research are sound before attempting a more thourough implementation. In the rest of the post, I&rsquo;ll
+argue why I think this is a good practice by first talking about what goes wrong by not doing it, and then
+discussing times where this practice has worked well for me.</p>
+<p>Directly trying to go from research ideas to an protoype within the larger software system that the research
+fits within brings on a series of challenges unrelated to the core research. Examples of these
+challenges include understanding the existing codebase (all of the hidden assumptions and gotchas),
+and wrangling with the existing architecture and techniques already present in the code. The baggage that
+the larger codebase brings affects how fast the implementation can be iterated on. In the beginning stages
+of a project (where the research ideas are most likely to be not correct!), the initial implementation
+effort can result in wasted time when the proposed architecture turns out not to work. The early
+stages of research are where flexibility is the most important &mdash; it should be easy to try out a new
+algorithm or formulation of the problem without rewriting large amounts of code. This flexibility comes
+hand-in-hand with de-risking major components of the research. In a large codebase, trying to
+incorporate a new major library is a large amount of effort that might be wasted
+due to incompatibilities or deficiencies in the library unrelated to the research itself. Adding these
+new components results in a large amount of risk, as the effort to do so is high.</p>
+<p>Having hopefully convinced the reader about the perils of prototyping too early, I hope to impress
+upon the reader that finding ways to develop very small &ldquo;toy&rdquo; versions of their prototypes can be very effective.
+I first learned about this practice from coworkers at <a href="https://github.com/cockroachdb/cockroach">CockroachDB</a>,
+who are some of the best programmers I&rsquo;ve ever met. When undertaking large modifications to the database, the
+team would first spend serious time developing and evaluating toy implementations of the proposed features.
+These include a <a href="https://github.com/petermattis/opttoy">toy cost-based optimizer</a>, and a
+<a href="https://github.com/jordanlewis/exectoy">toy vectorized execution engine</a>. As expected, these explorations
+were extremely useful for the engineers to 1) show that the proposed ideas could lead to potential benefits,
+and 2) quickly iterate without considering all of the other layers within CockroachDB.</p>
+<p>Since I&rsquo;ve started my PhD, I&rsquo;ve used the &ldquo;prototyping the prototype&rdquo; approach several times across
+different research projects. This process can look very different for different kinds of projects:</p>
+<p>For the <a href="https://rohany.github.io/publications/pldi2022-distal.pdf">DISTAL</a> project
+(and other DSL compilation-style projects), I spend a lot of time developing by hand the code
+I want my compiler to generate. This process helps to validate that the envisioned compiler can
+actually generate the fast code desired!</p>
+<p>For an under submission project that uses MLIR to fuse computations inside the <a href="https://github.com/nv-legate/">Legate</a>
+framework, I wrote a <a href="https://github.com/rohany/fusion-toy">small toy implementation of the Legate runtime</a> to embed
+the MLIR compiler within. Doing so, I was able to confirm that within the final software ecosystem my research
+prototype would be built, MLIR was indeed able to perform the loop fusion and parallelization optimizations I was
+relying on it to perform.</p>
+<p>Finally, a current research project I am working on aims to automatically detect when the
+<a href="http://theory.stanford.edu/~aiken/publications/papers/sc18.pdf">dynamic tracing optimization</a> can be
+applied in Legion programs. Rather than directly implementing my proposed algorithms inside the Legion runtime,
+I&rsquo;m developing a <a href="https://github.com/rohany/auto-tracing-exploration">simulator</a> that consumes logs of
+Legion programs and runs different trace detection algorithms on those logs. This simulator lets me quickly
+test out these algorithms without actually running potentially expensive programs, and lets me rapidly
+iterate on the algorithms used. I&rsquo;ve already bounced between more than 5 strategies in the last few weeks!</p>
+<p>If the reader clicked through the links to these prototype prototypes I&rsquo;ve mentioned, they would find
+that the code is quick messy &mdash; I think that is fine! These early prototypes are not meant to turn
+into lasting implementations. They are only there to allow for quick iteration and de-risking. These
+prototypes give a researcher the necessary freedom to <strong>do it wrong several times</strong>.</p>
+<p>At this point, I hope that I&rsquo;ve convinced the reader of the value in prototyping prototypes.
+It&rsquo;s not always possible for every project to perform the extraction and minimization that I have
+described here. However, if it is possible, or it is even possible to spend some cycles thinking about
+how it might be done, I think that the benefits greatly outweigh the costs.</p>
+
+
+            </div>
+            
+            
+            <br>
+            <div class="navigation">
+                
+                <div>
+                    <img class="icon" src="rohany.github.io/img/back.svg" alt="back" />
+                    <a href="rohany.github.io/blog/legate-blog/">The Legate Ecosystem: High Productivity High Performance Computing</a>
+                </div>
+                
+                <div style="width: 100%;"></div>
+                
+            </div>
+            
+            
+
+            
+
+            
         </div>
     </div>
 </div>
+
+
+
 <div class="footer column">
     <div class="container">
 

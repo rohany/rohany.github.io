@@ -6,7 +6,17 @@
     <description>Recent content on Rohan Yadav</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 25 Nov 2023 14:00:10 -0800</lastBuildDate><atom:link href="rohany.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Jan 2024 10:49:07 -0500</lastBuildDate><atom:link href="rohany.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PhD Lesson: Prototyping Your Prototypes</title>
+      <link>rohany.github.io/blog/prototypes/</link>
+      <pubDate>Fri, 05 Jan 2024 10:49:07 -0500</pubDate>
+      
+      <guid>rohany.github.io/blog/prototypes/</guid>
+      <description>As I become an older and grumpier PhD student (I&amp;rsquo;m almost halfway through my fourth year!), I wanted to begin documenting some lessons that I have learned along the way to maximize effectiveness and the overall rate of progress. This lesson is more focused to PhD students doing systems related research, but perhaps future posts will be more applicable to other domains as well.
+As a systems researcher, the main way to iterate on and validate our ideas is to build software prototypes that implement the proposed system, programming language or more.</description>
+    </item>
+    
     <item>
       <title>The Legate Ecosystem: High Productivity High Performance Computing</title>
       <link>rohany.github.io/blog/legate-blog/</link>
