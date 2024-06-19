@@ -103,6 +103,7 @@ Additionally, I contributed to the starting and development of the
 platform developed at Carnegie Mellon that is used by over 500 students and faculty daily.
 I develop and manage the cloud infrastructure for the project on an ongoing basis.
 
+<!---
 # News
 
 * **July 2023** I've returned as research intern at NVIDIA.
@@ -142,3 +143,4 @@ I develop and manage the cloud infrastructure for the project on an ongoing basi
 * **May 2019:** I presented my undergraduate senior thesis, entitled Disentanglement, Theory and Practice at Carnegie Mellon's Meeting of the Minds Conference.
 
 * **March 2019:** Our paper, A Parallel Algorithm for Subgraph Isomorphism was accepted as a Brief Announcement at SPAA '19.
+-->
