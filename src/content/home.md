@@ -79,6 +79,14 @@ Undergraduate Thesis.
 ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019. 
 **Rohan Yadav**, Umut A. Acar ([PDF](https://dl.acm.org/citation.cfm?id=3323170)).
 
+# Preprints
+
+* Automatic Tracing in Task-Based Runtime Systems
+**Rohan Yadav**, Michael Bauer, David Broman, Michael Garland, Alex Aiken, Fredrik Kjolstad ([PDF](https://arxiv.org/abs/2406.18111))
+
+* Composing Distributed Computations Through Task and Kernel Fusion
+**Rohan Yadav**, Shiv Sundram, Wonchan Lee, Michael Garland, Michael Bauer, Alex Aiken, Fredrik Kjolstad ([PDF](https://arxiv.org/abs/2406.18109))
+
 ## Other writings
 
 * My application statement for the NVIDIA Graduate Fellowship ([PDF](reports/nvidia-fellowship-proposal.pdf)).
