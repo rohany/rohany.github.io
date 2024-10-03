@@ -9,7 +9,7 @@ working on compilers and parallel programming systems. I am
 advised by [Alex Aiken](http://theory.stanford.edu/~aiken/)
 and [Fredrik Kjolstad](http://fredrikbk.com/). I am also a part-time
 researcher at NVIDIA working with [Michael Garland](https://mgarland.org/)
-and [Mike Bauer](https://lightsighter.org/) on [Legate](https://github.com/nv-legate). 
+and [Mike Bauer](https://lightsighter.org/). 
 Before that, I was a software engineer at 
 [Cockroach Labs](https://www.cockroachlabs.com/) helping to build
 [CockroachDB](https://github.com/cockroachdb/cockroach).
@@ -32,6 +32,7 @@ I also worked in this area at Carnegie Mellon, where I collaborated with [Sam We
 and was advised by [Umut Acar](http://www.umut-acar.org/).
 
 Some projects I've worked on include:
+* Programming languages for emerging GPU architectures
 * Composable parallel programming
 * Compiling tensor algebra DSLs to supercomputers
 * Automatic mapping of computation and data onto heterogenous architectures
