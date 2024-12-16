@@ -17,7 +17,7 @@ I am fortunate to be supported by an NSF Graduate Research Fellowship, an NVIDIA
 Graduate Fellowship and a Jane Street Graduate Research Fellowship.
 
 Outside of work, you can find me lifting weights, playing [tennis](https://clubtennis.stanford.edu/), 
-[cooking](https://www.instagram.com/the_wizard_of_zoz/) and (over) eating.
+[cooking](https://www.instagram.com/brohanstercooks/) and (over) eating.
 
 My resume is available [here](rohan_resume.pdf).
 
