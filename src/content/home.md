@@ -50,11 +50,11 @@ Some links to software projects I have taken a part in developing, some more tha
 
 ## Publications
 
-* Automatic Tracing in Task-Based Runtime Systems. (To appear) International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS) 2025.
-**Rohan Yadav**, Michael Bauer, David Broman, Michael Garland, Alex Aiken, Fredrik Kjolstad ([PDF](https://arxiv.org/abs/2406.18111))
+* Automatic Tracing in Task-Based Runtime Systems. International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS) 2025.
+**Rohan Yadav**, Michael Bauer, David Broman, Michael Garland, Alex Aiken, Fredrik Kjolstad ([PDF](publications/asplos2025-tracing.pdf))
 
-* Composing Distributed Computations Through Task and Kernel Fusion. (To appear) International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS) 2025.
-**Rohan Yadav**, Shiv Sundram, Wonchan Lee, Michael Garland, Michael Bauer, Alex Aiken, Fredrik Kjolstad ([PDF](https://arxiv.org/abs/2406.18109))
+* Composing Distributed Computations Through Task and Kernel Fusion. International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS) 2025.
+**Rohan Yadav**, Shiv Sundram, Wonchan Lee, Michael Garland, Michael Bauer, Alex Aiken, Fredrik Kjolstad ([PDF](publications/asplos2025-fusion.pdf))
 
 * Legate Sparse: Distributed Sparse Computing in Python, Proceedings of the International Conference on Supercomputing (SC) 2023.
 **Rohan Yadav**, Wonchan Lee, Melih Elibol, Manolis Papadakis, Taylor Lee-Patti, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/sc2023-legate-sparse.pdf), [60 Minute Talk Video](https://www.dropbox.com/scl/fi/j155jok490maryfkmwgxi/MIT-CSAIL-FastCodeSeminar-RohanYadav-10-17-23.mp4?rlkey=6x1yl180s8i5m3qet25fe12i6&dl=0), [SC 2023 slides](slides/legate-sparse-SC-23.key))
