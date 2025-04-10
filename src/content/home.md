@@ -51,7 +51,7 @@ Some links to software projects I have taken a part in developing, some more tha
 ## Publications
 
 * Task-Based Tensor Computations on Modern GPUs. ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI) 2025.
-**Rohan Yadav**, Michael Garland, Alex Aiken, Michael Bauer (Conditionally Accepted, Preprint soon.)
+**Rohan Yadav**, Michael Garland, Alex Aiken, Michael Bauer ([PDF](publications/pldi2025-cypress.pdf))
 
 * Automatic Tracing in Task-Based Runtime Systems. International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS) 2025.
 **Rohan Yadav**, Michael Bauer, David Broman, Michael Garland, Alex Aiken, Fredrik Kjolstad ([PDF](publications/asplos2025-tracing.pdf))
