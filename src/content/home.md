@@ -32,6 +32,7 @@ I also worked in this area at Carnegie Mellon, where I collaborated with [Sam We
 and was advised by [Umut Acar](http://www.umut-acar.org/).
 
 Some projects I've worked on include:
+* Understanding Overheads in Parallel Programming Systems
 * Programming languages for emerging GPU architectures
 * Composable parallel programming
 * Compiling tensor algebra DSLs to supercomputers
@@ -106,7 +107,8 @@ At Carnegie Mellon, I served as a teaching assistant
 for [Principles of Functional Programming](http://www.cs.cmu.edu/~15150/), and 
 a multiple time head teaching assistant for
 [Parallel and Sequential Algorithms and Data Structures](https://www.cs.cmu.edu/~15210/).
-At Stanford, I've been a CA for [Programming Languages](https://web.stanford.edu/class/cs242/).
+At Stanford, I've been a CA for [Programming Languages](https://web.stanford.edu/class/cs242/)
+and [Compilers](https://web.stanford.edu/class/cs143/).
 
 Additionally, I contributed to the starting and development of the
 [Diderot](http://www.umut-acar.org/diderot) project, a new educational 
