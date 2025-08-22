@@ -51,6 +51,8 @@ Some links to software projects I have taken a part in developing, some more tha
 
 ## Publications
 
+* [Preprint] On the Duality of Task and Actor Programming Models. **Rohan Yadav**, Joseph Guman, Sean Treichler, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/actor-task-duality.pdf))
+
 * Task-Based Tensor Computations on Modern GPUs. ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI) 2025.
 **Rohan Yadav**, Michael Garland, Alex Aiken, Michael Bauer ([PDF](publications/pldi2025-cypress.pdf))
 
