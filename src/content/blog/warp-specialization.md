@@ -25,7 +25,7 @@ issue slot. Performance is maximized (as discussed later) when all threads in a 
 A Hopper SM (pictured below) has four execution contexts that can host an active warp, shown by the 4 quadrants.
 
 <!--- Needed for hosting on the website -->
-![H100 SM Diagram](https://rohany.github.com/blog/warp-specialization/h100-arch.png)
+![H100 SM Diagram](https://rohany.github.io/blog/warp-specialization/h100-arch.png)
 
 At any cycle, at most 4 warps may issue instructions into the SM to execute. When a thread block contains more than 4 warps
 worth of threads (128), a hardware component called the *warp scheduler* selects 4 available warps to execute instructions.
@@ -190,7 +190,7 @@ Let's examine how (and if) these cases appear when developing a high performance
 compiler; the generated code is too ugly to present, so I'll discuss it at the level of vaguely-Pythonic psuedocode. An FP16 H100 GEMM 
 roughly has the structure shown below.
 
-![GEMM Pipeline](https://rohany.github.com/blog/warp-specialization/gemm-pipe.png)
+![GEMM Pipeline](https://rohany.github.io/blog/warp-specialization/gemm-pipe.png)
 
 An efficient GEMM orchestrates a software pipeline where at most `PIPE` outstanding
 TMA loads of tiles from global memory to shared memory are pending, while GEMM operations execute
