@@ -6,7 +6,16 @@
     <description>Recent content in Blog on Rohan Yadav</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 05 Jan 2024 10:49:07 -0500</lastBuildDate><atom:link href="rohany.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="rohany.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unweaving Warp Specialization</title>
+      <link>rohany.github.io/blog/warp-specialization/</link>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
+      
+      <guid>rohany.github.io/blog/warp-specialization/</guid>
+      <description>Recently, I have been thinking deeply about warp specialization in the context of high performance kernels for modern Tensor Core GPUs like NVIDIA&amp;rsquo;s H100 and B200. My understanding of what warp specialization achieves has deepened and led me to the interesting question of: do we actually need warp specialization (and the complexity that it entails)? My conclusion is that the answer is indeed yes, but it might not be as mandatory as it seems.</description>
+    </item>
+    
     <item>
       <title>PhD Lesson: Prototyping Your Prototypes</title>
       <link>rohany.github.io/blog/prototypes/</link>

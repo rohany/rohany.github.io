@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Example blog">
+
+
+    <meta property="twitter:site" content="@brohanster">
+
+<meta property="og:site_name" content="Rohan Yadav" />
+<meta property="og:locale" content="en-US" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="rohany.github.io/blog/warp-specialization/" />
+<meta property="og:title" content="Unweaving Warp Specialization" />
+<meta property="twitter:title" content="Unweaving Warp Specialization">
+
+    <meta property="twitter:card" content="summary">
+
+<meta property="og:description" content="">
+<meta property="twitter:description" content="">
+
+<title>
+
+Rohan Yadav
+</title>
+<link rel="canonical" href="rohany.github.io/blog/warp-specialization/">
+
+
+<style media="screen">
+  @font-face {
+  font-family: 'Nexa Bold';
+  src: url('rohany.github.iofonts/Nexa Bold.otf');
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, div.column {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+a,
+a:visited,
+a:focus,
+a:active {
+  text-decoration: none;
+}
+html {
+  height: 100%;
+  font-size: 16px;
+}
+body {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 100%;
+  font-weight: 400;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  color: #111111;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility !important;
+}
+.icon {
+  text-rendering: geometricPrecision !important;
+}
+section {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  width: 100%;
+}
+div.column {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  width: 100%;
+}
+.container {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  width: 100%;
+}
+div.header .container {
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}
+div.header .content {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+div.header .container .logo {
+  
+  max-width: 100px;
+  
+  margin-left: -2em;
+  margin: auto;
+}
+
+div.header .container .titlestuff {
+  margin-left: 2em;
+}
+
+div.header .name {
+  padding-top: 20px;
+  font-size: 28px;
+  font-family: 'Nexa Bold', 'Helvetica Neue', 'Arial', sans-serif;
+  letter-spacing: -0.005rem;
+  
+  text-transform: uppercase;
+  
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  color: #333333;
+}
+div.header nav {
+  margin-bottom: 16px;
+}
+div.header nav ul {
+  list-style: none;
+  text-align: center;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: -ms-inline-flex;
+  display: inline-flex;
+}
+div.header nav ul li {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+div.header nav ul li:first-child {
+  margin-left: 0;
+}
+div.header nav ul li:last-child {
+  margin-right: 0;
+}
+div.header nav ul a {
+  color: #555555;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  -webkit-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -moz-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -ms-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -o-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+}
+div.header nav ul a:hover {
+  color: #111111;
+}
+div.footer .container {
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+  width: 100%;
+  text-align: center;
+}
+div.footer .container a {
+  font-size: 14px;
+  margin-left: 6px;
+  margin-right: 6px;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -moz-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -ms-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -o-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+}
+div.footer .container a:first-child {
+  margin-left: 0;
+}
+div.footer .container a:last-child {
+  margin-right: 0;
+}
+div.footer .container a:hover {
+  opacity: 0.8;
+}
+div.footer .container a .icon {
+  width: 16px;
+  height: 16px;
+}
+div.footer .container .copyright {
+  flex-grow: 0.5;
+  text-align: start;
+}
+div.footer .container .icons {
+  flex-grow: 0.5;
+  text-align: end;
+}
+
+div.header .container .titlestuff .icons {
+  flex-grow: 0.5;
+  text-align: end;
+  margin: left;
+}
+
+div.header .container a .icon {
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+}
+
+div.main .container {
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  justify-content: flex-start;
+}
+div.main .content {
+  color: #111111;
+  font-size: 16px;
+}
+div.main .content .title-container {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+}
+div.main .content .posts {
+  
+  
+}
+div.main .content .page-heading {
+  font-size: 30px;
+  font-weight: 700;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  letter-spacing: -0.005rem;
+  text-transform: uppercase;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  color: #333333;
+  margin-bottom: 16px;
+}
+div.main .content .front-matter .page-heading {
+  margin-bottom: 0;
+}
+div.main .content .front-matter .meta {
+  font-size: 14px;
+  color: #666666;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  margin-bottom: 32px;
+}
+div.main .content .front-matter .date,
+div.main .content .front-matter .author,
+div.main .content .front-matter .tags,
+div.main .content .front-matter .word-count,
+div.main .content .front-matter .middot:before {
+  display: none;
+}
+div.main .content .front-matter .middot:before {
+  font-size: 6px;
+  margin: 0 6px;
+  vertical-align: middle;
+  content: "•";
+}
+div.main .content .front-matter .tags ul {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+div.main .content .front-matter .tags ul li {
+  -webkit-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -moz-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -ms-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -o-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+}
+div.main .content .front-matter .tags ul li:hover {
+  opacity: 0.7;
+}
+div.main .content .front-matter .tags ul li a {
+  color: #666666;
+}
+div.main .container.f04 {
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}
+div.main .container.f04 .content {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+div.main .container.f04 .content .num {
+  margin: 30px 0px 30px 0;
+  font-weight: 400;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 50px;
+}
+div.main .container.f04 .content .detail {
+  margin-bottom: 40px;
+}
+div.main .container .content .groupby {
+  margin-top: 1em;
+  padding-left: 0.5em;
+}
+div.main .container .content .post-item {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  display: list-item;
+  list-style: disc inside;
+}
+div.main .container .content .post-item .meta {
+  font-size: 14px;
+  color: #666666;
+  display: none;
+  min-width: 100px;
+}
+div.main .container .content .see-more {
+  font-style: italic;
+  float: right;
+  font-size: 0.9em;
+  margin-top: 2em;
+  color: #313537;
+}
+div.main .container .content .see-more:hover {
+  color: #666;
+}
+section {
+  padding: 0 16px;
+}
+div.column {
+  padding: 0 16px;
+}
+div.header {
+  padding-top: 10px;
+}
+div.header-home {
+  padding-top: 36px;
+}
+div.main {
+  padding-top: 32px;
+}
+div.main .container .content .post-item .meta {
+    display: block;
+}
+div.main .container .content .post-item {
+    display: flex;
+    list-style: none;
+}
+a {
+  color: #428bca;
+  -webkit-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -moz-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -ms-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+  -o-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+}
+a:hover {
+  color: #2a6496;
+}
+img {
+  max-width: 100%;
+}
+div.main .content {
+    width: 100%;
+}
+div.main .content .markdown {
+  font-size: 1.1em;
+  line-height: 1.75em;
+  color: #313537;
+  font-family: serif;
+  font-weight: 300;
+}
+div.main .content .markdown h1,
+div.main .content .markdown h2,
+div.main .content .markdown h3,
+div.main .content .markdown h4,
+div.main .content .markdown h5,
+div.main .content .markdown h6 {
+  font-size: 22px;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  letter-spacing: -0.005rem;
+  font-weight: 700;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  color: #333333;
+  text-transform: none;
+  margin-top: 1.75rem;
+}
+div.main .content .markdown h1 {
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+}
+div.main .content .markdown h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+div.main .content .markdown h3 {
+  font-size: 1em;
+  margin-bottom: 1rem;
+}
+div.main .content .markdown h4,
+div.main .content .markdown h5,
+div.main .content .markdown h6 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: none;
+}
+div.main .content .markdown code,
+div.main .content .markdown pre {
+  font-family: 'Menlo', monospace;
+  font-size: 0.98rem;
+  background-color: #f7f7f7;
+}
+div.main .content .markdown code {
+  /* enclosed by single backtick (`) */
+  padding: .15em .5em;
+  border-radius: 2px;
+}
+div.main .content .markdown pre {
+  /* Hugo specific: consider using the 'highlight' shortcode */
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  line-height: 1.5em;
+  white-space: pre;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+div.main .content .markdown pre code {
+  /* enclosed by 4 backticks (````) */
+  padding: 0;
+  font-size: 0.9rem;
+}
+div.main .content .markdown a code {
+  color: #428bca !important;
+}
+div.main .content .markdown a code:hover {
+  text-decoration: underline;
+}
+div.main .content .markdown p {
+  
+  text-align: justify;
+  
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+div.main .content .markdown ul,
+div.main .content .markdown ol,
+div.main .content .markdown dl {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+div.main .content .markdown dt {
+  font-weight: bold;
+}
+div.main .content .markdown dd {
+  margin-bottom: .5rem;
+}
+div.main .content .markdown ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-bottom: 1.25rem;
+}
+div.main .content .markdown ol {
+  list-style-type: decimal;
+  margin-bottom: 1.25rem;
+}
+div.main .content .markdown li {
+  margin-left: 2em;
+}
+div.main .content .markdown em {
+  font-style: italic;
+}
+div.main .content .markdown strong {
+  font-weight: 700;
+}
+div.main .content .markdown hr {
+  position: relative;
+  margin: 1.75rem 0;
+  border: 0;
+  border-top: 1px solid #808080;
+  border-top: 1px solid #999999;
+}
+div.main .content .markdown abbr {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #666666;
+  text-transform: uppercase;
+}
+div.main .content .markdown abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted #808080;
+}
+div.main .content .markdown blockquote {
+  padding: .5rem 1rem;
+  margin: .8rem 0;
+  color: #7a7a7a;
+  border-left: .25rem solid #e5e5e5;
+}
+div.main .content .markdown blockquote p:last-child {
+  margin-bottom: 0;
+}
+div.main .content .markdown figure {
+  width: 100%;
+  background: #fff;
+  margin-bottom: 1em;
+}
+div.main .content .markdown figure img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  position: static;
+  margin: auto;
+}
+div.main .content .markdown table {
+  margin-bottom: 1rem;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-collapse: collapse;
+}
+div.main .content .markdown td,
+div.main .content .markdown th {
+  padding: .25rem .5rem;
+  border: 1px solid #e5e5e5;
+}
+div.main .content .markdown tbody tr:nth-child(odd) td,
+div.main .content .markdown tbody tr:nth-child(odd) th {
+  background-color: #f7f7f7;
+}
+div.main .content .markdown .footnotes ol {
+  list-style-type: decimal;
+  margin-left: 16px;
+}
+div.main .content .markdown .footnotes li {
+  list-style-type: unset;
+}
+div.main .content .markdown .footnote-ref {
+  font-size: 0.7em;
+}
+div.main .content .navigation {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  padding: 2em;
+}
+div.main .content .navigation div {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  margin-top: 1em;
+}
+div.main .content .navigation .icon {
+  width: 16px;
+  height: 16px;
+}
+div.main .content .navigation a {
+  width: 250px;
+  margin: 0 1em;
+  text-align: center;
+  font-style: italic;
+  color: #313537;
+}
+div.main .content .share, div.main .content .share div {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: center;
+}
+div.main .content .share {
+  background-color: rgba(152, 152, 152, 0.07);
+  padding: 1em 0;
+}
+div.main .content .share a {
+  margin: 0 6px;
+}
+kbd {
+  padding: 0.1em 0.6em;
+  border: 1px solid #ccc;
+  font-size: 11px;
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0 0.1em;
+  text-shadow: 0 1px 0 #fff;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* Fonts */
+
+
+.wf-raleway-n4-active body, 
+.wf-raleway-n4-active div.header nav ul a,
+.wf-raleway-n7-active div.main .content .page-heading,
+.wf-raleway-n2-active div.main .container.f04 .content .num,
+.wf-raleway-n7-active div.main .content .markdown h1,
+.wf-raleway-n7-active div.main .content .markdown h2,
+.wf-raleway-n7-active div.main .content .markdown h3,
+.wf-raleway-n7-active div.main .content .markdown h4,
+.wf-raleway-n7-active div.main .content .markdown h5,
+.wf-raleway-n7-active div.main .content .markdown h6 {
+      font-family: 'Raleway';
+}
+
+.wf-merriweather-n3-active div.main .content .markdown {
+      font-family: 'Merriweather';
+}
+
+.wf-ubuntu-mono-n4-active div.main .content .markdown code,
+.wf-ubuntu-mono-n4-active div.main .content .markdown pre {
+      font-family: 'Ubuntu Mono';
+}
+
+
+</style>
+<style media="(min-width: 600px)">
+  body {
+-webkit-justify-content: center;
+-moz-justify-content: center;
+-ms-justify-content: center;
+justify-content: center;
+}
+.non-narrow.zero-top-spacing {
+padding-top: 0 !important;
+}
+section {
+padding: 0 16px;
+margin-left: 100px;
+margin-right: 100px;
+
+max-width: 750px;
+
+}
+div.column {
+padding: 0 16px;
+
+max-width: 750px;
+
+}
+div.post {
+max-width: 1250px;
+}
+div.header {
+background-color: transparent;
+}
+div.header .container {
+-webkit-justify-content: flex-start;
+-moz-justify-content: flex-start;
+-ms-justify-content: flex-start;
+justify-content: flex-start;
+}
+div.header .container .logo {
+margin: 0;
+}
+div.header-home .container .logo {
+max-width: 216px;
+margin-left: 24px;
+}
+div.header-home .name-home {
+padding-top: 30px;
+font-size: 40px;
+}
+div.header-home nav ul a {
+font-size: 18px;
+}
+div.header .content {
+-webkit-align-items: flex-start;
+-moz-align-items: flex-start;
+-ms-align-items: flex-start;
+align-items: flex-start;
+}
+div.header .name {
+color: #333333;
+}
+div.header nav {
+font-size: 14px;
+margin-bottom: 0;
+}
+div.header nav ul {
+text-align: left;
+}
+div.header nav ul a {
+color: #666666;
+}
+div.header nav ul a:hover {
+color: #333333;
+}
+div.footer {
+background-color: transparent;
+}
+div.footer .container {
+flex-direction: row;
+}
+div.footer .container a {
+margin-left: 3px;
+margin-right: 3px;
+color: #666666;
+}
+div.footer .container a:hover {
+color: #333333;
+}
+div.footer .container a .icon {
+font-size: 18px;
+}
+div.footer .container a .icon.larger {
+font-size: 20px;
+}
+div.main .content .front-matter .date,
+div.main .content .front-matter .author,
+div.main .content .front-matter .tags,
+div.main .content .front-matter .word-count,
+div.main .content .front-matter .middot:before {
+display: initial;
+}
+div.main .container.f04 {
+-webkit-justify-content: flex-start;
+-moz-justify-content: flex-start;
+-ms-justify-content: flex-start;
+justify-content: flex-start;
+}
+div.main .container.f04 .content {
+-webkit-align-items: flex-start;
+-moz-align-items: flex-start;
+-ms-align-items: flex-start;
+align-items: flex-start;
+}
+div.main .container.f04 .content .num {
+margin: 0 0 10px 0;
+font-size: 32px;
+}
+div.main .container.f04 .content .detail {
+margin-bottom: 30px;
+}
+.container {
+padding: 0 30px;
+}
+div.header {
+padding-top: 60px;
+padding-bottom: 60px;
+}
+div.footer {
+padding-top: 60px;
+padding-bottom: 60px;
+}
+div.main {
+padding-top: 0;
+}
+div.main .content {
+  
+  font-size: 16px;
+  
+}
+div.main .container .content .post-item {
+display: flex;
+list-style: none;
+padding-left: 1.5em;
+}
+div.main .container .content .post-item .meta {
+display: block;
+}
+div.main .content .markdown blockquote {
+padding-right: 5rem;
+padding-left: 1.25rem;
+}
+div.main .content .navigation {
+-webkit-flex-direction: row;
+-moz-flex-direction: row;
+-ms-flex-direction: row;
+flex-direction: row;
+}
+div.main .content .navigation div {
+margin-top: 0em;
+}
+
+</style>
+<style media="(min-width: 769px)">
+  div.main .content .markdown figure {
+width: 65%;
+margin-left: auto;
+margin-right: auto;
+/*margin-left: -4%;*/
+}
+div.main .content .markdown img {
+max-width: 100%;
+width: 100%;
+/*margin-left: -4%;*/
+}
+div.main .content .markdown pre {
+width: 100%;
+/*margin-left: -4%;*/
+}
+
+</style>
+
+<noscript>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet">
+</noscript>
+
+
+  <style type="text/css" media="screen">
+    .hljs{display:block;background:white;padding:0.5em;color:#333333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-string,.hljs-variable,.hljs-template-variable,.hljs-strong,.hljs-emphasis,.hljs-quote{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-literal,.hljs-symbol,.hljs-bullet,.hljs-attribute{color:#0086b3}.hljs-section,.hljs-name{color:#63a35c}.hljs-tag{color:#333333}.hljs-title,.hljs-attr,.hljs-selector-id,.hljs-selector-class,.hljs-selector-attr,.hljs-selector-pseudo{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}
+  </style>
+
+
+
+  <style type="text/css" media="screen">
+    .progressive{overflow:hidden;position:relative;background:#efefef}.progressive__img{width:100%;height:100%;position:absolute;-webkit-transform:translateZ(0);transform:translateZ(0)}.progressive--not-loaded{filter:blur(30px);-webkit-filter:blur(30px)}.progressive--is-loaded{filter:blur(20px);-webkit-filter:blur(20px);-webkit-animation:sharpen .5s both;animation:sharpen .5s both}@-webkit-keyframes sharpen{from{filter:blur(20px);-webkit-filter:blur(20px)}to{filter:blur(0);-webkit-filter:blur(0)}}@keyframes sharpen{from{filter:blur(20px);-webkit-filter:blur(20px)}to{filter:blur(0);-webkit-filter:blur(0)}}
+  </style>
+
+
+
+
+
+  <style type="text/css" media="screen">
+    a {
+    color: #527fc1f;
+}
+
+a:hover {
+    color: #1a3152;
+}
+
+div.main .content .markdown, div.header .name, div.header nav ul a:hover {
+    color: #181d2a;
+}
+
+div.header nav ul a {
+    color: #6a7a8b;
+}
+
+div.main .content .markdown code {
+    background-color: #f9f9f9;
+    color: #527fc1f;
+}
+
+div.main .content .markdown pre, div.main .content .markdown pre code {
+    background-color: #282a36;
+    color: #87a5d2;
+}
+
+.hljs, .hljs-subst, .hljs-variable {
+    color: #87a5d2;
+}
+
+.hljs-type {
+    color: #97d28b;
+}
+
+.hljs-quote {
+    color: #ffcb8d;
+}
+
+.hljs-string, .hljs-number, .hljs-selector-id, .hljs-selector-class, .hljs-template-tag, .hljs-deletion {
+    color: #96c2d7;
+}
+
+.hljs-comment {
+    color: #6a7a8b;
+}
+
+.hljs-regexp, .hljs-symbol, .hljs-template-variable {
+    color: #ffcb8d;
+}
+
+.hljs-keyword, .hljs-attribute, .hljs-meta-keyword, .hljs-doctag, .hljs-name {
+    color: #97d28b;
+}
+
+.hljs-link, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-title, .hljs-section {
+    color: #ff8e91;
+}
+
+.hljs-built_in, .hljs-bullet, .hljs-code, .hljs-addition {
+    color: #97d28b;
+}
+
+.ssk {
+    background-color: #6a7a8b;
+}
+
+  </style>
+
+
+
+
+
+<link rel="shortcut icon"
+
+    href="rohany.github.ioimg/favicon.ico"
+
+>
+
+
+
+
+</head>
+
+
+<body>
+
+
+
+
+
+
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
+<div class="main post non-narrow zero-top-spacing column">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    
+    Unweaving Warp Specialization
+    
+
+</div>
+
+                </div>
+                <div class="meta">
+                    <div class="date" title="Wed Sep 10 2025 00:00:00 &#43;0000">September 10, 2025</div>
+                    
+                        
+                        <div class="author middot" title="Rohan Yadav"><a href="https://rohany.github.io">Rohan Yadav</a></div>
+                        
+                    
+                    
+                    <div class="tags">
+                        <ul>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="markdown">
+                
+    
+    <p>Recently, I have been thinking deeply about warp specialization in the context of
+high performance kernels for modern Tensor Core GPUs like NVIDIA&rsquo;s H100 and B200.
+My understanding of what warp specialization achieves has deepened and led me
+to the interesting question of: do we actually need warp specialization (and the complexity that it entails)?
+My conclusion is that the answer is indeed yes, but it might not be as mandatory as it seems.
+In this post, I&rsquo;ll discuss when warp specialization is actually necessary, and describe the underlying
+trade-off space that I believe warp specialization resides within. While I will give some context on GPUs as
+necessary for discussing the topics at hand, this won&rsquo;t be a tutorial &ndash; some experience with GPUs
+and parallel programming will be assumed.</p>
+<h1 id="background">Background</h1>
+<p>A GPU is a collection of processors called <em>streaming multiprocessors</em> (SM&rsquo;s). For this discussion, we will focus
+on programming an individual SM. An SM is programmed with a hierarchy of threads, called a <em>thread block</em>.
+Each thread block is further grouped into <em>warps</em>, which are groups of 32 threads. Each warp executes in a <em>single-instruction-multiple-threads</em> (SIMT)
+model. Each thread in a warp has its own instruction stream, and the warp issues one instruction on behalf of its threads in each
+issue slot. Performance is maximized (as discussed later) when all threads in a warp want to issue the same instruction at the same time.
+A Hopper SM (pictured below) has four execution contexts that can host an active warp, shown by the 4 quadrants.</p>
+<!-- raw HTML omitted -->
+<p><img src="https://rohany.github.com/blog/warp-specialization/h100-arch.png" alt="H100 SM Diagram"></p>
+<p>At any cycle, at most 4 warps may issue instructions into the SM to execute. When a thread block contains more than 4 warps
+worth of threads (128), a hardware component called the <em>warp scheduler</em> selects 4 available warps to execute instructions.</p>
+<p>A way to view an SM is as a collection of functional units (arithmetic units, load/store units, a Tensor Core) that are
+issued instructions at each clock cycle from the 4 execution contexts. These functional units have varying properties.
+Arithmetic units (ALU&rsquo;s) perform individual math operations with short and fixed cycle latencies, Tensor Cores perform
+thousands of FLOPs in a single instruction with long cycle latencies, and load/store units (LSU&rsquo;s) have long and unpredictable
+latencies due to interacting with the memory system. High performance GPU programs efficiently utilize the available
+functional units; compute-bound programs should use the Tensor Core and ALU&rsquo;s at every clock cycle,
+while bandwidth-bound programs should keep the LSU&rsquo;s busy to maximize bandwidth. To achieve high utilization, there must be
+work present for the functional units to perform (i.e. the floating point operations in a compute bound application should not be stalled
+waiting for loads to complete), and this available work must be  <em>issued</em> into the functional units whenever they are available.
+This second aspect is where warp specialization becomes useful.</p>
+<h1 id="warp-specialization">Warp Specialization</h1>
+<p>Warp specialization is a technique that became popularized through work on <a href="https://lightsighter.org/pdfs/cudadma-sc11.pdf">CUDA-DMA</a>
+and the <a href="https://lightsighter.org/pdfs/singe.pdf">Singe Compiler</a>, and is now a table-stakes
+technique for achieving high Tensor Core performance on Hopper and Blackwell GPUs.
+Warp specialization exploits the hierarchical grouping of threads within a thread block.
+When threads within the <em>same warp</em> diverge (i.e. branch on control flow in different ways),
+the SIMT nature of each warp results in performance degradation.
+Suppose that a warp reaches a branch where half the threads take the branch and the other half do not. The warp will now execute instructions
+from either side of the branch; when the warp selects an instruction from one side of the branch, the threads executing the other side do
+not progress. As a result, execution may take twice as long than if all threads in the warp took the same path through the branch.
+In the worst case, if all 32 threads in a warp take different control flow paths, the code could execute 32-times slower than the ideal!
+Unlike different threads within a warp, different warps within a thread block execute independently on <em>separate execution context</em>, which means
+that there is no cost to divergence <em>between</em> warps. Warp specialization uses this property of warp divergence to restructure GPU programs.
+A standard GPU program executes the same logic on each warp, while a warp specialized program uses different warps to execute different components
+of the overall program. Let&rsquo;s take a look at some of these warp specialization strategies in the aforementioned contexts.</p>
+<p>The CUDA-DMA project proposed separating the loading of data from the GPU&rsquo;s global (slow) memory to shared (fast) memory from the computation on
+data in the shared memory itself. CUDA-DMA separated the warps into memory loading warps and compute warps; the loader warps
+issue loads and signal the compute warps when the loaded data is available.</p>
+<p>The Singe compiler targeted the generation of efficient combustion chemistry kernels. For the purposes of this post, these kernels
+essentially looked like large data-parallel computations (i.e. apply some function \(f\) to each element of an array) with a catch: computing
+\(f\) requires a large amount of intermediate state (numerous temporary variables in the chemical formulae). A straightforward implementation
+of these kernels requires too many registers to store the intermediate state and spills values to the stack, which lowers performance
+significantly. The annoying bit here is that the SM&rsquo;s <em>register file</em> has enough space to store all the temporaries. However,
+the architecture provides each thread with a fixed number of accessible registers (for example, 255 per thread on Hopper).
+Singe used warp specialization to bypass the register-per-thread limit by partitioning the computation of \(f\) onto different warps.
+Concretely, suppose \(f(x) = 1 + x + 2 \cdot x + x^2 + 8 \cdot x^3\). Assuming a small register-per-thread budget, a warp specialized
+implementation of \(f\) might place the computation of \(1 + x + 2\cdot x\) onto warp one, and place \(x^2 + 8\cdot x^3\) onto warp two;
+the two warps would then communicate to sum the intermediate values.</p>
+<p>Finally, warp specialization is used in high performance Tensor Core kernels targeting Hopper and Blackwell to interact with the accelerators appearing
+within the SM. On these GPUs, the SM contains accelerators that perform matrix multiplication (Tensor Core) and data movement to/from global memory
+(Tensor Memory Accelerator, or TMA). These accelerators offer instructions to multiply tiles of data or copy tiles of data to and from global memory.
+These accelerators are also <em>asynchronous</em>, where work on the accelerator is launched by a single instruction and then a blocking &ldquo;wait&rdquo; operation
+must be issued before using the results of the instruction. Specialized warps are used on Hopper and Blackwell to issue either TMA copies or Tensor Core matrix-multiplies.
+The TMA warp issue copies and notifies the Tensor Core warps when data is ready to be multiplied, and the Tensor Core warps notify the TMA warp when data has
+been consumed and the memory is free to use for more copies. This code looks something like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> warpid() <span style="color:#f92672">==</span> LOAD:
+  <span style="color:#66d9ef">for</span> i, tile <span style="color:#f92672">in</span> enumerate(tiles):
+    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+      wait_for_tile_release()
+    async_tma_load(tile)
+    wait_for_tma_load()
+    signal_tile_loaded()
+<span style="color:#66d9ef">else</span>:
+  <span style="color:#66d9ef">for</span> tile <span style="color:#f92672">in</span> enumerate(tiles):
+    wait_for_tile_loaded()
+    tile_data <span style="color:#f92672">=</span> get_loaded_tile(tile)
+    async_mma(tile_data)
+    wait_for_async_mma()
+    signal_tile_released()
+</code></pre></div><p>Significantly more complex warp specialization strategies can be found in Tensor Core kernels that do more than just matrix-multiplication.
+For example, a <a href="https://github.com/NVIDIA/cutlass/tree/a49a78ffefc86a87160dfe0ccc3a3a2d1622c918/examples/77_blackwell_fmha">high performance Flash Attention implementation</a>
+on Blackwell uses at least 5 different kinds of specialized warps! In this Flash Attention implementation, there are warps for loading data, issuing
+matrix multiplication, computing softmax, scaling intermediate results, and storing data. As a result, the code is <em>complex</em>; the strategy itself
+is carefully constructed to yield high performance, and there is abundant cross-warp data movement and synchronization.
+Imagine the code above with 5 different warp cases and each cases signaling the others to proceed at different times!</p>
+<h1 id="why-is-warp-specialization-good">Why is Warp Specialization Good?</h1>
+<p>The complexity of this Flash Attention implementation inspired me to take a step back and investigate the role of warp specialization in
+achieving high performance with the Tensor Cores. I had taken this need for warp specialization in Tensor Core kernels as a given;
+people who knew more than I told me that it was required, and I didn&rsquo;t question (which is embarrassing for me, as an academic). In addition,
+other explanations of warp specialization out there often say vague things like &ldquo;the architecture mandates it&rdquo; or &ldquo;it is needed for creating
+producer-consumer pipelines&rdquo;.</p>
+<p>Let&rsquo;s derive from first principles when warp specialization is useful. An SM has some fixed number of compute resources
+available (i.e. ALU&rsquo;s, LSU&rsquo;s, a Tensor Core), regardless of how many warps a thread block uses. Therefore, a kernel has the same
+theoretical peak compute throughput on an H100 SM whether it uses 4 or 64 warps. So where are the benefits coming from?
+Consider two versions of a target program: one that is warp specialized and one that is not.
+The warp specialized kernel uses more than 4 warps to issue potentially different instruction streams into the SM,
+and the warps themselves are dynamically interleaved by the instruction scheduler. The standard program uses a single instruction stream
+issued from 4 identical warps. Clearly, warp specialization can only impact performance when the dynamically interleaved
+stream of instructions from more than 4 warps differs from the statically-specified instruction stream issued from the 4 warps
+in the standard program. The conditions that cause these proposed instruction streams to differ are the conditions where
+warp specialization can deliver increased performance. I believe there are three cases where this occurs.</p>
+<p>The first case is simple to identify, and it is targeted by Singe: there does not exist a non-specialized version
+due to resource limitations! If the non-specialized version would use too many registers, predicates, or other warp-constrained
+SM resources, then warp specialization version allows for those resource constraints to be satisfied. Warp specialization
+due to resource constraints is commonplace in Hopper Tensor Core kernels, where accumulator tiles are split across multiple groups
+of warps to stay below the register-per-thread limit and spilling to the stack<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<p>The second case is a little trickier, since a non-specialized version of the target program must exist. This case
+involves discussing <a href="https://en.wikipedia.org/wiki/Instruction_scheduling">instruction scheduling</a>.
+The SM contains several independent functional units, like FP units for floating point arithmetic and INT units for integer arithmetic,
+that may be executing operations at the same time. Consider a program with 2 floating point operations followed by 2 independent integer
+operations; a good instruction schedule would order the instructions to issue one floating point operation followed by one integer
+operation utilize the FP units at the same time as the INT units. When a compiler (like NVCC) has accurate information about the number
+of cycles that each instruction takes, it can produce high quality static schedules that exploit <em>instruction-level parallelism</em> (ILP)
+to overlap independent instructions on different functional units. However, instruction scheduling
+becomes difficult for the compiler when the cycle counts of instructions are imprecise.
+Statically constructing a tight schedule when an instruction may take between 10-100 cycles instead of always 25 cycles
+is significantly harder. This is precisely the second case where warp specialization is useful:
+dynamic scheduling with the warp scheduler can gracefully handle variable instruction latency, which is common for
+memory-related operations. In this case, the statically-scheduled, non-specialized program must guess how long each variable-latency operation
+takes and construct a schedule that interleaves the variable-latency operation with other fixed-latency operations. When variable
+latency operations execute faster than expected, functional units end up under-utilized, and slower-than-expected operations result
+in stalls. A warp specialized implementation avoids the guesswork and interleaves instructions at runtime with the warp scheduler.</p>
+<p>The third (and final) reason that I am aware of is related to the difficulties with variable-latency instructions, but gets further
+into details about GPU architecture. To set the stage, we&rsquo;ll contrast GPU architecture with that of general purpose CPU&rsquo;s.
+Modern CPU&rsquo;s are out-of-order (OOO) issue processors; while a CPU processes a sequence of instructions, it finds ways to
+dynamically reorder those instructions to exploit ILP while maintaining an illusion of sequential execution.
+Concretely, if a CPU executes the instructions <code>addf r1 r2; addf r3 r4; addi r5 r6; addi r7 r8</code> (the scheduling example from earlier)
+it may automatically pull the independent <code>addi</code> instructions earlier and execute them while the <code>addf</code> instructions execute.
+The compiler can help this scheduling hardware by partially reordering instructions, but the OOO capabilities of the processor do some heavy lifting.
+The main downside of OOO is that the hardware required to implement it is costly &mdash; instead, GPUs
+save chip area and energy by being in-order issue. When the GPU instruction stream contains
+<code>addf r1 r2; addf r3 r4; addi r5 r6; addi r7 r8</code>, the instructions are issued to the SM in that order;
+if the compiler didn&rsquo;t perform any reordering, the SM will have under-utilized functional units. This problem is exacerbated when we introduce
+the synchronization instructions that are used to interact with asynchronous accelerators (Tensor Core, TMA). These synchronization
+instructions are essentially semaphores that put warps to sleep until the invoked accelerator
+has completed. If these synchronization instructions are placed sub-optimally in the instruction stream, the warp may be blocked
+from executing independent instructions until the operation being synchronized against completes. While compilers are pretty good
+at scheduling, there are two difficulties that these synchronization operations introduce: 1) sychronization operations can often
+act as code-motion barriers, as proving correctness of reordering operations (especially those that touch memory) around synchronization can be difficult, and 2) it can be difficult
+for the compiler to track exactly what operation will resolve a synchronization point (i.e. which thread will release a lock).
+Warp specialization allows the programmer to ignore the effects of this synchronization: by breaking the computation into separate warps, other warps
+can immediately execute as soon as one warp blocks waiting on synchronization.</p>
+<p>Summarizing the last few paragraphs, warp specialization can provide benefits when:</p>
+<ol>
+<li>An application&rsquo;s resource requirements overflow the resources available to a single thread or warp.</li>
+<li>An application contains variable latency operations that need to be interleaved to maximize utilization.</li>
+<li>An application contains blocking synchronization that must be placed intelligently to avoid stalling.</li>
+</ol>
+<p>Conditions 2 and 3 are inherently intertwined, as the source of both conditions is complications that make
+producing optimal static instruction schedules for in-order processors difficult. A view of warp specialization that gets at why it helps
+in this circumstance is that warp specialization essentially turns the SM from an in-order processor into a quasi-out-of-order
+processor, specifically at the specialization boundaries at each warp. The specialization points chosen by the warp specialization strategy
+indicate where ILP may be found (but is difficult to realize statically) while instructions within a specialized warp can be reasonably
+scheduled statically.</p>
+<h1 id="testing-the-hypothesis">Testing the Hypothesis</h1>
+<p>The previous section concluded that warp specialization is useful when 1) resource constraints mandate specialization,
+2) variable latency instructions are difficult to statically schedule, and 3) blocking synchronization interferes with instruction issue.
+Let&rsquo;s examine how (and if) these cases appear when developing a high performance H100 GEMM implementation for the problem size
+8192x8192x8192. To do these experiments, I hand-modified code generated by the <a href="https://rohany.github.io/publications/pldi2025-cypress.pdf">Cypress</a>
+compiler; the generated code is too ugly to present, so I&rsquo;ll discuss it at the level of vaguely-Pythonic psuedocode. An FP16 H100 GEMM
+roughly has the structure shown below.</p>
+<p><img src="https://rohany.github.com/blog/warp-specialization/gemm-pipe.png" alt="GEMM Pipeline"></p>
+<p>An efficient GEMM orchestrates a software pipeline where at most <code>PIPE</code> outstanding
+TMA loads of tiles from global memory to shared memory are pending, while GEMM operations execute
+in parallel on the Tensor Core. In existing implementations, these two pipeline components run on
+separate specialized warps. More detailed code than before describing a multiplication <code>C = A @ B</code>
+is shown below.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Initialize circular buffers holding PIPE tiles of A and B.</span>
+Abuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+Bbuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+<span style="color:#66d9ef">if</span> warpid() <span style="color:#f92672">==</span> LOAD:
+  <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> K <span style="color:#f92672">/</span> KTILE:
+    <span style="color:#66d9ef">if</span> k <span style="color:#f92672">&gt;</span> PIPE:
+      wait_for_compute_iter(k <span style="color:#f92672">-</span> PIPE)
+    <span style="color:#75715e"># The circular buffer index used by iteration k is k % PIPE.</span>
+    async_tma_load(tile(A, k), Abuf[k <span style="color:#f92672">%</span> PIPE])
+    async_tma_load(tile(B, k), Bbuf[k <span style="color:#f92672">%</span> PIPE])
+    signal_when_load_complete_iter(k)
+  wait_all_mmas_done()
+  copy_C_shared_memory_to_global()
+<span style="color:#66d9ef">else</span>:
+  C <span style="color:#f92672">=</span> init_accumulator()
+  <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> K <span style="color:#f92672">/</span> KTILE:
+    wait_for_load_complete(k)
+    async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE])
+    wait_for_mma()
+    signal_compute_iter_done(k)
+  store_C_into_shared_memory()
+  notify_all_mmas_done()
+</code></pre></div><p>Let&rsquo;s examine this code and understand which warp specialization conditions apply.
+Tuning yields that the best performing tile size for the accumulator <code>C</code> is 256x256.
+The accumulator <code>C</code> for H100 must be placed in the registers. Simple math
+shows (256 * 256 FP16 elements / 128 threads (4 warps, 1 for each execution context) / 2 FP16 elements per 32-bit register) the accumulator
+breaks the register-per-thread limit, satisfying condition 1:  at least two groups of 4 warps are needed
+to store <code>C</code>. What about the other two conditions? It&rsquo;s not completely
+clear that the synchronization or instruction scheduling is so hard that we need to move the
+data loading to a separate warp. If we use a deep enough pipeline and synchronize only when
+we already have pending work issued, we might be able to get away without warp specialization.
+A non-specialized version of the GEMM above is shown below; some additional reordering and loop
+peeling is required to start the pipeline, but the structure is similar.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Abuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+Bbuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+<span style="color:#75715e"># Split the accumulator into 2 pieces for each</span>
+<span style="color:#75715e"># group of warps to access.</span>
+C <span style="color:#f92672">=</span> init_accumulator(warpid())
+<span style="color:#75715e"># Issue the first PIPE outstanding loads.</span>
+<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> PIPE:
+  async_tma_load(tile(A, k), Abuf[k])
+  async_tma_load(tile(B, k), Bbuf[k])
+<span style="color:#75715e"># Main loop executes MMAs and loads into the future.</span>
+<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [PIPE, K <span style="color:#f92672">/</span> KTILE):
+  <span style="color:#75715e"># Logically, this MMA is for iteration k - PIPE.</span>
+  wait_for_load_complete(k <span style="color:#f92672">-</span> PIPE)
+  async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE]) 
+  <span style="color:#75715e"># This MMA wait will also include waiting on</span>
+  <span style="color:#75715e"># the paired cluster thread block.</span>
+  wait_for_mma()
+  <span style="color:#75715e"># Start the next load.</span>
+  async_tma_load(tile(A, k), Abuf[k <span style="color:#f92672">%</span> PIPE])
+  async_tma_load(tile(B, k), Bbuf[k <span style="color:#f92672">%</span> PIPE])
+<span style="color:#75715e"># Perform the trailing PIPE MMA operations.</span>
+<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [K <span style="color:#f92672">/</span> KTILE <span style="color:#f92672">-</span> PIPE, K <span style="color:#f92672">/</span> KTILE):
+  wait_for_load_complete(k)
+  async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE]) 
+  wait_for_mma()
+<span style="color:#75715e"># Copy out the accumulator to global memory (elided).</span>
+</code></pre></div><p>Unfortunately, it doesn&rsquo;t perform as well as I hoped:</p>
+<pre><code>&gt; ./gemm_nows_v1 --m 8192 --n 8192 --k 8192
+MY_GEMM:         [675868.8]GFlop/s  (1.6268)ms
+CUBLAS_GEMM:     [805409.4]GFlop/s  (1.3652)ms
+</code></pre><p>This indicates that one of conditions 2 or 3 is applicable, causing under-utilization of either the TMA or Tensor Core. However,
+all hope is not lost &mdash; what stuck out to me about this program was the <code>wait_for_mma()</code> operation inside the main loop,
+which blocks the warp from issuing more loads until the pending MMA completes, which in turn
+could lead to stalling the issue of future MMA&rsquo;s. The solution here is to pipeline the loop again, where we also have some pending MMA&rsquo;s
+issued before the synchronization, hoping that the synchronization is now covered by already issued work. The code now looks something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Abuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+Bbuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+<span style="color:#75715e"># Split the accumulator into 2 pieces for each</span>
+<span style="color:#75715e"># group of warps to access.</span>
+C <span style="color:#f92672">=</span> init_accumulator(warpid())
+<span style="color:#75715e"># Issue the first PIPE outstanding loads.</span>
+<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> PIPE:
+  async_tma_load(tile(A, k), Abuf[k])
+  async_tma_load(tile(B, k), Bbuf[k])
+<span style="color:#75715e"># Start the k=0 MMA, but don&#39;t wait for it.</span>
+wait_for_load_complete(<span style="color:#ae81ff">0</span>)
+async_mma(C, Abuf[<span style="color:#ae81ff">0</span>], BBuf[<span style="color:#ae81ff">0</span>])
+<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [PIPE, K <span style="color:#f92672">/</span> KTILE):
+  <span style="color:#75715e"># Logically, this MMA is for iteration k - PIPE + 1.</span>
+  wait_for_load_complete(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+  async_mma(C, Abuf[(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> PIPE], Bbuf[(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) 
+  <span style="color:#75715e"># Wait for the MMA from iteration k - PIPE, rather</span>
+  <span style="color:#75715e"># than the MMA we just launched (which is k - PIPE + 1).</span>
+  wait_for_mma(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+  <span style="color:#75715e"># Start the next load.</span>
+  async_tma_load(tile(A, k), Abuf[k <span style="color:#f92672">%</span> PIPE])
+  async_tma_load(tile(B, k), Bbuf[k <span style="color:#f92672">%</span> PIPE])
+<span style="color:#75715e"># Perform the trailing PIPE MMA operations.</span>
+<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [K <span style="color:#f92672">/</span> KTILE <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, K <span style="color:#f92672">/</span> KTILE):
+  wait_for_load_complete(k)
+  async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE]) 
+  wait_for_mma()
+</code></pre></div><p>Behold!</p>
+<pre><code>&gt; ./gemm_nows_v2 --m 8192 --n 8192 --k 8192
+MY_GEMM:         [815881.7]GFlop/s  (1.3476)ms
+CUBLAS_GEMM:     [807708.0]GFlop/s  (1.3613)ms
+</code></pre><p>We can achieve performance competitive with CuBLAS in this specific case without separating the TMA loads into a separate warp.
+For this problem instance, it was possible to mess with the loops by hand to avoid the effects of conditions 2 and 3. I&rsquo;ll even argue here that
+while condition 1 was applicable, the resulting program isn&rsquo;t even really warp specialized! The accumulator was split across multiple warps to fit within
+the register constraints, but the warps themselves are executing the same program. This exercise showed that for at least
+one problem size on H100, warp specialization is not required to hit peak performance.</p>
+<h1 id="warp-specialization-is-a-trade-off">Warp Specialization is a Trade-Off</h1>
+<p>In the previous sections, I laid out some principles for warp specialization, and then showed at least one useful case where we (or at least I)
+thought we <em>needed</em> warp specialization but achieved high performance without it. However, I don&rsquo;t think the takeaway from this exercise should
+be that we should stop writing warp specialized programs. Instead, I think we should be viewing warp specialization as a point in a
+<em>trade-off space</em> over implementation choices for our kernels that have extreme performance demands (such as Tensor Core kernels).
+I argue that the implementations of high performance Tensor Core kernels navigate a trade-off space between the effort
+required to write a kernel and the effort required to develop compiler analyses that realize the intentions of the kernel writer. The
+cost-benefit analysis is about which allocation of effort allows us as GPU programmers to save more time overall.</p>
+<p>If a human is not willing to put in a large amount of effort, there are several kinds of analyses a compiler could perform to achieve high performance. The first
+is high quality instruction scheduling by a low-level compiler like NVCC, which has the problems discussed earlier. Another direction is
+warp specialization performed by the compiler on a higher level language, something performed by the <a href="https://github.com/triton-lang/triton">Triton</a>
+or <a href="https://rohany.github.io/publications/pldi2025-cypress.pdf">Cypress</a> compilers. Compiler support for warp specialization
+seems promising, but compilers are not yet as good as humans at coming up with good warp specialization strategies; Triton even added a
+low-level language called <a href="https://github.com/triton-lang/triton/issues/7392">Gluon</a> so that expert humans could bypass the compiler&rsquo;s
+warp specialization and do it themselves!</p>
+<p>When a human is willing to put in a large amount of effort to achieve high performance, they can hand-write warp specialized
+programs and deal with the difficulties of scheduling and synchronization entailed by warp specialization. This direction
+naturally requires more kernel-writer effort, but makes the resulting program less dependent on the compiler&rsquo;s instruction scheduling
+or warp specialization algorithms. A human may also consider writing a non-warp-specialized implementation, such as the GEMM
+kernel above that achieved high performance without warp specialization. This implementation also required some
+(but a very different kind of) kernel-writer effort to reorder loops to launch and synchronize operations in the right order.
+This reordering essentially &ldquo;told&rdquo; the compiler the right answer. When compared to a human-written, warp specialized
+implementation, the non-warp-specialized implementation may be more brittle; a different problem size or tile size may
+ruin the carefully crafted static schedule, while a dynamically scheduled, warp specialized implementation easily adapts.</p>
+<p>The costs that define this trade-off space are changing with the capabilities of the architecture and the applications being developed.
+For example, a <a href="https://github.com/NVIDIA/cutlass/blob/a49a78ffefc86a87160dfe0ccc3a3a2d1622c918/include/cutlass/gemm/collective/sm80_mma_multistage.hpp">GEMM implementation on the Ampere architecture</a>
+has similar complications as H100 around asynchronous and variable latency load instructions, but NVIDIA engineers found that
+high performance was achievable with acceptable complexity without warp specialization. A different example is an implementation
+of Flash Attention for the H100 GPU. In this application, the SM must perform large amounts of non-accelerator work (floating point
+reductions and exponential computations) while issuing and blocking on asynchronous accelerator work. Finding a static schedule that
+performs this interleaving perfectly is very difficult for a human or a compiler, hence why most H100 and later Flash Attention
+implementations are warp specialized. It&rsquo;s not clear to me how far we can continue to push these directions for warp specialization without making the human
+effort too large to be worth the cost &mdash; as I mentioned before, the warp specialization strategies for efficient Blackwell kernels
+are <a href="https://github.com/NVIDIA/cutlass/tree/a49a78ffefc86a87160dfe0ccc3a3a2d1622c918/examples/77_blackwell_fmha">really complicated</a>.
+Both coming up with and realizing these strategies in correct code seems to be getting extremely difficult. Looking into the future,
+I can see a few (non-exhaustive) potential paths for where we might go with warp specialization: 1) GPU hardware may become easier to program and need warp specialization in fewer cases (unlikely),  2) compiler algorithms for warp specialization will continue to improve and achieve parity with humans, or 3) systems software will be developed that removes many of the footguns of writing warp specialized code.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h1 id="acknowledgments">Acknowledgments</h1>
+<p>This post was put together after conversations with several colleagues and mentors: Rupanshu Soi, Fredrik Kjolstad, Alex Aiken, Michael Garland, Michael Bauer and Duane Merrill. Michael Garland, Michael Bauer and Rupanshu Soi gave helpful comments to improve this article. Thanks to Manya Bansal for giving me a push to condense these thoughts and release them into the wild.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Spilling any registers to the stack in high performance linear algebra kernels on GPUs can result in significant performance degradation. Serious care is taken to optimize code and tune parameters to fit within register limits. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+
+            </div>
+            
+            
+            <br>
+            <div class="navigation">
+                
+                <div>
+                    <img class="icon" src="https://rohany.github.io/img/back.svg" alt="back" />
+                    <a href="https://rohany.github.io/blog/prototypes/">PhD Lesson: Prototyping Your Prototypes</a>
+                </div>
+                
+                <div style="width: 100%;"></div>
+                
+            </div>
+            
+            
+
+            
+
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div class="footer column">
+    <div class="container">
+
+        
+
+        <div class="copyright">
+
+        
+
+        </div>
+        <div class="icons">
+
+        
+
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Raleway:400,600,700', 'Merriweather:300,300i,700,700i', 'Ubuntu+Mono:400,700']
+    }
+  });
+</script>
+
+
+
+  <script src="rohany.github.iojs/highlight.min.js" defer></script>
+  
+
+
+
+  <script src="rohany.github.iojs/progressively.min.js" defer></script>
+
+
+
+
+
+
+
+
+<script>
+  window.onload = function() {
+    
+      hljs.initHighlighting();
+    
+    
+      progressively.init({delay: 30, throttle: 50});
+    
+    
+  };
+</script>
+
+
+
+
+</body>
+</html>
+
