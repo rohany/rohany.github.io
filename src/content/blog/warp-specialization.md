@@ -19,7 +19,7 @@ and parallel programming will be assumed.
 
 A GPU is a collection of processors called *streaming multiprocessors* (SM's). For this discussion, we will focus
 on programming an individual SM. An SM is programmed with a hierarchy of threads, called a *thread block*.
-Each thread block is further grouped into *warps*, which are groups of 32 threads. Each warp executes in a *single-instruction-multiple-threads* (SIMT)
+Threads in a thread block are further grouped into *warps*, which are groups of 32 threads. Each warp executes in a *single-instruction-multiple-threads* (SIMT)
 model. Each thread in a warp has its own instruction stream, and the warp issues one instruction on behalf of its threads in each
 issue slot. Performance is maximized (as discussed later) when all threads in a warp want to issue the same instruction at the same time.
 A Hopper SM (pictured below) has four execution contexts that can host an active warp, shown by the 4 quadrants.
