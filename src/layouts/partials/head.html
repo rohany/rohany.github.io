@@ -4,6 +4,6 @@
 {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
 {{ .Site.Title }}
 </title>
-<link rel="canonical" href="{{ .Permalink }}">
+<link rel="canonical" href="https://{{ .Permalink }}">
 {{ partial "head_includes.html" . }}
 </head>
