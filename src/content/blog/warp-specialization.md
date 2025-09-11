@@ -113,8 +113,8 @@ other explanations of warp specialization out there often say vague things like 
 producer-consumer pipelines".
 
 Let's derive from first principles when warp specialization is useful. An SM has some fixed number of compute resources
-available (i.e. ALU's, LSU's, a Tensor Core), regardless of how many warps a thread block uses. Therefore, a kernel has the same
-theoretical peak compute throughput on an H100 SM whether it uses 4 or 64 warps. So where are the benefits coming from?
+available (i.e. ALU's, LSU's, a Tensor Core) and issue slots per clock cycle, regardless of how many warps a thread block uses. Therefore, a kernel has the same
+theoretical peak compute throughput and peak instructions issued per cycle on an H100 SM whether it uses 4 or 64 warps. So where are the benefits coming from?
 Consider two versions of a target program: one that is warp specialized and one that is not.
 The warp specialized kernel uses more than 4 warps to issue potentially different instruction streams into the SM, 
 and the warps themselves are dynamically interleaved by the instruction scheduler. The standard program uses a single instruction stream 
