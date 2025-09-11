@@ -136,7 +136,7 @@ involves discussing [instruction scheduling](https://en.wikipedia.org/wiki/Instr
 The SM contains several independent functional units, like FP units for floating point arithmetic and INT units for integer arithmetic,
 that may be executing operations at the same time. Consider a program with 2 floating point operations followed by 2 independent integer
 operations; a good instruction schedule would order the instructions to issue one floating point operation followed by one integer 
-operation utilize the FP units at the same time as the INT units. When a compiler (like NVCC) has accurate information about the number 
+operation to utilize the FP units at the same time as the INT units. When a compiler (like NVCC) has accurate information about the number 
 of cycles that each instruction takes, it can produce high quality static schedules that exploit *instruction-level parallelism* (ILP)
 to overlap independent instructions on different functional units. However, instruction scheduling
 becomes difficult for the compiler when the cycle counts of instructions are imprecise.
