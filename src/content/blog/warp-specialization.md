@@ -226,7 +226,7 @@ else:
 Let's examine this code and understand which warp specialization conditions apply.
 Tuning yields that the best performing tile size for the accumulator `C` is 256x256.
 The accumulator `C` for H100 must be placed in the registers. Simple math
-shows (256 * 256 FP16 elements / 128 threads (4 warps, 1 for each execution context) / 2 FP16 elements per 32-bit register) the accumulator
+shows (256 * 256 FP16 elements / 128 threads (4 warps, 1 for each execution context) / 2 FP16 elements per 32-bit register = 256 registers) the accumulator
 breaks the register-per-thread limit, satisfying condition 1:  at least two groups of 4 warps are needed
 to store `C`. What about the other two conditions? It's not completely
 clear that the synchronization or instruction scheduling is so hard that we need to move the 
