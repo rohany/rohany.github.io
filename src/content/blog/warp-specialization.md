@@ -53,8 +53,8 @@ Suppose that a warp reaches a branch where half the threads take the branch and 
 from either side of the branch; when the warp selects an instruction from one side of the branch, the threads executing the other side do
 not progress. As a result, execution may take twice as long than if all threads in the warp took the same path through the branch.
 In the worst case, if all 32 threads in a warp take different control flow paths, the code could execute 32-times slower than the ideal!
-Unlike different threads within a warp, different warps within a thread block execute independently on *separate execution context*, which means
-that there is no cost to divergence *between* warps. Warp specialization uses this property of warp divergence to restructure GPU programs.
+Unlike different threads within a warp, different warps within a thread block execute independently on *separate execution contexts*, which means
+that there is no cost when divergence occurs *between* warps. Warp specialization uses this property of warp divergence to restructure GPU programs.
 A standard GPU program executes the same logic on each warp, while a warp specialized program uses different warps to execute different components
 of the overall program. Let's take a look at some of these warp specialization strategies in the aforementioned contexts.
 
