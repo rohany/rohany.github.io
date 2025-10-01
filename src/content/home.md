@@ -117,7 +117,7 @@ and [Compilers](https://web.stanford.edu/class/cs143/).
 Additionally, I contributed to the starting and development of the
 [Diderot](http://www.umut-acar.org/diderot) project, a new educational 
 platform developed at Carnegie Mellon that is used by over 500 students and faculty daily.
-I develop and manage the cloud infrastructure for the project on an ongoing basis.
+I used to develop and manage the cloud infrastructure for the project.
 
 <!---
 # News
