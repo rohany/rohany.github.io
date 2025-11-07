@@ -55,6 +55,9 @@ Some links to software projects I have taken a part in developing, some more tha
 
 * [Preprint] On the Duality of Task and Actor Programming Models. **Rohan Yadav**, Joseph Guman, Sean Treichler, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/actor-task-duality.pdf))
 
+* KDRSolvers: Scalable, Flexible, Task-Oriented Krylov Solvers. Proceedings of the Workshop on the Parallel Applications Workshop, Alternatives to MPI+X (PAW-ATM) 2025.
+David Zhang, **Rohan Yadav**, Alex Aiken, Fredrik Kjolstad, Sean Treichler ([PDF](publications/kdrsolvers-pawatm25.pdf))
+
 * Task-Based Tensor Computations on Modern GPUs. ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI) 2025.
 **Rohan Yadav**, Michael Garland, Alex Aiken, Michael Bauer ([PDF](publications/pldi2025-cypress.pdf))
 
