@@ -34,6 +34,7 @@ I also worked in this area at Carnegie Mellon, where I collaborated with [Sam We
 and was advised by [Umut Acar](http://www.umut-acar.org/).
 
 Some projects I've worked on include:
+* Warp Specialization and Software Pipelining for Tensor Core GPUs
 * Understanding Overheads in Parallel Programming Systems
 * Programming languages for emerging GPU architectures
 * Composable parallel programming
@@ -52,6 +53,8 @@ Some links to software projects I have taken a part in developing, some more tha
 * [CockroachDB](https://github.com/cockroachdb/cockroach)
 
 ## Publications
+
+* [Preprint] Optimal Software Pipelining and Warp Specialization for Tensor Core GPUs. Rupanshu Soi, **Rohan Yadav** (equal contribution), Fredrik Kjolstad, Alex Aiken, Maryam Dehnavi, Michael Garland, Michael Bauer ([PDF](publications/twill.pdf))
 
 * [Preprint] On the Duality of Task and Actor Programming Models. **Rohan Yadav**, Joseph Guman, Sean Treichler, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/actor-task-duality.pdf))
 
