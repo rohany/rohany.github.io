@@ -5,7 +5,7 @@ author: Rohan Yadav
 path: "https://rohany.github.io/blog/warp-specialization/"
 ---
 
-**Update: We have extended the ideas in this post to generate optimal warp specialization strategies! See [here](publications/twill.pdf).**
+**Update: We have extended the ideas in this post to generate optimal warp specialization strategies! See [here](/publications/twill.pdf).**
 
 Recently, I have been thinking deeply about warp specialization in the context of
 high performance kernels for modern Tensor Core GPUs like NVIDIA's H100 and B200.
