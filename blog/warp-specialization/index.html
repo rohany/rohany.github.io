@@ -33,7 +33,7 @@ Rohan Yadav
 <style media="screen">
   @font-face {
   font-family: 'Nexa Bold';
-  src: url('rohany.github.iofonts/Nexa Bold.otf');
+  src: url('rohany.github.io/fonts/Nexa Bold.otf');
 }
 
 html, body, div, span, applet, object, iframe,
@@ -1069,7 +1069,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 <link rel="shortcut icon"
 
-    href="rohany.github.ioimg/favicon.ico"
+    href="rohany.github.io/img/favicon.ico"
 
 >
 
@@ -1146,7 +1146,6 @@ Threads in a thread block are further grouped into <em>warps</em>, which are gro
 model. Each thread in a warp has its own instruction stream, and the warp issues one instruction on behalf of its threads in each
 issue slot. Performance is maximized (as discussed later) when all threads in a warp want to issue the same instruction at the same time.
 A Hopper SM (pictured below) has four execution contexts that can host an active warp, shown by the 4 quadrants.</p>
-<!-- raw HTML omitted -->
 <p><img src="https://rohany.github.io/blog/warp-specialization/h100-arch.png" alt="H100 SM Diagram"></p>
 <p>At any cycle, at most 4 warps may issue instructions into the SM to execute. When a thread block contains more than 4 warps
 worth of threads (128), a hardware component called the <em>warp scheduler</em> selects 4 available warps to execute instructions.</p>
@@ -1195,21 +1194,21 @@ These accelerators are also <em>asynchronous</em>, where work on the accelerator
 must be issued before using the results of the instruction. Specialized warps are used on Hopper and Blackwell to issue either TMA copies or Tensor Core matrix-multiplies.
 The TMA warp issue copies and notifies the Tensor Core warps when data is ready to be multiplied, and the Tensor Core warps notify the TMA warp when data has
 been consumed and the memory is free to use for more copies. This code looks something like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> warpid() <span style="color:#f92672">==</span> LOAD:
-  <span style="color:#66d9ef">for</span> i, tile <span style="color:#f92672">in</span> enumerate(tiles):
-    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
-      wait_for_tile_release()
-    async_tma_load(tile)
-    wait_for_tma_load()
-    signal_tile_loaded()
-<span style="color:#66d9ef">else</span>:
-  <span style="color:#66d9ef">for</span> tile <span style="color:#f92672">in</span> enumerate(tiles):
-    wait_for_tile_loaded()
-    tile_data <span style="color:#f92672">=</span> get_loaded_tile(tile)
-    async_mma(tile_data)
-    wait_for_async_mma()
-    signal_tile_released()
-</code></pre></div><p>Significantly more complex warp specialization strategies can be found in Tensor Core kernels that do more than just matrix-multiplication.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> warpid() <span style="color:#f92672">==</span> LOAD:
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> i, tile <span style="color:#f92672">in</span> enumerate(tiles):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>      wait_for_tile_release()
+</span></span><span style="display:flex;"><span>    async_tma_load(tile)
+</span></span><span style="display:flex;"><span>    wait_for_tma_load()
+</span></span><span style="display:flex;"><span>    signal_tile_loaded()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> tile <span style="color:#f92672">in</span> enumerate(tiles):
+</span></span><span style="display:flex;"><span>    wait_for_tile_loaded()
+</span></span><span style="display:flex;"><span>    tile_data <span style="color:#f92672">=</span> get_loaded_tile(tile)
+</span></span><span style="display:flex;"><span>    async_mma(tile_data)
+</span></span><span style="display:flex;"><span>    wait_for_async_mma()
+</span></span><span style="display:flex;"><span>    signal_tile_released()
+</span></span></code></pre></div><p>Significantly more complex warp specialization strategies can be found in Tensor Core kernels that do more than just matrix-multiplication.
 For example, a <a href="https://github.com/NVIDIA/cutlass/tree/a49a78ffefc86a87160dfe0ccc3a3a2d1622c918/examples/77_blackwell_fmha">high performance Flash Attention implementation</a>
 on Blackwell uses at least 5 different kinds of specialized warps! In this Flash Attention implementation, there are warps for loading data, issuing
 matrix multiplication, computing softmax, scaling intermediate results, and storing data. As a result, the code is <em>complex</em>; the strategy itself
@@ -1297,29 +1296,29 @@ TMA loads of tiles from global memory to shared memory are pending, while GEMM o
 in parallel on the Tensor Core. In existing implementations, these two pipeline components run on
 separate specialized warps. More detailed code than before describing a multiplication <code>C = A @ B</code>
 is shown below.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Initialize circular buffers holding PIPE tiles of A and B.</span>
-Abuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
-Bbuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
-<span style="color:#66d9ef">if</span> warpid() <span style="color:#f92672">==</span> LOAD:
-  <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> K <span style="color:#f92672">/</span> KTILE:
-    <span style="color:#66d9ef">if</span> k <span style="color:#f92672">&gt;</span> PIPE:
-      wait_for_compute_iter(k <span style="color:#f92672">-</span> PIPE)
-    <span style="color:#75715e"># The circular buffer index used by iteration k is k % PIPE.</span>
-    async_tma_load(tile(A, k), Abuf[k <span style="color:#f92672">%</span> PIPE])
-    async_tma_load(tile(B, k), Bbuf[k <span style="color:#f92672">%</span> PIPE])
-    signal_when_load_complete_iter(k)
-  wait_all_mmas_done()
-  copy_C_shared_memory_to_global()
-<span style="color:#66d9ef">else</span>:
-  C <span style="color:#f92672">=</span> init_accumulator()
-  <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> K <span style="color:#f92672">/</span> KTILE:
-    wait_for_load_complete(k)
-    async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE])
-    wait_for_mma()
-    signal_compute_iter_done(k)
-  store_C_into_shared_memory()
-  notify_all_mmas_done()
-</code></pre></div><p>Let&rsquo;s examine this code and understand which warp specialization conditions apply.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Initialize circular buffers holding PIPE tiles of A and B.</span>
+</span></span><span style="display:flex;"><span>Abuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+</span></span><span style="display:flex;"><span>Bbuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> warpid() <span style="color:#f92672">==</span> LOAD:
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> K <span style="color:#f92672">/</span> KTILE:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> k <span style="color:#f92672">&gt;</span> PIPE:
+</span></span><span style="display:flex;"><span>      wait_for_compute_iter(k <span style="color:#f92672">-</span> PIPE)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># The circular buffer index used by iteration k is k % PIPE.</span>
+</span></span><span style="display:flex;"><span>    async_tma_load(tile(A, k), Abuf[k <span style="color:#f92672">%</span> PIPE])
+</span></span><span style="display:flex;"><span>    async_tma_load(tile(B, k), Bbuf[k <span style="color:#f92672">%</span> PIPE])
+</span></span><span style="display:flex;"><span>    signal_when_load_complete_iter(k)
+</span></span><span style="display:flex;"><span>  wait_all_mmas_done()
+</span></span><span style="display:flex;"><span>  copy_C_shared_memory_to_global()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>  C <span style="color:#f92672">=</span> init_accumulator()
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> K <span style="color:#f92672">/</span> KTILE:
+</span></span><span style="display:flex;"><span>    wait_for_load_complete(k)
+</span></span><span style="display:flex;"><span>    async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE])
+</span></span><span style="display:flex;"><span>    wait_for_mma()
+</span></span><span style="display:flex;"><span>    signal_compute_iter_done(k)
+</span></span><span style="display:flex;"><span>  store_C_into_shared_memory()
+</span></span><span style="display:flex;"><span>  notify_all_mmas_done()
+</span></span></code></pre></div><p>Let&rsquo;s examine this code and understand which warp specialization conditions apply.
 Tuning yields that the best performing tile size for the accumulator <code>C</code> is 256x256.
 The accumulator <code>C</code> for H100 must be placed in the registers. Simple math
 shows (256 * 256 FP16 elements / 128 threads (4 warps, 1 for each execution context) / 2 FP16 elements per 32-bit register = 256 registers) the accumulator
@@ -1330,34 +1329,34 @@ data loading to a separate warp. If we use a deep enough pipeline and synchroniz
 we already have pending work issued, we might be able to get away without warp specialization.
 A non-specialized version of the GEMM above is shown below; some additional reordering and loop
 peeling is required to start the pipeline, but the structure is similar.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Abuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
-Bbuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
-<span style="color:#75715e"># Split the accumulator into 2 pieces for each</span>
-<span style="color:#75715e"># group of warps to access.</span>
-C <span style="color:#f92672">=</span> init_accumulator(warpid())
-<span style="color:#75715e"># Issue the first PIPE outstanding loads.</span>
-<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> PIPE:
-  async_tma_load(tile(A, k), Abuf[k])
-  async_tma_load(tile(B, k), Bbuf[k])
-<span style="color:#75715e"># Main loop executes MMAs and loads into the future.</span>
-<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [PIPE, K <span style="color:#f92672">/</span> KTILE):
-  <span style="color:#75715e"># Logically, this MMA is for iteration k - PIPE.</span>
-  wait_for_load_complete(k <span style="color:#f92672">-</span> PIPE)
-  async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE]) 
-  <span style="color:#75715e"># This MMA wait will also include waiting on</span>
-  <span style="color:#75715e"># the paired cluster thread block.</span>
-  wait_for_mma()
-  <span style="color:#75715e"># Start the next load.</span>
-  async_tma_load(tile(A, k), Abuf[k <span style="color:#f92672">%</span> PIPE])
-  async_tma_load(tile(B, k), Bbuf[k <span style="color:#f92672">%</span> PIPE])
-<span style="color:#75715e"># Perform the trailing PIPE MMA operations.</span>
-<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [K <span style="color:#f92672">/</span> KTILE <span style="color:#f92672">-</span> PIPE, K <span style="color:#f92672">/</span> KTILE):
-  wait_for_load_complete(k)
-  async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE]) 
-  wait_for_mma()
-<span style="color:#75715e"># Copy out the accumulator to global memory (elided).</span>
-</code></pre></div><p>Unfortunately, it doesn&rsquo;t perform as well as I hoped:</p>
-<pre><code>&gt; ./gemm_nows_v1 --m 8192 --n 8192 --k 8192
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Abuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+</span></span><span style="display:flex;"><span>Bbuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Split the accumulator into 2 pieces for each</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># group of warps to access.</span>
+</span></span><span style="display:flex;"><span>C <span style="color:#f92672">=</span> init_accumulator(warpid())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Issue the first PIPE outstanding loads.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> PIPE:
+</span></span><span style="display:flex;"><span>  async_tma_load(tile(A, k), Abuf[k])
+</span></span><span style="display:flex;"><span>  async_tma_load(tile(B, k), Bbuf[k])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Main loop executes MMAs and loads into the future.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [PIPE, K <span style="color:#f92672">/</span> KTILE):
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Logically, this MMA is for iteration k - PIPE.</span>
+</span></span><span style="display:flex;"><span>  wait_for_load_complete(k <span style="color:#f92672">-</span> PIPE)
+</span></span><span style="display:flex;"><span>  async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE]) 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># This MMA wait will also include waiting on</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># the paired cluster thread block.</span>
+</span></span><span style="display:flex;"><span>  wait_for_mma()
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Start the next load.</span>
+</span></span><span style="display:flex;"><span>  async_tma_load(tile(A, k), Abuf[k <span style="color:#f92672">%</span> PIPE])
+</span></span><span style="display:flex;"><span>  async_tma_load(tile(B, k), Bbuf[k <span style="color:#f92672">%</span> PIPE])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Perform the trailing PIPE MMA operations.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [K <span style="color:#f92672">/</span> KTILE <span style="color:#f92672">-</span> PIPE, K <span style="color:#f92672">/</span> KTILE):
+</span></span><span style="display:flex;"><span>  wait_for_load_complete(k)
+</span></span><span style="display:flex;"><span>  async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE]) 
+</span></span><span style="display:flex;"><span>  wait_for_mma()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Copy out the accumulator to global memory (elided).</span>
+</span></span></code></pre></div><p>Unfortunately, it doesn&rsquo;t perform as well as I hoped:</p>
+<pre tabindex="0"><code>&gt; ./gemm_nows_v1 --m 8192 --n 8192 --k 8192
 MY_GEMM:         [675868.8]GFlop/s  (1.6268)ms
 CUBLAS_GEMM:     [805409.4]GFlop/s  (1.3652)ms
 </code></pre><p>This indicates that one of conditions 2 or 3 is applicable, causing under-utilization of either the TMA or Tensor Core. However,
@@ -1365,35 +1364,35 @@ all hope is not lost &mdash; what stuck out to me about this program was the <co
 which blocks the warp from issuing more loads until the pending MMA completes, which in turn
 could lead to stalling the issue of future MMA&rsquo;s. The solution here is to pipeline the loop again, where we also have some pending MMA&rsquo;s
 issued before the synchronization, hoping that the synchronization is now covered by already issued work. The code now looks something like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Abuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
-Bbuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
-<span style="color:#75715e"># Split the accumulator into 2 pieces for each</span>
-<span style="color:#75715e"># group of warps to access.</span>
-C <span style="color:#f92672">=</span> init_accumulator(warpid())
-<span style="color:#75715e"># Issue the first PIPE outstanding loads.</span>
-<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> PIPE:
-  async_tma_load(tile(A, k), Abuf[k])
-  async_tma_load(tile(B, k), Bbuf[k])
-<span style="color:#75715e"># Start the k=0 MMA, but don&#39;t wait for it.</span>
-wait_for_load_complete(<span style="color:#ae81ff">0</span>)
-async_mma(C, Abuf[<span style="color:#ae81ff">0</span>], BBuf[<span style="color:#ae81ff">0</span>])
-<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [PIPE, K <span style="color:#f92672">/</span> KTILE):
-  <span style="color:#75715e"># Logically, this MMA is for iteration k - PIPE + 1.</span>
-  wait_for_load_complete(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-  async_mma(C, Abuf[(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> PIPE], Bbuf[(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) 
-  <span style="color:#75715e"># Wait for the MMA from iteration k - PIPE, rather</span>
-  <span style="color:#75715e"># than the MMA we just launched (which is k - PIPE + 1).</span>
-  wait_for_mma(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-  <span style="color:#75715e"># Start the next load.</span>
-  async_tma_load(tile(A, k), Abuf[k <span style="color:#f92672">%</span> PIPE])
-  async_tma_load(tile(B, k), Bbuf[k <span style="color:#f92672">%</span> PIPE])
-<span style="color:#75715e"># Perform the trailing PIPE MMA operations.</span>
-<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [K <span style="color:#f92672">/</span> KTILE <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, K <span style="color:#f92672">/</span> KTILE):
-  wait_for_load_complete(k)
-  async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE]) 
-  wait_for_mma()
-</code></pre></div><p>Behold!</p>
-<pre><code>&gt; ./gemm_nows_v2 --m 8192 --n 8192 --k 8192
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Abuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+</span></span><span style="display:flex;"><span>Bbuf <span style="color:#f92672">=</span> [tile()] <span style="color:#f92672">*</span> PIPE
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Split the accumulator into 2 pieces for each</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># group of warps to access.</span>
+</span></span><span style="display:flex;"><span>C <span style="color:#f92672">=</span> init_accumulator(warpid())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Issue the first PIPE outstanding loads.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> PIPE:
+</span></span><span style="display:flex;"><span>  async_tma_load(tile(A, k), Abuf[k])
+</span></span><span style="display:flex;"><span>  async_tma_load(tile(B, k), Bbuf[k])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start the k=0 MMA, but don&#39;t wait for it.</span>
+</span></span><span style="display:flex;"><span>wait_for_load_complete(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>async_mma(C, Abuf[<span style="color:#ae81ff">0</span>], BBuf[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [PIPE, K <span style="color:#f92672">/</span> KTILE):
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Logically, this MMA is for iteration k - PIPE + 1.</span>
+</span></span><span style="display:flex;"><span>  wait_for_load_complete(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>  async_mma(C, Abuf[(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> PIPE], Bbuf[(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Wait for the MMA from iteration k - PIPE, rather</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># than the MMA we just launched (which is k - PIPE + 1).</span>
+</span></span><span style="display:flex;"><span>  wait_for_mma(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Start the next load.</span>
+</span></span><span style="display:flex;"><span>  async_tma_load(tile(A, k), Abuf[k <span style="color:#f92672">%</span> PIPE])
+</span></span><span style="display:flex;"><span>  async_tma_load(tile(B, k), Bbuf[k <span style="color:#f92672">%</span> PIPE])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Perform the trailing PIPE MMA operations.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [K <span style="color:#f92672">/</span> KTILE <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, K <span style="color:#f92672">/</span> KTILE):
+</span></span><span style="display:flex;"><span>  wait_for_load_complete(k)
+</span></span><span style="display:flex;"><span>  async_mma(C, Abuf[k <span style="color:#f92672">%</span> PIPE], Bbuf[k <span style="color:#f92672">%</span> PIPE]) 
+</span></span><span style="display:flex;"><span>  wait_for_mma()
+</span></span></code></pre></div><p>Behold!</p>
+<pre tabindex="0"><code>&gt; ./gemm_nows_v2 --m 8192 --n 8192 --k 8192
 MY_GEMM:         [815881.7]GFlop/s  (1.3476)ms
 CUBLAS_GEMM:     [807708.0]GFlop/s  (1.3613)ms
 </code></pre><p>We can achieve performance competitive with CuBLAS in this specific case without separating the TMA loads into a separate warp.
@@ -1437,18 +1436,16 @@ effort too large to be worth the cost &mdash; as I mentioned before, the warp sp
 are <a href="https://github.com/NVIDIA/cutlass/tree/a49a78ffefc86a87160dfe0ccc3a3a2d1622c918/examples/77_blackwell_fmha">really complicated</a>.
 Both coming up with and realizing these strategies in correct code seems to be getting extremely difficult. Looking into the future,
 I can see a few (non-exhaustive) potential paths for where we might go with warp specialization: 1) GPU hardware may become easier to program and need warp specialization in fewer cases (unlikely),  2) compiler algorithms for warp specialization will continue to improve and achieve parity with humans, or 3) systems software will be developed that removes many of the footguns of writing warp specialized code.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 <h1 id="acknowledgments">Acknowledgments</h1>
 <p>This post was put together after conversations with several colleagues and mentors: Rupanshu Soi, Fredrik Kjolstad, Alex Aiken, Michael Garland, Michael Bauer and Duane Merrill. Michael Garland, Michael Bauer and Rupanshu Soi gave helpful comments to improve this article. Thanks to Manya Bansal for giving me a push to condense these thoughts and release them into the wild.</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p>Spilling any registers to the stack in high performance linear algebra kernels on GPUs can result in significant performance degradation. Serious care is taken to optimize code and tune parameters to fit within register limits. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p>Spilling any registers to the stack in high performance linear algebra kernels on GPUs can result in significant performance degradation. Serious care is taken to optimize code and tune parameters to fit within register limits.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
 
             </div>
@@ -1465,7 +1462,6 @@ I can see a few (non-exhaustive) potential paths for where we might go with warp
                 <div style="width: 100%;"></div>
                 
             </div>
-            
             
 
             
@@ -1507,12 +1503,12 @@ I can see a few (non-exhaustive) potential paths for where we might go with warp
 
 
 
-  <script src="rohany.github.iojs/highlight.min.js" defer></script>
+  <script src="rohany.github.io/js/highlight.min.js" defer></script>
   
 
 
 
-  <script src="rohany.github.iojs/progressively.min.js" defer></script>
+  <script src="rohany.github.io/js/progressively.min.js" defer></script>
 
 
 

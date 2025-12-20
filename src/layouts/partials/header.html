@@ -5,7 +5,7 @@
 
 <body>
 
-{{ if (not (eq .File.Dir "blog/")) }}
+{{ if or (not .File) (not (eq .File.Dir "blog/")) }}
 {{ if (or (.Site.Params.small_banner_logo) (and (.IsPage) (not (.Site.Params.large_banner_logo)))) }}
 <div class="header column">
 {{ else }}

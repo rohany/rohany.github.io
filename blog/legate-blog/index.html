@@ -33,7 +33,7 @@ Rohan Yadav
 <style media="screen">
   @font-face {
   font-family: 'Nexa Bold';
-  src: url('rohany.github.iofonts/Nexa Bold.otf');
+  src: url('rohany.github.io/fonts/Nexa Bold.otf');
 }
 
 html, body, div, span, applet, object, iframe,
@@ -1069,7 +1069,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 <link rel="shortcut icon"
 
-    href="rohany.github.ioimg/favicon.ico"
+    href="rohany.github.io/img/favicon.ico"
 
 >
 
@@ -1163,22 +1163,22 @@ replacement for NumPy, automatically scaling NumPy programs across clusters of G
 example to demonstrate this is the Python program below. The program tries to import cuNumeric, and
 if it fails, falls back to NumPy. The program creates a 2-D array, and performs a 5-point stencil
 computation over each cell by referencing aliasing slices of the <code>grid</code> array.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">try</span>:
-  <span style="color:#f92672">import</span> cunumeric <span style="color:#f92672">as</span> np
-<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ImportError</span>:
-  <span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
-grid   <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand((N<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>, N<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>))
-<span style="color:#75715e"># Create multiple aliasing views of the grid array.</span>
-center <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-north  <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">0</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-east   <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>:  ]
-west   <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>]
-south  <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">2</span>:  , <span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(niters):
-  avg <span style="color:#f92672">=</span> center <span style="color:#f92672">+</span> north <span style="color:#f92672">+</span> east <span style="color:#f92672">+</span> west <span style="color:#f92672">+</span> south
-  work <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.2</span> <span style="color:#f92672">*</span> avg
-  center[:] <span style="color:#f92672">=</span> work
-</code></pre></div><p>When this program is run with cuNumeric, NumPy arrays are partitioned into tiles across the GPUs
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">import</span> cunumeric <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ImportError</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>grid   <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand((N<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>, N<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create multiple aliasing views of the grid array.</span>
+</span></span><span style="display:flex;"><span>center <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>north  <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">0</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>east   <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>:  ]
+</span></span><span style="display:flex;"><span>west   <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>south  <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">2</span>:  , <span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(niters):
+</span></span><span style="display:flex;"><span>  avg <span style="color:#f92672">=</span> center <span style="color:#f92672">+</span> north <span style="color:#f92672">+</span> east <span style="color:#f92672">+</span> west <span style="color:#f92672">+</span> south
+</span></span><span style="display:flex;"><span>  work <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.2</span> <span style="color:#f92672">*</span> avg
+</span></span><span style="display:flex;"><span>  center[:] <span style="color:#f92672">=</span> work
+</span></span></code></pre></div><p>When this program is run with cuNumeric, NumPy arrays are partitioned into tiles across the GPUs
 of the machine, and operations like addition and multiplication are distributed so that each GPU
 performs the operation on its local piece of the data. Additionally, communication between the aliasing views
 of the <code>grid</code> array is automatically inferred by cuNumeric through Legate. After the operation
@@ -1220,22 +1220,22 @@ The really interesting aspect of Legate Sparse is that it is an independently wr
 that <em>composes</em> with cuNumeric to provide distributed NumPy and SciPy Sparse capabilities. An example
 of this composition is shown below by a program that either imports both cuNumeric and Legate Sparse or
 NumPy and SciPy Sparse, and then uses the Raleigh Quotient to estimate the maximum eigenvalue of a matrix.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">try</span>:
-  <span style="color:#f92672">import</span> cunumeric <span style="color:#f92672">as</span> np
-  <span style="color:#f92672">import</span> legate.sparse <span style="color:#f92672">as</span> sp
-<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ImportError</span>:
-  <span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
-  <span style="color:#f92672">import</span> scipy.sparse <span style="color:#f92672">as</span> sp
-<span style="color:#75715e"># Generate a random positive semi-definite matrix</span>
-A <span style="color:#f92672">=</span> sp<span style="color:#f92672">.</span>random(n, n, format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;csr&#39;</span>)
-A <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> (A <span style="color:#f92672">+</span> A<span style="color:#f92672">.</span>T) <span style="color:#f92672">+</span> n <span style="color:#f92672">*</span> sp<span style="color:#f92672">.</span>eye(n)
-<span style="color:#75715e"># Estimate the maximum eigenvalue of A</span>
-x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(A<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
-<span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(iters):
-  x <span style="color:#f92672">=</span> A <span style="color:#960050;background-color:#1e0010">@</span> x
-  x <span style="color:#f92672">/=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(x)
-result <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(x<span style="color:#f92672">.</span>T, A <span style="color:#960050;background-color:#1e0010">@</span> x)
-</code></pre></div><p>Dense and sparse arrays created by cuNumeric and Legate Sparse are distributed across all GPUs in the target
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">import</span> cunumeric <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">import</span> legate.sparse <span style="color:#66d9ef">as</span> sp
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ImportError</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">import</span> scipy.sparse <span style="color:#66d9ef">as</span> sp
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate a random positive semi-definite matrix</span>
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">=</span> sp<span style="color:#f92672">.</span>random(n, n, format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;csr&#39;</span>)
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> (A <span style="color:#f92672">+</span> A<span style="color:#f92672">.</span>T) <span style="color:#f92672">+</span> n <span style="color:#f92672">*</span> sp<span style="color:#f92672">.</span>eye(n)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Estimate the maximum eigenvalue of A</span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(A<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(iters):
+</span></span><span style="display:flex;"><span>  x <span style="color:#f92672">=</span> A <span style="color:#f92672">@</span> x
+</span></span><span style="display:flex;"><span>  x <span style="color:#f92672">/=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(x)
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(x<span style="color:#f92672">.</span>T, A <span style="color:#f92672">@</span> x)
+</span></span></code></pre></div><p>Dense and sparse arrays created by cuNumeric and Legate Sparse are distributed across all GPUs in the target
 machine. In the program above, distributed vectors created by cuNumeric are passed into Legate Sparse operations,
 which produce distributed data passed back to cuNumeric. This level of seamless composition between distributed
 libraries is almost never seen in distributed, high performance computing. Legate Sparse is able to achieve
@@ -1282,20 +1282,20 @@ library boundaries.</p>
 <p>To concretize some of these concepts and to introduce a key Legate concept called <em>partitioning constraints</em>,
 I&rsquo;ll walk through some Legate code involved in cuNumeric&rsquo;s implementation of NumPy&rsquo;s element-wise array addition operation.
 In this code, I&rsquo;ll assume the simplification that <code>numpy.ndarray</code> is represented directly as a <code>legate.Store</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(A: legate<span style="color:#f92672">.</span>Store, B: legate<span style="color:#f92672">.</span>Store) <span style="color:#f92672">-&gt;</span> legate<span style="color:#f92672">.</span>Store:
-  runtime <span style="color:#f92672">=</span> get_legate_runtime()
-  <span style="color:#75715e"># Create the output array.</span>
-  C <span style="color:#f92672">=</span> runtime<span style="color:#f92672">.</span>create_store(A<span style="color:#f92672">.</span>shape, A<span style="color:#f92672">.</span>dtype)
-  <span style="color:#75715e"># Create a task.</span>
-  task <span style="color:#f92672">=</span> runtime<span style="color:#f92672">.</span>create_task(CUNUMERIC_ADD_TASK_ID)
-  <span style="color:#75715e"># Describe how the task will operate on stores.</span>
-  task<span style="color:#f92672">.</span>add_input(A, B) <span style="color:#75715e"># Read from A and B.</span>
-  task<span style="color:#f92672">.</span>add_output(C)   <span style="color:#75715e"># Write to C.</span>
-  <span style="color:#75715e"># Constrain the partitioning of stores.</span>
-  task<span style="color:#f92672">.</span>add_equality(A, B, C)
-  <span style="color:#75715e"># Issue the task into the runtime.</span>
-  task<span style="color:#f92672">.</span>execute()
-</code></pre></div><p>The Legate Core runtime exposes a Python interface, which is used for launching work into the runtime system. The
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(A: legate<span style="color:#f92672">.</span>Store, B: legate<span style="color:#f92672">.</span>Store) <span style="color:#f92672">-&gt;</span> legate<span style="color:#f92672">.</span>Store:
+</span></span><span style="display:flex;"><span>  runtime <span style="color:#f92672">=</span> get_legate_runtime()
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Create the output array.</span>
+</span></span><span style="display:flex;"><span>  C <span style="color:#f92672">=</span> runtime<span style="color:#f92672">.</span>create_store(A<span style="color:#f92672">.</span>shape, A<span style="color:#f92672">.</span>dtype)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Create a task.</span>
+</span></span><span style="display:flex;"><span>  task <span style="color:#f92672">=</span> runtime<span style="color:#f92672">.</span>create_task(CUNUMERIC_ADD_TASK_ID)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Describe how the task will operate on stores.</span>
+</span></span><span style="display:flex;"><span>  task<span style="color:#f92672">.</span>add_input(A, B) <span style="color:#75715e"># Read from A and B.</span>
+</span></span><span style="display:flex;"><span>  task<span style="color:#f92672">.</span>add_output(C)   <span style="color:#75715e"># Write to C.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Constrain the partitioning of stores.</span>
+</span></span><span style="display:flex;"><span>  task<span style="color:#f92672">.</span>add_equality(A, B, C)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Issue the task into the runtime.</span>
+</span></span><span style="display:flex;"><span>  task<span style="color:#f92672">.</span>execute()
+</span></span></code></pre></div><p>The Legate Core runtime exposes a Python interface, which is used for launching work into the runtime system. The
 shown code creates a task, declares that it will read from the two input stores <code>A</code> and <code>B</code>, and will write to
 the output store <code>C</code>. Before issuing the task to the Legate Core, the code adds a partitioning constraint on the
 task that states that partitions used for <code>A</code>, <code>B</code> and <code>C</code> must be the same. Intuitively, when doing an element-wise
@@ -1308,17 +1308,17 @@ down into point tasks that operate on each piece of partitioned data on a separa
 <p>The body of the addition task, i.e. what code the task invocation actually runs, is defined in C++/CUDA to
 target GPUs. Psuedocode with many of the details of what this implementation looks like is shown below. These
 task bodies are invoked on each partitioned piece of a store.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CuNumericAddTaskImpl</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> LegateTaskImpl {
-<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> TASK_ID <span style="color:#f92672">=</span> CUNUMERIC_ADD_TASK_ID;
-  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">gpu_variant</span>(TaskContext<span style="color:#f92672">&amp;</span> ctx) {
-    Store<span style="color:#f92672">&amp;</span> A <span style="color:#f92672">=</span> ctx.inputs[<span style="color:#ae81ff">0</span>];
-    Store<span style="color:#f92672">&amp;</span> B <span style="color:#f92672">=</span> ctx.inputs[<span style="color:#ae81ff">1</span>];
-    Store<span style="color:#f92672">&amp;</span> C <span style="color:#f92672">=</span> ctx.outputs[<span style="color:#ae81ff">0</span>];
-    elemwise_add_cuda_kernel<span style="color:#f92672">&lt;&lt;&lt;</span>...<span style="color:#f92672">&gt;&gt;&gt;</span>(A.ptr(), B.ptr(), C.ptr());
-  }
-};
-</code></pre></div><p>Overall, the Legate Core provides a friendly programming model for distributed and heterogeneous machines,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CuNumericAddTaskImpl</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> LegateTaskImpl {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> TASK_ID <span style="color:#f92672">=</span> CUNUMERIC_ADD_TASK_ID;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">gpu_variant</span>(TaskContext<span style="color:#f92672">&amp;</span> ctx) {
+</span></span><span style="display:flex;"><span>    Store<span style="color:#f92672">&amp;</span> A <span style="color:#f92672">=</span> ctx.inputs[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>    Store<span style="color:#f92672">&amp;</span> B <span style="color:#f92672">=</span> ctx.inputs[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    Store<span style="color:#f92672">&amp;</span> C <span style="color:#f92672">=</span> ctx.outputs[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>    elemwise_add_cuda_kernel<span style="color:#f92672">&lt;&lt;&lt;</span>...<span style="color:#f92672">&gt;&gt;&gt;</span>(A.ptr(), B.ptr(), C.ptr());
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Overall, the Legate Core provides a friendly programming model for distributed and heterogeneous machines,
 automating away many of difficulties of distributed programming. The main responsibilities left
 for a programmer are to describe what computation must be performed, and to provide fast kernel
 implementations. We hope that programmers can interact with the Legate ecosystem like they do with
@@ -1337,17 +1337,17 @@ computations. For example, a version of cuNumeric with explicit partitioning mig
 <code>(legate.Store, TilingPartition)</code>, where <code>TilingPartition</code> is a descriptor that represents the 2D tiling
 of a matrix in the example shown above. Then, it would launch tasks that specify to use tiled partition,
 something like the code shown below.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">explicit_partition_add</span>(
-  A: Tuple[legate<span style="color:#f92672">.</span>Store, TilingPartition], 
-  B: Tuple[legate<span style="color:#f92672">.</span>Store, TilingPartition],
-) <span style="color:#f92672">-&gt;</span> Tuple[legate<span style="color:#f92672">.</span>Store, TilingPartition]:
-  runtime <span style="color:#f92672">=</span> get_legate_runtime()
-  C <span style="color:#f92672">=</span> runtime<span style="color:#f92672">.</span>create_store(A[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>shape, A[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>dtype)
-  task <span style="color:#f92672">=</span> runtime<span style="color:#f92672">.</span>create_task(CUNUMERIC_ADD_TASK_ID)
-  task<span style="color:#f92672">.</span>add_input(A[<span style="color:#ae81ff">1</span>], B[<span style="color:#ae81ff">1</span>])
-  task<span style="color:#f92672">.</span>add_output(C<span style="color:#f92672">.</span>make_tiled_partition())
-  task<span style="color:#f92672">.</span>execute()
-</code></pre></div><p>While this code seems reasonable, it is unclear how to make this code interact well with an
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">explicit_partition_add</span>(
+</span></span><span style="display:flex;"><span>  A: Tuple[legate<span style="color:#f92672">.</span>Store, TilingPartition], 
+</span></span><span style="display:flex;"><span>  B: Tuple[legate<span style="color:#f92672">.</span>Store, TilingPartition],
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> Tuple[legate<span style="color:#f92672">.</span>Store, TilingPartition]:
+</span></span><span style="display:flex;"><span>  runtime <span style="color:#f92672">=</span> get_legate_runtime()
+</span></span><span style="display:flex;"><span>  C <span style="color:#f92672">=</span> runtime<span style="color:#f92672">.</span>create_store(A[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>shape, A[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>dtype)
+</span></span><span style="display:flex;"><span>  task <span style="color:#f92672">=</span> runtime<span style="color:#f92672">.</span>create_task(CUNUMERIC_ADD_TASK_ID)
+</span></span><span style="display:flex;"><span>  task<span style="color:#f92672">.</span>add_input(A[<span style="color:#ae81ff">1</span>], B[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>  task<span style="color:#f92672">.</span>add_output(C<span style="color:#f92672">.</span>make_tiled_partition())
+</span></span><span style="display:flex;"><span>  task<span style="color:#f92672">.</span>execute()
+</span></span></code></pre></div><p>While this code seems reasonable, it is unclear how to make this code interact well with an
 independently written library that doesn&rsquo;t know about the tiled partitioning convention.
 Consider the situation where the above code would interact with an external Legate library
 that decides to use a row-based partitioning for the matrices, and then called the element-wise
@@ -1382,14 +1382,14 @@ build their own distributed libraries that can interoperate with the rest of the
 </ul>
 <h1 id="acknowledgments">Acknowledgments</h1>
 <p>I&rsquo;d like to thank Mike Bauer, Shriram Janardhan, Shriram Jagannathan and Jacob Faibussowitsch for feedback and comments on this post.</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p>For an application with a nearest-neighbor communication pattern (communication complexity that doesn&rsquo;t scale with the number of processors). Applications with communication complexities that scale with the number of processors are not expected to have flat weak-scaling curves. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p>For an application with a nearest-neighbor communication pattern (communication complexity that doesn&rsquo;t scale with the number of processors). Applications with communication complexities that scale with the number of processors are not expected to have flat weak-scaling curves.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
 
             </div>
@@ -1406,7 +1406,6 @@ build their own distributed libraries that can interoperate with the rest of the
                 </div>
                 
             </div>
-            
             
 
             
@@ -1448,12 +1447,12 @@ build their own distributed libraries that can interoperate with the rest of the
 
 
 
-  <script src="rohany.github.iojs/highlight.min.js" defer></script>
+  <script src="rohany.github.io/js/highlight.min.js" defer></script>
   
 
 
 
-  <script src="rohany.github.iojs/progressively.min.js" defer></script>
+  <script src="rohany.github.io/js/progressively.min.js" defer></script>
 
 
 

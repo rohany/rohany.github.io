@@ -4,36 +4,30 @@
     <title>Blog on Rohan Yadav</title>
     <link>rohany.github.io/blog/</link>
     <description>Recent content in Blog on Rohan Yadav</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="rohany.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="rohany.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unweaving Warp Specialization</title>
       <link>rohany.github.io/blog/warp-specialization/</link>
       <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
-      
       <guid>rohany.github.io/blog/warp-specialization/</guid>
-      <description>Recently, I have been thinking deeply about warp specialization in the context of high performance kernels for modern Tensor Core GPUs like NVIDIA&amp;rsquo;s H100 and B200. My understanding of what warp specialization achieves has deepened and led me to the interesting question of: do we actually need warp specialization (and the complexity that it entails)? My conclusion is that the answer is indeed yes, but it might not be as mandatory as it seems.</description>
+      <description>&lt;p&gt;Recently, I have been thinking deeply about warp specialization in the context of&#xA;high performance kernels for modern Tensor Core GPUs like NVIDIA&amp;rsquo;s H100 and B200.&#xA;My understanding of what warp specialization achieves has deepened and led me&#xA;to the interesting question of: do we actually need warp specialization (and the complexity that it entails)?&#xA;My conclusion is that the answer is indeed yes, but it might not be as mandatory as it seems.&#xA;In this post, I&amp;rsquo;ll discuss when warp specialization is actually necessary, and describe the underlying&#xA;trade-off space that I believe warp specialization resides within. While I will give some context on GPUs as&#xA;necessary for discussing the topics at hand, this won&amp;rsquo;t be a tutorial &amp;ndash; some experience with GPUs&#xA;and parallel programming will be assumed.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>PhD Lesson: Prototyping Your Prototypes</title>
       <link>rohany.github.io/blog/prototypes/</link>
       <pubDate>Fri, 05 Jan 2024 10:49:07 -0500</pubDate>
-      
       <guid>rohany.github.io/blog/prototypes/</guid>
-      <description>As I become an older and grumpier PhD student (I&amp;rsquo;m almost halfway through my fourth year!), I wanted to begin documenting some lessons that I have learned along the way to maximize effectiveness and the overall rate of progress. This lesson is more focused to PhD students doing systems related research, but perhaps future posts will be more applicable to other domains as well.
-As a systems researcher, the main way to iterate on and validate our ideas is to build software prototypes that implement the proposed system, programming language or more.</description>
+      <description>&lt;p&gt;As I become an older and grumpier PhD student (I&amp;rsquo;m almost halfway through my fourth year!), I wanted&#xA;to begin documenting some lessons that I have learned along the way to maximize effectiveness and&#xA;the overall rate of progress. This lesson is more focused to PhD students doing systems related research,&#xA;but perhaps future posts will be more applicable to other domains as well.&lt;/p&gt;&#xA;&lt;p&gt;As a systems researcher, the main way to iterate on and validate our ideas is to build software&#xA;&lt;em&gt;prototypes&lt;/em&gt; that implement the proposed system, programming language or more. The resulting prototype&#xA;is an important artifact of the research; while the ideas behind the project are important,&#xA;the fact that the ideas can be realized into real software lends necessary legitimacy. Additionally,&#xA;the prototype must contain all of the &amp;ldquo;implementation details&amp;rdquo; that aren&amp;rsquo;t able to fit into the final publication.&#xA;So clearly, developing prototypes is important, and it can be tempting (especially as a new researcher)&#xA;to jump in and start implementing ideas as they come.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The Legate Ecosystem: High Productivity High Performance Computing</title>
       <link>rohany.github.io/blog/legate-blog/</link>
       <pubDate>Sat, 25 Nov 2023 14:00:10 -0800</pubDate>
-      
       <guid>rohany.github.io/blog/legate-blog/</guid>
-      <description>Modern machines are increasing in their complexity: it is common to have multiple GPUs attached to a single node, and multiple GPU-accelerated nodes connected by different interconnects throughout the memory hierarchy, such as NVLink within a single node and Infiniband across multiple nodes. As machines have become more complicated, developing software that achieves high performance on these machines has also become more difficult than before. Programmers must reason about how their program data is partitioned and distributed across GPUs and how to utilize the proper communication APIs to move data between memories in their machine, all while overlapping as much computation with data movement as possible.</description>
+      <description>&lt;p&gt;Modern machines are increasing in their complexity: it is common to have&#xA;multiple GPUs attached to a single node, and multiple GPU-accelerated nodes connected by different interconnects&#xA;throughout the memory hierarchy, such as NVLink within a single node and Infiniband across multiple nodes.&#xA;As machines have become more complicated, developing software that achieves high performance on these&#xA;machines has also become more difficult than before. Programmers must reason about how their program&#xA;data is partitioned and distributed across GPUs and how to utilize the proper communication APIs to move&#xA;data between memories in their machine, all while overlapping as much computation with data movement as possible.&#xA;We find that many practitioners who could significantly benefit from the compute power of distributed and heterogeneous&#xA;machines, such as domain scientists or data analysts, do not have the expertise needed to do so.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
