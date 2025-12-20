@@ -54,7 +54,7 @@ Some links to software projects I have taken a part in developing, some more tha
 
 ## Publications
 
-* [Preprint] Optimal Software Pipelining and Warp Specialization for Tensor Core GPUs. Rupanshu Soi, **Rohan Yadav** (equal contribution), Fredrik Kjolstad, Alex Aiken, Maryam Dehnavi, Michael Garland, Michael Bauer ([PDF](publications/twill.pdf))
+* [Preprint] Optimal Software Pipelining and Warp Specialization for Tensor Core GPUs. Rupanshu Soi, **Rohan Yadav**, Fredrik Kjolstad, Alex Aiken, Maryam Dehnavi, Michael Garland, Michael Bauer ([PDF](publications/twill.pdf))
 
 * [Preprint] On the Duality of Task and Actor Programming Models. **Rohan Yadav**, Joseph Guman, Sean Treichler, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/actor-task-duality.pdf))
 
