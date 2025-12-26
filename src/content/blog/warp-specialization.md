@@ -295,10 +295,10 @@ async_mma(C, Abuf[0], BBuf[0])
 for k in [PIPE, K / KTILE):
   # Logically, this MMA is for iteration k - PIPE + 1.
   wait_for_load_complete(k - PIPE + 1)
-  async_mma(C, Abuf[(k - PIPE + 1) % PIPE], Bbuf[(k - PIPE + 1) + 1]) 
+  async_mma(C, Abuf[(k - PIPE + 1) % PIPE], Bbuf[(k - PIPE + 1) % PIPE]) 
   # Wait for the MMA from iteration k - PIPE, rather
   # than the MMA we just launched (which is k - PIPE + 1).
-  wait_for_mma(k - PIPE + 1)
+  wait_for_mma(k - PIPE)
   # Start the next load.
   async_tma_load(tile(A, k), Abuf[k % PIPE])
   async_tma_load(tile(B, k), Bbuf[k % PIPE])
@@ -372,4 +372,4 @@ I wanted to share two more interpretations for fun:
 
 # Acknowledgments
 
-This post was put together after conversations with several colleagues and mentors: Rupanshu Soi, Fredrik Kjolstad, Alex Aiken, Michael Garland, Michael Bauer and Duane Merrill. Michael Garland, Michael Bauer and Rupanshu Soi gave helpful comments to improve this article. Thanks to Manya Bansal for giving me a push to condense these thoughts and release them into the wild.
+This post was put together after conversations with several colleagues and mentors: Rupanshu Soi, Fredrik Kjolstad, Alex Aiken, Michael Garland, Michael Bauer and Duane Merrill. Michael Garland, Michael Bauer and Rupanshu Soi gave helpful comments to improve this article. Thanks to Manya Bansal for giving me a push to condense these thoughts and release them into the wild. Nash Brown caught some typos in the pseudocode.

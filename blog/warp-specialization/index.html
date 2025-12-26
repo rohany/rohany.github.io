@@ -1380,10 +1380,10 @@ issued before the synchronization, hoping that the synchronization is now covere
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [PIPE, K <span style="color:#f92672">/</span> KTILE):
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Logically, this MMA is for iteration k - PIPE + 1.</span>
 </span></span><span style="display:flex;"><span>  wait_for_load_complete(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>  async_mma(C, Abuf[(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> PIPE], Bbuf[(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) 
+</span></span><span style="display:flex;"><span>  async_mma(C, Abuf[(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> PIPE], Bbuf[(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> PIPE]) 
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Wait for the MMA from iteration k - PIPE, rather</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># than the MMA we just launched (which is k - PIPE + 1).</span>
-</span></span><span style="display:flex;"><span>  wait_for_mma(k <span style="color:#f92672">-</span> PIPE <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>  wait_for_mma(k <span style="color:#f92672">-</span> PIPE)
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Start the next load.</span>
 </span></span><span style="display:flex;"><span>  async_tma_load(tile(A, k), Abuf[k <span style="color:#f92672">%</span> PIPE])
 </span></span><span style="display:flex;"><span>  async_tma_load(tile(B, k), Bbuf[k <span style="color:#f92672">%</span> PIPE])
@@ -1438,7 +1438,7 @@ are <a href="https://github.com/NVIDIA/cutlass/tree/a49a78ffefc86a87160dfe0ccc3a
 Both coming up with and realizing these strategies in correct code seems to be getting extremely difficult. Looking into the future,
 I can see a few (non-exhaustive) potential paths for where we might go with warp specialization: 1) GPU hardware may become easier to program and need warp specialization in fewer cases (unlikely),  2) compiler algorithms for warp specialization will continue to improve and achieve parity with humans, or 3) systems software will be developed that removes many of the footguns of writing warp specialized code.</p>
 <h1 id="acknowledgments">Acknowledgments</h1>
-<p>This post was put together after conversations with several colleagues and mentors: Rupanshu Soi, Fredrik Kjolstad, Alex Aiken, Michael Garland, Michael Bauer and Duane Merrill. Michael Garland, Michael Bauer and Rupanshu Soi gave helpful comments to improve this article. Thanks to Manya Bansal for giving me a push to condense these thoughts and release them into the wild.</p>
+<p>This post was put together after conversations with several colleagues and mentors: Rupanshu Soi, Fredrik Kjolstad, Alex Aiken, Michael Garland, Michael Bauer and Duane Merrill. Michael Garland, Michael Bauer and Rupanshu Soi gave helpful comments to improve this article. Thanks to Manya Bansal for giving me a push to condense these thoughts and release them into the wild. Nash Brown caught some typos in the pseudocode.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
