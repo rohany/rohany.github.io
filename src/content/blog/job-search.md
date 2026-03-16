@@ -107,7 +107,7 @@ I'll accumulate below some smaller pieces of advice for writing the research sta
 * Try to write an initial draft of your statement without reading too many other statements. This can make
   it easier to have a more unique voice in your statement, rather than sounding like other people.
 * The first few sentences of your statement should try to set you up in the readers mind in the following way:
-  "{YOUR NAME} is _the_ person for XXX.". For me, I tried to get across that
+  "{YOUR NAME} is _the_ person for {YOUR AREA}.". For me, I tried to get across that
   "Rohan Yadav is _the_ person for researching high-performance programming systems.".
 * If your PhD (like mine) consisted of multiple different research directions, think hard about
   developing a consistent story that links these projects together.
@@ -296,6 +296,10 @@ specific pieces that the faculty seemed interested in. I prepared a roughly 1-ho
 and questions raised by the faculty during the talk.
 
 # In Conclusion
+
+The faculty job search is a long, stressful period with periods of high variability in workload and poor feedback signals around success. At the same
+time, it can be a fun and rewarding experience that forces you to deeply think about your research and what you want to do in the future, as well as
+potentially allowing you to meet many new smart people.
 
 I just finished my last in-person interview this cycle, and am now waiting to hear back if anyone wants to give me an offer. I decided to write
 this up while the experience is fresh in my memory, and I hope that some more visibility into this process (and some associated advice)
