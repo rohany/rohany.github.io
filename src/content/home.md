@@ -21,9 +21,11 @@ Outside of work, you can find me lifting weights, playing [tennis](https://clubt
 
 My resume is available [here](rohan_resume.pdf).
 
-(New) I wrote a blog post about understanding warp specialization on modern Tensor Core GPUs [here](https://rohany.github.io/blog/warp-specialization/).
+(New) I wrote a blog post about looking for computer science faculty positions [here](https://rohany.github.io/blog/job-search/).
 
-I've started a blog, which is available [here](https://rohany.github.io/blog/).
+I've started a blog, which is available [here](https://rohany.github.io/blog/). I have technical articles
+on prior research projects (like warp specialization and distributed computing), as well as articles
+about my experience as a PhD student.
 
 # Research
 

@@ -1,7 +1,7 @@
 ---
 title: "The Academic Job Search: My Experience, Retrospective, and Advice"
 date: 2026-03-14T19:33:29-07:00
-draft: true
+author: Rohan Yadav
 path: "http://rohany.github.io/blog/job-search/"
 ---
 
