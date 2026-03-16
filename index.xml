@@ -6,8 +6,15 @@
     <description>Recent content on Rohan Yadav</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 19:33:29 -0700</lastBuildDate>
     <atom:link href="rohany.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Academic Job Search: My Experience, Retrospective, and Advice</title>
+      <link>rohany.github.io/blog/job-search/</link>
+      <pubDate>Sat, 14 Mar 2026 19:33:29 -0700</pubDate>
+      <guid>rohany.github.io/blog/job-search/</guid>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;&#xA;&lt;p&gt;I have recently been in the spin-cycle that is the academic job search, where I&amp;rsquo;ve been applying&#xA;and interviewing for tenure-track computer science faculty positions at different universities. I just finished&#xA;the last interview in my batch, and wanted to reflect on the entire experience. In doing so, I hope&#xA;to provide interested readers with information about what different parts of this pipeline look like,&#xA;things to be aware of that might not be obvious about the process, and to share some of the advice&#xA;that I got during the process. My experience on the faculty search process is for computer&#xA;science, specifically in the area of programming languages and high-performance computing. These experiences&#xA;and the associated advice may or may not generalize outside of this field!&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Unweaving Warp Specialization</title>
       <link>rohany.github.io/blog/warp-specialization/</link>
