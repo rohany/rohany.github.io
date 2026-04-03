@@ -3,6 +3,7 @@ title: "PhD Lesson: Prototyping Your Prototypes"
 date: 2024-01-05T10:49:07-05:00
 author: Rohan Yadav
 path: "https://rohany.github.io/blog/prototypes/"
+description: "A lesson about building prototype systems as a PhD student."
 ---
 
 As I become an older and grumpier PhD student (I'm almost halfway through my fourth year!), I wanted

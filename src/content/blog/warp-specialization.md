@@ -3,6 +3,7 @@ title: "Unweaving Warp Specialization"
 date: 2025-09-10T00:00:00-00:00
 author: Rohan Yadav
 path: "https://rohany.github.io/blog/warp-specialization/"
+description: "Demystifying warp specialization on modern NVIDIA GPU architectures."
 ---
 
 **Update: We have extended the ideas in this post to generate optimal warp specialization strategies! See [here](https://rohany.github.io/publications/twill.pdf).**

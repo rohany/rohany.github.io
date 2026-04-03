@@ -3,6 +3,7 @@ title: "The Academic Job Search: My Experience, Retrospective, and Advice"
 date: 2026-03-14T19:33:29-07:00
 author: Rohan Yadav
 path: "http://rohany.github.io/blog/job-search/"
+description: "My recounting of the experience being on the CS faculty job market."
 ---
 
 # Overview

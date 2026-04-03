@@ -3,6 +3,7 @@ title: "The Legate Ecosystem: High Productivity High Performance Computing"
 date: 2023-11-25T14:00:10-08:00
 author: Rohan Yadav
 path: "https://rohany.github.io/blog/legate-blog/"
+description: "An introduction to the Legate ecosystem for high-productivity, high-performance computing."
 ---
 
 Modern machines are increasing in their complexity: it is common to have
