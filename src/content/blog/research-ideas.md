@@ -14,12 +14,12 @@ it feels hard to jump into a new long term research project. Instead, it's been
 an [introspective](https://x.com/MorePerfectUS/status/2033583724311286051) time, where I've been reflecting on what 
 did and didn't go well during my PhD, as well as trying to think deeply about what I want to do in the future.
 
-I wanted to discuss in this blog post about *research ideas*. Where do they come from? What are the characteristics 
+In this post I want to discuss *research ideas*. Where do they come from? What are the characteristics 
 of good ideas? Do researchers always have ideas to work on? Unfortunately, I don't have exact answers for these
 questions, and I don't think that there *are* definitive answers for these questions either. However, being able to
 answer these questions is the entire point of doing a PhD! So, I will provide some overall strategies and observations for finding 
 and picking research problems that have been successful for me over the last few years. I hope to "peel back the covers" of research, especially for 
-younger students, where the story presented the final publication line almost never looks like what happened
+younger students, where the story presented in the final publication almost never looks like what happened
 in real life. As usual, I can't speak to the generalization of these experiences
 beyond my research area, which is in the area of high-performance programming systems.
 
@@ -28,8 +28,8 @@ and picked the problems that turned into publications during my PhD. This post w
 re-reading my colleague Elliot Slaughter's [blog post](https://elliottslaughter.com/2024/02/legion-paper-history)
 on the history of the Legion programming system, as well as my ongoing readthrough of Richard Hamming's
 "[The Art of Doing Science and Engineering](https://worrydream.com/refs/Hamming_1997_-_The_Art_of_Doing_Science_and_Engineering.pdf)".
-I will routinely refer to insights from Hamming that routinely appear in my own life, specifically from the final chapter
-"You and Your Research", which I heavily reccommend anyone doing research to read. I re-read (or [re-watch](https://www.youtube.com/watch?v=a1zDuOPkMSw))
+I will routinely refer to insights from Hamming that have appeared repeatedly in my own life, specifically from the final chapter
+"You and Your Research", which I heavily recommend to anyone reading this post. I re-read (or [re-watch](https://www.youtube.com/watch?v=a1zDuOPkMSw))
 this chapter at least once a year.
 
 I'll first discuss some of the important recurring themes of finding research directions, and then jump into
@@ -41,16 +41,17 @@ I think the most important piece of finding research problems is to first have a
 goes far beyond individual projects or papers. A way to think about this vision is to imagine what the world
 would look like if you succeeded at your research; what would we be able to do? For example, my research
 vision revolves around making high-performance, parallel computers as easy to program as sequential computers.
-When you have a larger research vision, your invididual projects and publications are steps taken towards this
-goal, instead of randomly picking up the next interesting topic that flies by.
+When you have a larger research vision, you can find individual projects and publications that take steps
+towards achieving this goal, instead of randomly picking up the next interesting topic that flies by.
 
 Once armed with a research vision to walk towards, I found the following themes to recur when finding
 concrete projects along the path towards my vision:
 
-1) **Getting lucky**: Being in the right place at the right time, along with having the right viewpoint to take advantage of an opportunity.
-I parrot Hamming here, who says that "Luck favors the prepared mind".
+1) **Getting lucky**: Being in the right place at the right time, but also having the right viewpoints and background knowledge to take advantage
+of an opportunity. I parrot Hamming here, who says that "Luck favors the prepared mind".
 2) **Being in an interesting environment**: Your surroundings and collaborators can heavily impact your thinking and reveal new problems.
-Especially because I am in a more applied field, real problems in the wild have directly led me to new research.
+Especially because I am in a more applied field, hearing about the real problems of end users has
+directly led me to new research.
 3) **Planting acorns**: Again parroting Hamming, but you must plant the acorns from which great research ideas grow. It's very rare to just
 stumble upon a fantastic idea with no lead-in, and most finished research projects bear little resemblance to their inception.
 4) **Finding unique viewpoints**: The same overall problem can turn into significantly different outcomes based on who works on them,
@@ -70,9 +71,9 @@ jobs and thesis writing.
 
 When PhD students start at Stanford, we go through a *rotation* process, where we can spend
 a quarter each working with different faculty before *aligning* with a particular faculty
-for the rest of the PhD. This is a bit different than other departments, where students
+for the rest of the PhD. This is a bit different from other departments, where students
 enter the program already committed to a faculty member. I'm a big fan of the rotation process,
-but talk to me separately for the pros and cons about it.
+but talk to me separately for my view on the pros and cons.
 
 Upon entering the rotation process at Stanford, I had no real ideas about what I wanted to do.
 I did have an overall vision, carried over from my undergraduate research, about making
@@ -88,8 +89,8 @@ for sparse tensors to be sliced and strided like dense NumPy arrays.
 Both of these projects were relatively small, and I wouldn't consider
 either of them to be real "research", in the sense that my contributions
 were well-scoped within the boundaries of work that other people had already done.
-Even then, finding and working on these projects were mostly an aspect
-of theme 2, by being at Stanford with my rotation advisors.
+Even then, working on these projects was mostly a matter
+of theme 2, being at Stanford with my rotation advisors.
 Despite being small, one-off projects, I think they were useful for me in the long term because they
 exposed me to technologies (Legion and Taco) that became foundations for future work
 I ended up doing. These projects did end up as papers or part of papers:
@@ -116,8 +117,8 @@ through the project was that theme 4 was actually in play as well! Fred revealed
 project that he had actually advised a masters student at MIT during his own PhD who attempted to do the
 exact same thing that I did! I was quite dismayed at this reveal, thinking that this problem had already been 
 solved (and thus not interesting to the community) or was just not feasible based on the earlier investigation by 
-the masters student. But, my experience with Legion and led me to think about the problem in a completely different way, 
-allowing us to bypass the problems experienced in the earlier attempt, and we made some surprising connections that gave the
+the masters student. But, my experience with Legion led me to think about the problem in a different way, 
+allowing us to bypass the technical hurdles experienced in the earlier attempt, and we made some surprising connections that gave the
 work a more satisfying packaging. The dense component of DISTAL was finished and submitted within
 a few months of work, and the sparse component followed quickly after thanks to setting the theory
 up in the right way during the dense work.
@@ -153,7 +154,7 @@ for telling people why our work was important.
 
 In the summer of 2023, I was inspired by projects like [Weld](https://dl.acm.org/doi/abs/10.14778/3213880.3213890) to
 improve the absolute performance of Legate workloads by fusing computations across library boundaries to achieve
-performance competitive to what hand-written implementations in a monolothic application might do. My
+performance competitive to what hand-written implementations in a monolithic application might do. My
 labmate [Shiv](https://shivsundram.github.io/) had laid the groundwork for this project with his work on
 task fusion in Legate, and I built off of it and added a code-generation component into the system as well.
 This [paper](https://rohany.github.io/publications/asplos2025-fusion.pdf) got rejected three times before 
@@ -192,7 +193,7 @@ to keep digging and fill out the body of work instead of jumping to another area
 
 As I mentioned in the previous section, I took a detour from working on Legate in 2024 after finishing
 Apophenia. One day, the NVIDIA Research Programming Systems Group was getting a talk from the [CUTLASS](https://github.com/NVIDIA/cutlass)
-team about the challenges of writing high-performance dense linear algera programs for the 
+team about the challenges of writing high-performance dense linear algebra programs for the 
 [Hopper GPU](https://www.nvidia.com/en-us/data-center/technologies/hopper-architecture/).
 The talk focused on how the new matrix multiplication accelerators deployed within the GPU (Tensor Cores) were
 forcing programmers to write all sorts of gnarly concurrent and asynchronous code to achieve peak performance.
@@ -210,8 +211,8 @@ viewpoint to tackle the problem in a different way (themes 3 and 4).
 After working on Cypress, I picked up Joseph's prototypes for the actor-task work. After we finished that,
 I returned to thinking about Cypress in the context of thinking about porting Cypress to the new
 [Blackwell GPU](https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/). It was known
-that, like Hopper, Blackwell required new code and new optimizations to get peak performance. The most
-dramatic of these changes were new [software pipelining](https://en.wikipedia.org/wiki/Software_pipelining)
+that, like Hopper, Blackwell required new code and new optimizations to get peak performance. The most dramatic
+changes were new [software pipelining](https://en.wikipedia.org/wiki/Software_pipelining)
 and [warp specialization](https://rohany.github.io/blog/warp-specialization/) strategies, which resulted in 
 significant code differences from Hopper. This wasn't a huge surprise though: the [Flash Attention 3](https://arxiv.org/abs/2407.08608)
 algorithm was released while we were developing Cypress, which proposed new software pipelining and warp
@@ -228,7 +229,7 @@ in machine learning kernels today. However, we quickly found that warp specializ
 considered independently from software pipelining, which directly led to the ideas in [Twill](https://rohany.github.io/publications/twill.pdf).
 Twill is my other favorite paper from my PhD, and proposed a fundamentally new way (based on what I see in the field today)
 to think about warp specialization. Twill grew from an acorn planted over a year ago (theme 3), arose from thinking about
-a widely-used topic in a different way (theme 2), and the non-standard view point actually worked (theme 1)!
+a widely-used topic in a different way (theme 2), and the non-standard viewpoint actually worked (theme 1)!
 
 # Conclusion
 
@@ -236,7 +237,7 @@ So far, I've given a brief history of how I got into each of the projects that l
 and described some of the recurring themes that I've noticed in how these projects get started. These themes
 include being in the right place at the right time, and having the right background and angle on the problem being solved.
 
-Now that I laid out these themes, what can you actually do to be there when the lightning strikes? I think the PhD is the
+Now that I have laid out these themes, what can you actually do to be there when the lightning strikes? I think the PhD is the
 perfect time to gain broad knowledge and really understand the fundamentals of your field; being a little bit slower
 and learning about topics adjacent to your focus of study has the chance of yielding outsized rewards compared to just
 heads-down working on your main project. For example, I may have never gotten into Legate if I had kept my head down 
@@ -244,11 +245,11 @@ working on sparse tensor algebra compilation! Or, if I had never learned about t
 scheduling-based domain-specific languages, Twill would have never happened! Having a firm grasp of the fundamentals of your field then allows you to challenge the 
 viewpoints that come along and maybe actually have that insight that allows you to look at a problem in a different way than everyone else. 
 
-How then, do you actually know when lightning strikes? That seems harder to grasp, and ties into the elusive description of "taste"
+Finally, how do you even know that lightning has stuck? That seems harder to grasp, and ties into the elusive description of "taste"
 that advisors try to teach their students by example. One way of thinking about taste is having the intuition that a proposed idea
 will actually contain one of these unique viewpoints, or having the feeling that one of these acorns will actually grow into a large oak tree. 
-As with many things, gaining this intuition seems to take to time, trying out plenty of ideas that go nowhere, and watching other
-people succeed at ideas you discounted!
+As with many things, gaining this intuition seems to take time, trying out plenty of ideas that go nowhere, and watching other
+people succeed pushing on ideas you discounted!
 
 <!--
 From the outside, it can feel like other researchers are constantly brimming with ideas and projects
