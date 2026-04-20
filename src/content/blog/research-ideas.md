@@ -97,7 +97,7 @@ I ended up doing. These projects did end up as papers or part of papers:
 the Taco slicing work became a small part of a larger paper on
 [sparse array programming](https://rohany.github.io/publications/ooplsa2021-sparse-arrays.pdf), 
 and the [AutoMap paper](https://rohany.github.io/publications/sc2023-automap.pdf) ended up getting 
-accepted a few years later, as it had to be pushed to the finish line by another student.
+accepted a few years later (after several rejections), as it had to be pushed over the finish line by another student.
 
 ## DISTAL
 
