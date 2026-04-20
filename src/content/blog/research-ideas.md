@@ -8,16 +8,16 @@ description: "Where do research ideas come from?"
 ---
 
 I'm in an awkward time near the end of my PhD, where I just submitted the first draft
-of my thesis and am twiddling my thumbs waiting to hear back from academic job interviews.
+of my thesis and am twiddling my thumbs waiting to hear back from faculty positions.
 Because of the timelines around graduation and potentially starting a new job, 
 it feels hard to jump into a new long term research project. Instead, it's been
 an [introspective](https://x.com/MorePerfectUS/status/2033583724311286051) time, where I've been reflecting on what 
-did and didn't go well during my PhD, as well as trying to think deeply about what I want to do in the future.
+did and didn't go well during my PhD, as well as trying to really think about what I want to do in the future.
 
 In this post I want to discuss *research ideas*. Where do they come from? What are the characteristics 
 of good ideas? Do researchers always have ideas to work on? Unfortunately, I don't have exact answers for these
-questions, and I don't think that there *are* definitive answers for these questions either. However, being able to
-answer these questions is the entire point of doing a PhD! So, I will provide some overall strategies and observations for finding 
+questions, and also I don't think that there *are* definitive answers for these questions. However, figuring
+out the answers to these questions is the point of doing a PhD! So, I will provide some overall strategies and observations for finding 
 and picking research problems that have been successful for me over the last few years. I hope to "peel back the covers" of research, especially for 
 younger students, where the story presented in the final publication almost never looks like what happened
 in real life. As usual, I can't speak to the generalization of these experiences
@@ -91,7 +91,7 @@ either of them to be real "research", in the sense that my contributions
 were well-scoped within the boundaries of work that other people had already done.
 Even then, working on these projects was mostly a matter
 of theme 2, being at Stanford with my rotation advisors.
-Despite being small, one-off projects, I think they were useful for me in the long term because they
+Despite being one-off pieces of work, I think they were useful for me in the long term because they
 exposed me to technologies (Legion and Taco) that became foundations for future work
 I ended up doing. These projects did end up as papers or part of papers:
 the Taco slicing work became a small part of a larger paper on
@@ -103,7 +103,7 @@ accepted a few years later (after several rejections), as it had to be pushed ov
 
 I decided to not pursue a third rotation and aligned with Alex and Fred as co-advisors. At this point,
 I actually had a new idea for research! A classic "new student" idea is to take multiple pieces of work
-(in this case my advisor's work) and stick them on top of each other, i.e. take Taco and compile
+(in this case my advisors' work) and stick them on top of each other, i.e. take Taco and compile
 it into Legion to get a system that could execute distributed dense and sparse tensor algebra. I started
 this project focusing on dense tensor algebra, with a clear plan to eventually support sparse tensor
 algebra. This initial idea turned into two papers, one for [dense tensors](https://rohany.github.io/publications/pldi2022-distal.pdf)
@@ -111,17 +111,17 @@ and another for [sparse tensors](https://rohany.github.io/publications/sc2022-sp
 
 Aside from theme 2 of only being exposed to these ideas by rotating with Alex and Fred, I benefitted from
 the acorns I planted (theme 3) during my rotations by becoming pretty familiar with both Legion and Taco. This
-experience made it possible to see the possible connections between the systems and then actually see the
+experience made it possible to notice the possible connections between the systems and then actually see the
 project through by developing a working implementation in a system we called DISTAL. One thing I realized partway 
 through the project was that theme 4 was actually in play as well! Fred revealed to me (gleefully) after a few weeks of working on the
 project that he had actually advised a masters student at MIT during his own PhD who attempted to do the
 exact same thing that I did! I was quite dismayed at this reveal, thinking that this problem had already been 
-solved (and thus not interesting to the community) or was just not feasible based on the earlier investigation by 
+solved or was not feasible based on the earlier investigation by 
 the masters student. But, my experience with Legion led me to think about the problem in a different way, 
-allowing us to bypass the technical hurdles experienced in the earlier attempt, and we made some surprising connections that gave the
-work a more satisfying packaging. The dense component of DISTAL was finished and submitted within
-a few months of work, and the sparse component followed quickly after thanks to setting the theory
-up in the right way during the dense work.
+allowing us to bypass the technical hurdles faced in the earlier attempt, and we made some surprising connections that gave the
+work a more satisfying takeaway. I finished and submitted the dense component of DISTAL with a few months of work,
+and followed up with the sparse component quickly due to setting up the theory in the right way
+in the dense component of the work. 
 
 ## Legate
 
@@ -134,10 +134,10 @@ similar style as cuPyNumeric. Together, these systems would give end users distr
 programming in a single system. Already, we can see theme 2 applying (being at NVIDIA Research), and a good
 sprinkle of theme 1 (luck!) --- how convenient that these two projects were finishing up at the same time!
 So, I went and developed [Legate Sparse](https://github.com/nv-legate/legate-sparse), and leveraged DISTAL
-to generate a large amount of code for me. When building Legate Sparse, it quickly became clear to all of
-us that the interesting problems were not building Legate Sparse itself (theme 3), but actually making sure that
+to generate a large amount of library. When building Legate Sparse, it quickly became clear to all of
+us that the interesting problems were not in building Legate Sparse itself (theme 3), but actually making sure that
 Legate Sparse would *compose* with cuPyNumeric while maintaining good performance. These were the problems that
-we ended up talking about most in the [paper](https://rohany.github.io/publications/sc2023-legate-sparse.pdf) we ended up writing.
+we ended up talking about most in the [paper](https://rohany.github.io/publications/sc2023-legate-sparse.pdf) we wrote.
 
 After my internship finished in September 2022, I kept working on Legate Sparse for the eventual submission to SuperComputing
 in April, and returned to NVIDIA Research for another internship in the summer of 2023. In that meantime, the work on Legate
@@ -150,7 +150,7 @@ the research prototypes! This combination spawned the next three projects of my 
 performance of Legate in different aspects, but theme 4 was really the important part: people always work on improving
 performance, but the unique angle that we had was this ability to compose independently written programs and still
 get high performance. This angle influenced how we thought about and scoped problems, and was the main motivator
-for telling people why our work was important.
+for telling the community why our work was important.
 
 In the summer of 2023, I was inspired by projects like [Weld](https://dl.acm.org/doi/abs/10.14778/3213880.3213890) to
 improve the absolute performance of Legate workloads by fusing computations across library boundaries to achieve
@@ -161,16 +161,19 @@ This [paper](https://rohany.github.io/publications/asplos2025-fusion.pdf) got re
 finding a home at ASPLOS in 2025.
 
 After the summer of 2023, I stayed on at NVIDIA as a part time researcher for the rest of my PhD, and kept working
-on Legate. The fusion work focused on improving absolute performance, and I also was frustrated by Legate's
-performance at scale, both when strong-scaling and weak-scaling. I built a system called [Apophenia](https://rohany.github.io/publications/asplos2025-tracing.pdf) 
+on Legate. The fusion work focused on improving absolute performance, but I also was frustrated by Legate's
+performance at scale, both when [strong-scaling](https://hpc-wiki.info/hpc/Scaling#Strong_Scaling) and [weak-scaling](https://hpc-wiki.info/hpc/Scaling#Weak_Scaling). 
+I built a system called [Apophenia](https://rohany.github.io/publications/asplos2025-tracing.pdf) 
 that addressed some of Legate's remaining weak-scaling issues and touched on its strong-scaling issues. This piece
-of work started from some frustrations about how Legate was unable to use Legion's [tracing](https://theory.stanford.edu/~aiken/publications/papers/sc18.pdf)
+of work started from some annoyances about how Legate was unable to use Legion's [tracing](https://theory.stanford.edu/~aiken/publications/papers/sc18.pdf)
 feature effectively. We could have built some point solutions for this problem, but in the spirit of theme 4,
-our approach was instead to argue that systems like Legate should themselves be architected as JIT compilers, and
-we found several interesting technical problems to solve in the process of proving this argument (theme 3).
+our approach was instead to argue that runtime systems like Legate should be architected in a different way
+(in particular, as JIT compilers) and we found several interesting technical problems to solve in the process 
+of proving this (theme 3).
 
-After Apophenia, I took a diversion into working on Tensor Core programming (discussed in the next section),
-but to keep the story coherent, I'll finish the discussion of Legate. As the final piece of pushing on Legate's strong-scaling,
+After Apophenia, I took a diversion into working on [Tensor Core](https://www.nvidia.com/en-us/data-center/tensor-cores/) 
+programming (discussed in the next section),
+but to keep the story coherent, I'll finish the discussion of Legate. As the final piece of pushing on Legate's performance at scale,
 I was still frustrated at our inability to demonstrate compelling strong-scaling results. I gave a portion of this
 problem to a master's student (theme 3), Joseph Guman, who did some great investigation and identification of what we could
 actually do about this, which involved heavy optimization to [Realm](https://github.com/StanfordLegion/realm), the system that 
@@ -195,28 +198,28 @@ As I mentioned in the previous section, I took a detour from working on Legate i
 Apophenia. One day, the NVIDIA Research Programming Systems Group was getting a talk from the [CUTLASS](https://github.com/NVIDIA/cutlass)
 team about the challenges of writing high-performance dense linear algebra programs for the 
 [Hopper GPU](https://www.nvidia.com/en-us/data-center/technologies/hopper-architecture/).
-The talk focused on how the new matrix multiplication accelerators deployed within the GPU (Tensor Cores) were
+The talk focused on how the new matrix multiplication accelerators deployed within the GPU ([Tensor Cores](https://www.nvidia.com/en-us/data-center/tensor-cores/)) were
 forcing programmers to write all sorts of gnarly concurrent and asynchronous code to achieve peak performance.
 I had been programming GPUs since 2016, and seeing this kind of change in the programming model
-struck me as a serious problem for GPU programming. This was especially striking because all the work
-I had done in the last 4 years, and the whole Legion ecosystem, was about programming complex distributed
+struck me as a serious problem. This was especially striking because all the work
+I had done in the last 4 years, and the whole history of the Legion ecosystem, was about programming complex distributed
 machines while allowing programmers to write purely sequential programs! I immediately latched onto this idea,
 and inspired by [Sequoia](https://graphics.stanford.edu/papers/sequoia/sequoia_sc06.pdf), developed
 [Cypress](https://rohany.github.io/publications/pldi2025-cypress.pdf). Cypress proposed an alternative
 programming model to the current CUDA style, allowing programmers to write sequential programs and have
 the compiler insert all the asynchrony and data movement needed for high performance. This project
-was purely from getting lucky and hearing this talk (themes 1 and 2), and having the right
+was started purely from getting lucky and hearing the talk from the CUTLASS group (themes 1 and 2), and having the right
 viewpoint to tackle the problem in a different way (themes 3 and 4).
 
-After working on Cypress, I picked up Joseph's prototypes for the actor-task work. After we finished that,
-I returned to thinking about Cypress in the context of thinking about porting Cypress to the new
+After working on Cypress, I picked up Joseph's prototypes for the actor-task work. After we finished that work,
+I returned in 2025 to thinking about Cypress in the context of thinking about porting Cypress to the new
 [Blackwell GPU](https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/). It was known
 that, like Hopper, Blackwell required new code and new optimizations to get peak performance. The most dramatic
 changes were new [software pipelining](https://en.wikipedia.org/wiki/Software_pipelining)
 and [warp specialization](https://rohany.github.io/blog/warp-specialization/) strategies, which resulted in 
-significant code differences from Hopper. This wasn't a huge surprise though: the [Flash Attention 3](https://arxiv.org/abs/2407.08608)
-algorithm was released while we were developing Cypress, which proposed new software pipelining and warp
-specialization strategies for Hopper. Back then, Mike Bauer and I confirmed that standard software pipelining
+significant code and algorithmic differences from Hopper. This wasn't a huge surprise though: the [Flash Attention 3](https://arxiv.org/abs/2407.08608)
+algorithm was released while we were developing Cypress in 2024, which proposed new software pipelining and warp
+specialization strategies for Hopper. Back then, Mike and I confirmed that standard software pipelining
 algorithms could have derived what was proposed in Flash Attention 3 (planting an acorn). Now, with Blackwell,
 [Rupanshu Soi](https://rupanshusoi.github.io/) and I decided to revisit this idea, and ask why 
 [standard](https://shiftleft.com/mirrors/www.hpl.hp.com/techreports/94/HPL-94-115.pdf)
@@ -227,9 +230,9 @@ We originally decided to address the topic of warp specialization afterwards, an
 show that standard software pipelining approaches could re-derive many of the optimizations being applied
 in machine learning kernels today. However, we quickly found that warp specialization could not be
 considered independently from software pipelining, which directly led to the ideas in [Twill](https://rohany.github.io/publications/twill.pdf).
-Twill is my other favorite paper from my PhD, and proposed a fundamentally new way (based on what I see in the field today)
-to think about warp specialization. Twill grew from an acorn planted over a year ago (theme 3), arose from thinking about
-a widely-used topic in a different way (theme 2), and the non-standard viewpoint actually worked (theme 1)!
+Twill is my other favorite paper from my PhD, and proposed a fundamentally new way 
+to think about warp specialization. Twill grew from an acorn planted over a year ago (theme 3), got started by thinking about
+a widely-studied topic in a different way (theme 2), and the non-standard viewpoint actually worked (theme 1)!
 
 # Conclusion
 
@@ -241,7 +244,7 @@ Now that I have laid out these themes, what can you actually do to be there when
 perfect time to gain broad knowledge and really understand the fundamentals of your field; being a little bit slower
 and learning about topics adjacent to your focus of study has the chance of yielding outsized rewards compared to just
 heads-down working on your main project. For example, I may have never gotten into Legate if I had kept my head down 
-working on sparse tensor algebra compilation! Or, if I had never learned about traditional optimizing compiler methods while studying
+working on sparse tensor algebra compilation! Or, if I had never spent time revisiting traditional optimizing compiler methods while studying
 scheduling-based domain-specific languages, Twill would have never happened! Having a firm grasp of the fundamentals of your field then allows you to challenge the 
 viewpoints that come along and maybe actually have that insight that allows you to look at a problem in a different way than everyone else. 
 
