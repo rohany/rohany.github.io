@@ -3,7 +3,6 @@ title: "PhD Lesson: Finding and Picking Research Problems"
 date: 2026-04-14T22:58:36-07:00
 author: Rohan Yadav
 path: "http://rohany.github.io/blog/research-ideas/"
-draft: true
 description: "Where do research ideas come from?"
 ---
 
@@ -38,6 +37,25 @@ the anecdotal component of the post. The recurring themes will, in fact, recur i
 
 # The Higher Order Bits
 
+I think the most important piece of finding research problems is developing a *research vision*, which goes
+beyond individual projects or papers, and can be described as how you may imagine the world to look if you
+succeeded at your research. *However*, this is a bit of a catch-22, as a critical part of doing a PhD is
+developing a research vision! As a young student, developing a research vision without the necessary experience 
+and perspective is challenging; either you don't have one, or your vision might be too idealistic or infeasible.
+So what then? I think the first step is to be able to clearly articulate what are your *research interests*.
+As you gain more understanding of the field and the kind of problems that exist, you can iterate on your
+interests (or find new interests!) and problem selection to build out a larger vision. For example, I have been interested in all
+aspects of parallel computing since the sophomore year of my undergraduate. Throughout my PhD, I refined
+this interest into a vision of making modern high-performance, parallel computers as easy to program
+as sequential computers.
+
+Why does having a vision matter? I think that your vision (and interests) form a concrete direction
+for your research to move in, and continued progress in a direction will accumulate and yield
+more progress overall than randomly picking between topics that fly by. Being intentional about
+building towards and iterating on your vision will directly result in clarity of research
+direction and outwards communication. 
+
+<!--
 I think the most important piece of finding research problems is to first be able to articulate
 what are your *research interests*. Having a clear set of research interests allows you to
 filter out problems that are interesting to solve, and more importantly, helps you start
@@ -51,9 +69,14 @@ moving in *a* direction instead of randomly picking the next interesting topic t
 I have been interested in all aspects of parallel computing since sophomore year of my undergraduate.
 Throughout my PhD, I refined these interests into a vision of making high-performance, parallel computers
 as easy to program as sequential computers.
+-->
 
-Once armed with a research vision to walk towards, I found the following themes to recur when finding
+Once armed with a direction to travel towards, I have found the following themes to recur when
+finding concrete projects along the path to my vision:
+
+<!-- Once armed with a research vision to walk towards, I found the following themes to recur when finding
 concrete projects along the path towards my vision:
+-->
 
 1) **Getting lucky**: Being in the right place at the right time, but also having the right viewpoints and background knowledge to take advantage
 of an opportunity. I parrot Hamming here, who says that "Luck favors the prepared mind".
@@ -89,7 +112,7 @@ parallel programming easier and more efficient. I rotated with [Alex Aiken](http
 [Fred Kjolstad](https://fredrikbk.com/), and for each rotation I asked each of them for a small 
 project to work on. With Alex, I joined to help an existing project get over the finish line to a conference submission,
 working on cleaning up bugs, developing experiments and doing some writing. The project itself,
-called AutoMap, was about automatically deciding where to run computations and place data for 
+called AutoMap, was about automatically deciding where to run computations and to place data for 
 applications within the Legion runtime system. With Fred, I worked on a small extension to the
 [Taco](https://github.com/tensor-compiler/taco) compiler for sparse tensor algebra to allow
 for sparse tensors to be sliced and strided like dense NumPy arrays.
@@ -268,3 +291,7 @@ that they are bouncing between. While I maintain a log of potential future proje
 will reveal that I have a one-track mind. I am most productive thinking about a 
 single thing at a time, and often "stall" between projects while finding the next thing to work on.
 -->
+
+# Acknowledgements
+
+Thanks to Rupanshu Soi for helpful feedback on this post.
