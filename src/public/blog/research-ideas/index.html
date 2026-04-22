@@ -1142,8 +1142,9 @@ questions, and also I don&rsquo;t think that there <em>are</em> definitive answe
 out the answers to these questions is the point of doing a PhD! So, I will provide some overall strategies and observations for finding
 and picking research problems that have been successful for me over the last few years. I hope to &ldquo;peel back the covers&rdquo; of research, especially for
 younger students, where the story presented in the final publication almost never looks like what happened
-in real life. As usual, I can&rsquo;t speak to the generalization of these experiences
-beyond my research area, which is in the area of high-performance programming systems.</p>
+in real life. In my experience, research has a relatively winding path, where new ideas often come from being
+in the right place at the right time, or getting inspired by talking to the right person. As usual, I can&rsquo;t speak to the generalization of
+these experiences beyond my research area, which is in the area of high-performance programming systems.</p>
 <p>I&rsquo;ll present the content of this post as a somewhat connected series of chronological anecdotes that describe how I found
 and picked the problems that turned into publications during my PhD. This post was inspired by me randomly
 re-reading my colleague Elliot Slaughter&rsquo;s <a href="https://elliottslaughter.com/2024/02/legion-paper-history">blog post</a>
@@ -1155,12 +1156,19 @@ this chapter at least once a year.</p>
 <p>I&rsquo;ll first discuss some of the important recurring themes of finding research directions, and then jump into
 the anecdotal component of the post. The recurring themes will, in fact, recur in the anecdotes!</p>
 <h1 id="the-higher-order-bits">The Higher Order Bits</h1>
-<p>I think the most important piece of finding research problems is to first have a <em>research vision</em>, which
-goes far beyond individual projects or papers. A way to think about this vision is to imagine what the world
-would look like if you succeeded at your research; what would we be able to do? For example, my research
-vision revolves around making high-performance, parallel computers as easy to program as sequential computers.
-When you have a larger research vision, you can find individual projects and publications that take steps
-towards achieving this goal, instead of randomly picking up the next interesting topic that flies by.</p>
+<p>I think the most important piece of finding research problems is to first be able to articulate
+what are your <em>research interests</em>. Having a clear set of research interests allows you to
+filter out problems that are interesting to solve, and more importantly, helps you start
+to develop a <em>research vision</em>, which goes far beyond individual projects or papers. A way to think
+about this vision is to imagine what the world would look like if you succeeded at your research; what would we be able to do?
+As a young student, developing a research vision without the necessary experience and perspective is challenging;
+either you don&rsquo;t have one, or your vision might be too idealistic or infeasible. However, I believe that
+developing a vision from your interests and constantly refining that vision is important. Your
+interests and vision form a <em>direction</em> for your research to go in; you will make much more progress
+moving in <em>a</em> direction instead of randomly picking the next interesting topic that flies by. For me,
+I have been interested in all aspects of parallel computing since sophomore year of my undergraduate.
+Throughout my PhD, I refined these interests into a vision of making high-performance, parallel computers
+as easy to program as sequential computers.</p>
 <p>Once armed with a research vision to walk towards, I found the following themes to recur when finding
 concrete projects along the path towards my vision:</p>
 <ol>
@@ -1240,7 +1248,7 @@ similar style as cuPyNumeric. Together, these systems would give end users distr
 programming in a single system. Already, we can see theme 2 applying (being at NVIDIA Research), and a good
 sprinkle of theme 1 (luck!) &mdash; how convenient that these two projects were finishing up at the same time!
 So, I went and developed <a href="https://github.com/nv-legate/legate-sparse">Legate Sparse</a>, and leveraged DISTAL
-to generate a large amount of library. When building Legate Sparse, it quickly became clear to all of
+to generate a large amount of kernel implementations for the library. When building Legate Sparse, it quickly became clear to all of
 us that the interesting problems were not in building Legate Sparse itself (theme 3), but actually making sure that
 Legate Sparse would <em>compose</em> with cuPyNumeric while maintaining good performance. These were the problems that
 we ended up talking about most in the <a href="https://rohany.github.io/publications/sc2023-legate-sparse.pdf">paper</a> we wrote.</p>
@@ -1290,17 +1298,17 @@ in my PhD, though it hasn&rsquo;t yet found a home at a conference.</p>
 <p>Our work on Legate spanned from initial work on efficiently composing independent distributed libraries to
 filling out missing pieces in this performance landscape (absolute performance, weak-scaling and strong-scaling).
 The whole project spun out of being at the right place at the right time, and having the right combination
-of expertise to be able to do the required work. When finding a &ldquo;gold vein&rdquo; of problems like this, it&rsquo;s valuable
-to keep digging and fill out the body of work instead of jumping to another area.</p>
+of expertise to be able to do the required work. When you find a &ldquo;gold vein&rdquo; of problems like this, it&rsquo;s valuable
+to keep digging and fill out the body of work instead of jumping to another area after an initial exploration.</p>
 <h2 id="programming-tensor-core-gpus">Programming Tensor Core GPUs</h2>
 <p>As I mentioned in the previous section, I took a detour from working on Legate in 2024 after finishing
-Apophenia. One day, the NVIDIA Research Programming Systems Group was getting a talk from the <a href="https://github.com/NVIDIA/cutlass">CUTLASS</a>
+Apophenia. One day, my group at NVIDIA Research was getting a talk from the <a href="https://github.com/NVIDIA/cutlass">CUTLASS</a>
 team about the challenges of writing high-performance dense linear algebra programs for the
 <a href="https://www.nvidia.com/en-us/data-center/technologies/hopper-architecture/">Hopper GPU</a>.
 The talk focused on how the new matrix multiplication accelerators deployed within the GPU (<a href="https://www.nvidia.com/en-us/data-center/tensor-cores/">Tensor Cores</a>) were
 forcing programmers to write all sorts of gnarly concurrent and asynchronous code to achieve peak performance.
 I had been programming GPUs since 2016, and seeing this kind of change in the programming model
-struck me as a serious problem. This was especially striking because all the work
+immediately struck me as a serious problem. This was especially striking because all the work
 I had done in the last 4 years, and the whole history of the Legion ecosystem, was about programming complex distributed
 machines while allowing programmers to write purely sequential programs! I immediately latched onto this idea,
 and inspired by <a href="https://graphics.stanford.edu/papers/sequoia/sequoia_sc06.pdf">Sequoia</a>, developed
@@ -1330,7 +1338,7 @@ in machine learning kernels today. However, we quickly found that warp specializ
 considered independently from software pipelining, which directly led to the ideas in <a href="https://rohany.github.io/publications/twill.pdf">Twill</a>.
 Twill is my other favorite paper from my PhD, and proposed a fundamentally new way
 to think about warp specialization. Twill grew from an acorn planted over a year ago (theme 3), got started by thinking about
-a widely-studied topic in a different way (theme 2), and the non-standard viewpoint actually worked (theme 1)!</p>
+a widely-studied topic in a different way (theme 2), and the non-standard viewpoint actually worked (themes 1 and 4)!</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>So far, I&rsquo;ve given a brief history of how I got into each of the projects that led to publications during my PhD,
 and described some of the recurring themes that I&rsquo;ve noticed in how these projects get started. These themes

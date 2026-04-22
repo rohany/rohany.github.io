@@ -20,8 +20,9 @@ questions, and also I don't think that there *are* definitive answers for these 
 out the answers to these questions is the point of doing a PhD! So, I will provide some overall strategies and observations for finding 
 and picking research problems that have been successful for me over the last few years. I hope to "peel back the covers" of research, especially for 
 younger students, where the story presented in the final publication almost never looks like what happened
-in real life. As usual, I can't speak to the generalization of these experiences
-beyond my research area, which is in the area of high-performance programming systems.
+in real life. In my experience, research has a relatively winding path, where new ideas often come from being
+in the right place at the right time, or getting inspired by talking to the right person. As usual, I can't speak to the generalization of 
+these experiences beyond my research area, which is in the area of high-performance programming systems.
 
 I'll present the content of this post as a somewhat connected series of chronological anecdotes that describe how I found
 and picked the problems that turned into publications during my PhD. This post was inspired by me randomly
@@ -37,12 +38,19 @@ the anecdotal component of the post. The recurring themes will, in fact, recur i
 
 # The Higher Order Bits
 
-I think the most important piece of finding research problems is to first have a *research vision*, which
-goes far beyond individual projects or papers. A way to think about this vision is to imagine what the world
-would look like if you succeeded at your research; what would we be able to do? For example, my research
-vision revolves around making high-performance, parallel computers as easy to program as sequential computers.
-When you have a larger research vision, you can find individual projects and publications that take steps
-towards achieving this goal, instead of randomly picking up the next interesting topic that flies by.
+I think the most important piece of finding research problems is to first be able to articulate
+what are your *research interests*. Having a clear set of research interests allows you to
+filter out problems that are interesting to solve, and more importantly, helps you start
+to develop a *research vision*, which goes far beyond individual projects or papers. A way to think 
+about this vision is to imagine what the world would look like if you succeeded at your research; what would we be able to do?
+As a young student, developing a research vision without the necessary experience and perspective is challenging;
+either you don't have one, or your vision might be too idealistic or infeasible. However, I believe that
+developing a vision from your interests and constantly refining that vision is important. Your
+interests and vision form a *direction* for your research to go in; you will make much more progress
+moving in *a* direction instead of randomly picking the next interesting topic that flies by. For me,
+I have been interested in all aspects of parallel computing since sophomore year of my undergraduate.
+Throughout my PhD, I refined these interests into a vision of making high-performance, parallel computers
+as easy to program as sequential computers.
 
 Once armed with a research vision to walk towards, I found the following themes to recur when finding
 concrete projects along the path towards my vision:
@@ -65,7 +73,7 @@ of at least 2 or 3 of these themes! Of course, your mileage may vary, and you ma
 
 I'll order these anecdotes chronologically, discussing the projects I worked on when I started
 as a rotation student at Stanford, through the last projects before I began applying for
-jobs and thesis writing. 
+jobs and thesis writing.
 
 ## Rotations at Stanford
 
@@ -134,7 +142,7 @@ similar style as cuPyNumeric. Together, these systems would give end users distr
 programming in a single system. Already, we can see theme 2 applying (being at NVIDIA Research), and a good
 sprinkle of theme 1 (luck!) --- how convenient that these two projects were finishing up at the same time!
 So, I went and developed [Legate Sparse](https://github.com/nv-legate/legate-sparse), and leveraged DISTAL
-to generate a large amount of library. When building Legate Sparse, it quickly became clear to all of
+to generate a large amount of kernel implementations for the library. When building Legate Sparse, it quickly became clear to all of
 us that the interesting problems were not in building Legate Sparse itself (theme 3), but actually making sure that
 Legate Sparse would *compose* with cuPyNumeric while maintaining good performance. These were the problems that
 we ended up talking about most in the [paper](https://rohany.github.io/publications/sc2023-legate-sparse.pdf) we wrote.
@@ -189,19 +197,19 @@ in my PhD, though it hasn't yet found a home at a conference.
 Our work on Legate spanned from initial work on efficiently composing independent distributed libraries to
 filling out missing pieces in this performance landscape (absolute performance, weak-scaling and strong-scaling).
 The whole project spun out of being at the right place at the right time, and having the right combination
-of expertise to be able to do the required work. When finding a "gold vein" of problems like this, it's valuable
-to keep digging and fill out the body of work instead of jumping to another area.
+of expertise to be able to do the required work. When you find a "gold vein" of problems like this, it's valuable
+to keep digging and fill out the body of work instead of jumping to another area after an initial exploration.
 
 ## Programming Tensor Core GPUs
 
 As I mentioned in the previous section, I took a detour from working on Legate in 2024 after finishing
-Apophenia. One day, the NVIDIA Research Programming Systems Group was getting a talk from the [CUTLASS](https://github.com/NVIDIA/cutlass)
+Apophenia. One day, my group at NVIDIA Research was getting a talk from the [CUTLASS](https://github.com/NVIDIA/cutlass)
 team about the challenges of writing high-performance dense linear algebra programs for the 
 [Hopper GPU](https://www.nvidia.com/en-us/data-center/technologies/hopper-architecture/).
 The talk focused on how the new matrix multiplication accelerators deployed within the GPU ([Tensor Cores](https://www.nvidia.com/en-us/data-center/tensor-cores/)) were
 forcing programmers to write all sorts of gnarly concurrent and asynchronous code to achieve peak performance.
 I had been programming GPUs since 2016, and seeing this kind of change in the programming model
-struck me as a serious problem. This was especially striking because all the work
+immediately struck me as a serious problem. This was especially striking because all the work
 I had done in the last 4 years, and the whole history of the Legion ecosystem, was about programming complex distributed
 machines while allowing programmers to write purely sequential programs! I immediately latched onto this idea,
 and inspired by [Sequoia](https://graphics.stanford.edu/papers/sequoia/sequoia_sc06.pdf), developed
@@ -232,7 +240,7 @@ in machine learning kernels today. However, we quickly found that warp specializ
 considered independently from software pipelining, which directly led to the ideas in [Twill](https://rohany.github.io/publications/twill.pdf).
 Twill is my other favorite paper from my PhD, and proposed a fundamentally new way 
 to think about warp specialization. Twill grew from an acorn planted over a year ago (theme 3), got started by thinking about
-a widely-studied topic in a different way (theme 2), and the non-standard viewpoint actually worked (theme 1)!
+a widely-studied topic in a different way (theme 2), and the non-standard viewpoint actually worked (themes 1 and 4)!
 
 # Conclusion
 
