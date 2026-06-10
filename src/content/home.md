@@ -104,6 +104,10 @@ Undergraduate Thesis.
 ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019. 
 **Rohan Yadav**, Umut A. Acar ([PDF](https://dl.acm.org/citation.cfm?id=3323170)).
 
+## Degree Thesis
+
+* *PhD Thesis*: Building Composable Distributed And Accelerated Software ([PDF](publications/thesis.pdf))
+
 ## Other writings
 
 * My application statement for the NVIDIA Graduate Fellowship ([PDF](reports/nvidia-fellowship-proposal.pdf)).
