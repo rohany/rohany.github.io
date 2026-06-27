@@ -75,7 +75,7 @@ In industry, only the most critical components of software systems could be cons
 
 Our research effort builds on top of prior race-detection work called [Weft](https://lightsighter.org/pdfs/weft.pdf), which describes a remarkably simple yet powerful method for detecting races
 in GPU programs that leverage [named barriers](https://docs.nvidia.com/cuda/parallel-thread-execution/#parallel-synchronization-and-communication-instructions-bar). The first step I took in
-this process was to literally tell Claude:
+this process was to configure Claude with a [Lean4 plugin](https://github.com/cameronfreer/lean4-skills), and then literally tell it:
 
 ```text
 Read the Weft paper (https://lightsighter.org/pdfs/weft.pdf).

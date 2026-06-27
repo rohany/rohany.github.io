@@ -1183,7 +1183,7 @@ In industry, only the most critical components of software systems could be cons
 <h1 id="my-workflow">My Workflow</h1>
 <p>Our research effort builds on top of prior race-detection work called <a href="https://lightsighter.org/pdfs/weft.pdf">Weft</a>, which describes a remarkably simple yet powerful method for detecting races
 in GPU programs that leverage <a href="https://docs.nvidia.com/cuda/parallel-thread-execution/#parallel-synchronization-and-communication-instructions-bar">named barriers</a>. The first step I took in
-this process was to literally tell Claude:</p>
+this process was to configure Claude with a <a href="https://github.com/cameronfreer/lean4-skills">Lean4 plugin</a>, and then literally tell it:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Read the Weft paper (https://lightsighter.org/pdfs/weft.pdf).
 </span></span><span style="display:flex;"><span>Define the language, state and semantics as described in Sections 3.1, 3.2 and 3.3.
 </span></span></code></pre></div><p>Claude went off and implemented each of these much faster than I could have done by hand; you can see the language <a href="https://github.com/rohany/weft-formalization/blob/main/Weft/Language.lean">here</a>.
