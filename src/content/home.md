@@ -21,13 +21,12 @@ Outside of work, you can find me lifting weights, playing [tennis](https://clubt
 
 My resume is available [here](rohan_resume.pdf).
 
-(New) I wrote a blog post about finding research ideas [here](https://rohany.github.io/blog/research-ideas/).
+(New) I wrote a new blog post about a recent experience using LLM's for formal verification of proofs [here](https://rohany.github.io/blog/llm-verification-experience/).
 
-(New) I wrote a blog post about looking for computer science faculty positions [here](https://rohany.github.io/blog/job-search/).
-
-I've started a blog, which is available [here](https://rohany.github.io/blog/). I have technical articles
-on prior research projects (like warp specialization and distributed computing), as well as articles
-about my experience as a PhD student.
+I've started a blog, which is available [here](https://rohany.github.io/blog/). I have a variety of articles:
+* Technical articles about prior research projects ([warp specialization](https://rohany.github.io/blog/warp-specialization/), [distributed computing](https://rohany.github.io/blog/legate-blog/), [using LLMs for verification](https://rohany.github.io/blog/llm-verification-experience/))
+* My experiences as a PhD student ([the academic job hunt](http://rohany.github.io/blog/job-search/))
+* Advice for PhD students and other young researchers ([building prototypes](https://rohany.github.io/blog/prototypes/), [picking research problems](http://rohany.github.io/blog/research-ideas/))
 
 # Research
 

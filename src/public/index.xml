@@ -6,8 +6,15 @@
     <description>Recent content on Rohan Yadav</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 14 Apr 2026 22:58:36 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 22:44:17 -0700</lastBuildDate>
     <atom:link href="rohany.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Experience Report: Leveraging LLMs for Formal Verification</title>
+      <link>rohany.github.io/blog/llm-verification-experience/</link>
+      <pubDate>Fri, 26 Jun 2026 22:44:17 -0700</pubDate>
+      <guid>rohany.github.io/blog/llm-verification-experience/</guid>
+      <description>&lt;p&gt;I was recently gifted a 20x Claude Max subscription, and was trying to think of a way to put these tokens to use&#xA;that was actually productive for my work. I&amp;rsquo;ve recently been interested in approaches for detecting races in&#xA;certain kinds of high-performance GPU programs, and have been working through the development of some formal&#xA;semantics and a variety of proofs over the language described by those semantics. So, I thought a good use of&#xA;these tokens was to &lt;a href=&#34;https://github.com/rohany/weft-formalization&#34;&gt;mechanize and verify&lt;/a&gt; these proofs in &lt;a href=&#34;https://lean-lang.org/&#34;&gt;Lean&lt;/a&gt;.&#xA;The TLDR of my experience (as of June 2026) is the following:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>PhD Lesson: Finding and Picking Research Problems</title>
       <link>rohany.github.io/blog/research-ideas/</link>
