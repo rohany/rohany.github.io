@@ -1135,18 +1135,19 @@ that was actually productive for my work. I&rsquo;ve recently been interested in
 certain kinds of high-performance GPU programs, and have been working through the development of some formal
 semantics and a variety of proofs over the language described by those semantics. So, I thought a good use of
 these tokens was to <a href="https://github.com/rohany/weft-formalization">mechanize and verify</a> these proofs in <a href="https://lean-lang.org/">Lean</a>.
-The TLDR of my experience (as of June 2026) is the following:</p>
+The point of this post is to raise awareness about how LLMs have completely changed the costs of performing formal verification, which may hopefully entice others with backgrounds similar to mine
+to add formal verification as a more accessible tool to gain increased confidence in their work. The TL;DR of my experience (June 2026, Claude Opus 4.8) is:</p>
 <ul>
 <li>Proof mechanization is an area where modern LLMs provide astronomical speedup (in my case, 0-to-1 enablement), and remove significant drudgery in the process of formal verification, to the point
 where it almost feels like science fiction. This was successful enough that I expect formal verification of proofs to become a very accessible tool for any kind of high-assurance work in a few years, rather than the
 extremely expensive and specialized tool that it is today.</li>
-<li>It&rsquo;s not completely automated (yet). A careful hand is required to ensure theorem statements are correct, a proper strategy is provided, and most importantly, the formal framework itself is set up in the right way.</li>
+<li>It&rsquo;s not completely automated (yet). A careful hand is required to ensure theorem statements are correct, a proper proof strategy is provided to the LLM, and most importantly, the formal framework itself is set up in the right way.</li>
 </ul>
 <p>With the higher-order bits laid out here, let&rsquo;s get into some of the details. I&rsquo;ll discuss a bit of my philosophy
 and experience using LLMs, along with my experience and workflows using LLMs for this verification effort.</p>
 <h1 id="the-speedup-from-using-llms">The Speedup From Using LLMs</h1>
 <p>As a parallel computing researcher, I would be remiss not to reference <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl&rsquo;s Law</a>. Amdahl&rsquo;s Law describes the maximum achievable speedup
-for a parallel system, stating that the total speedup is limited by the sequential components of the computation. For example, if half of my workload must be run sequentially, then the speedup
+for a parallel system, stating that the total speedup is limited by the components of the computation not amenable to parallelization. For example, if half of my workload must be run sequentially, then the speedup
 I could gain from using a parallel computer is at most 2x! Amdahl&rsquo;s Law is relevant when examining what kind of speedup we can experience when leveraging LLMs for part of our own workflows.</p>
 <p>As a PhD student, I personally have not experienced significant uplift from LLMs in my work until this point (which may be surprising to some readers). This is due to two main reasons.
 First, a PhD student&rsquo;s job switches between many phases, where some phases are focused on writing and making talks (the phase I have been in since January), while others are focused on development and experimentation.
@@ -1155,12 +1156,12 @@ Why only 2x? My time spent in software development is split between actually typ
 be done, architecting the pieces, and <em>reading the code that is going to run</em>. While some believe that LLMs will solve all of these latter pieces, I currently feel that we&rsquo;re not there yet, which limits the
 maximum speedup that I am achieving. Beyond this reality for me, there&rsquo;s a difference between being a PhD student (who must produce and deeply understand new knowledge) and a
 software engineer (who must produce software to make their employer money). The requirement to deeply understand what I&rsquo;m doing also limits how much I may want to delegate to an LLM.</p>
-<p>So naturally, how can we achieve the 10-100x speedups that users on AI Twitter rave about? If we remove all aspects of checking anything about the code that an LLM writes, then the speedup we can achieve
+<p>How can we achieve the 10-100x speedups that users on AI Twitter rave about? If we remove all aspects of checking anything about the code that an LLM writes, then the speedup we can achieve
 is limited only by how fast the LLM can generate it. In my work, the dispatching of functions and modules that I can easily test and trust without staring at the contents too deeply is the kind of task where
 I achieve good uplift from LLMs.</p>
-<p>So why is this discussion relevant? Programs in proof assistant languages (like Lean) are precisely the kinds of programs where we don&rsquo;t actually need to look at the code to be sure of correctness! As
+<p>Why is this discussion relevant? Programs in proof assistants like Lean are precisely the kinds of programs where we don&rsquo;t actually need to look at the code to be sure of correctness! As
 long as we state the theorem (function type) that we want to prove correctly (i.e., it <em>captures</em> our <a href="https://cutfree.net/notes/autoformalization.html">proof intention</a>), then any proof (implementation of the function) that satisfies the type-checker
-of the proof assistant is a valid program, and we never need to look at the implementation if we don&rsquo;t want to! So my experience, and that of <a href="https://arxiv.org/abs/2605.01660">many others</a> at this point, is that leveraging
+of the proof assistant is a valid program, and we never need to look at the implementation if we don&rsquo;t want to<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>! So my experience, and that of <a href="https://arxiv.org/abs/2605.01660">many others</a> at this point, is that leveraging
 LLMs for generation of proofs is an area where we can truly achieve 10-100x speedups. In my case, writing the proofs that Claude has been generating for me would have likely taken me months to gain the
 skills to complete, and more months to actually write.</p>
 <h1 id="a-little-about-proof-assistants">A Little About Proof Assistants</h1>
@@ -1169,18 +1170,16 @@ the structure of thinking about formal languages to develop program representati
 a large result. I have <em>some</em> experience with Lean, where I am not at all an expert, but I know enough to be dangerous. This means having worked through the first two volumes of
 <a href="https://softwarefoundations.cis.upenn.edu/">Software Foundations</a>, a set of introductory materials about proof assistants. I&rsquo;m not going to go into much detail about proof assistants in this post,
 and I recommend the linked material for a very good introduction.</p>
-<p>Proof assistant languages like Lean allow the user to define functions over complex <a href="https://www.cs.cmu.edu/~rwh/courses/atpl/pdfs/dependency.pdf">dependent types</a>, where the type of the function
+<p>Proof assistant like Lean allow the user to define functions over complex <a href="https://www.cs.cmu.edu/~rwh/courses/atpl/pdfs/dependency.pdf">dependent types</a>, where the type of the function
 encodes a mathematical theorem that the user wants to state. If the user can provide a well-typed implementation of that function, that implementation is a proof of the theorem
 (see the <a href="https://en.wikipedia.org/wiki/Curry%E2%80%93Howard_correspondence">Curry-Howard Correspondence</a>). Once the proof of the theorem passes the type-checker, we have extremely
-high confidence that the proof is correct<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+high confidence that the proof is correct<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <p>The implementations of these functions that represent theorems correspond to extremely detailed and pedantic proofs of the desired theorems. By detailed and pedantic I mean that the proofs
 require at least an order of magnitude more rigor than what might suffice as a &ldquo;rigorous&rdquo; pen-and-paper proof. As such, many lemmas or properties assumed by a pen-and-paper proof
 must be explicitly proved for use in a proof assistant, and often a different concrete proof strategy (albeit the same general idea) may be required for a mechanized proof.
 The effort required to produce such proofs for non-trivial theorems meant that usually such verification was the final piece of a research project, or the architecture of these
 proofs was a research direction itself (<a href="https://en.wikipedia.org/wiki/SeL4">sel4</a>, <a href="https://en.wikipedia.org/wiki/CompCert">CompCert</a>, <a href="https://www.cis.upenn.edu/~bcpierce/papers/deepspec-hcss2016-slides.pdf">NSF DeepSpec</a>).
 In industry, only the most critical components of software systems could be considered for formal verification due to the engineering cost of doing so.</p>
-<p>The point of this post is to raise awareness about how LLMs have completely changed the costs of performing formal verification, which may hopefully entice others with backgrounds similar to mine
-to add formal verification as a more accessible tool to gain increased confidence in their work.</p>
 <h1 id="my-workflow">My Workflow</h1>
 <p>Our research effort builds on top of prior race-detection work called <a href="https://lightsighter.org/pdfs/weft.pdf">Weft</a>, which describes a remarkably simple yet powerful method for detecting races
 in GPU programs that leverage <a href="https://docs.nvidia.com/cuda/parallel-thread-execution/#parallel-synchronization-and-communication-instructions-bar">named barriers</a>. The first step I took in
@@ -1191,16 +1190,16 @@ this process was to literally tell Claude:</p>
 We spent a <em>significant</em> amount of time studying every one of these definitions and relations produced by Claude, carefully checking that the formal system being modeled in Lean was actually the system that we
 wanted to study. An error in this stage of the process would never surface as an error checked by the proof assistant, and further proofs would not actually conclude anything useful for us if the proofs were
 describing the wrong formal system in the first place. This will be a general trend: every theorem statement and definition is painstakingly examined, while any proof implementations are mostly ignored.
-We can still get great uplift from LLMs in this way, because the total LOC of theorem statements and definitions is significantly smaller than the LOC of the proofs of each theorem.</p>
+We can still get great uplift from LLMs in this way, because the total LoC of theorem statements and definitions is significantly smaller than the LoC of the proofs of each theorem.</p>
 <p>After checking that the language definition looked the way I wanted, I then worked with Claude to formalize the definitions in Section 4 of the paper (again by pointing it at definitions in
 the paper to formalize). At this point, the core machinery in the paper for talking about programs had been defined in Lean, and it was time to start proving theorems! I started with some
 very simple theorems, simple enough that they were passing remarks in the paper&rsquo;s text. To my surprise, Claude was able to generate the proofs for these theorems completely independently
 with a few back-and-forth rounds of interacting with the Lean type-checker.</p>
 <p>I then started to write out some more difficult theorems to prove, including major theorems from the paper, as well as theorems that we had been developing as part of our ongoing work. Throwing Claude
 fully autonomously at these theorems was a mixed bag. I was astounded to see that it was able to prove one of them all on its own, but it got stuck on most of the other theorems. These failure modes
-were not very diverse: either Claude would continue to introduce new helper lemmas with <code>sorry</code> statements (the way to tell Lean you don&rsquo;t know how to do a proof), or would go sideways in its reasoning
-trace and make assumptions or decisions about language properties that were obviously wrong. The worst failure mode would be Claude trying to cheat and weaken the theorem by adding a hypothesis
-that makes the proof trivial.</p>
+were not very diverse: either Claude would continue to introduce new helper lemmas with <code>sorry</code> statements (the way to tell Lean you don&rsquo;t know how to do a proof), would go sideways in its reasoning
+trace and make assumptions or decisions about language properties that were obviously wrong, or would simply say the theorem is too hard and give up. The worst failure mode (which was uncommon, but happened a few times)
+would be Claude trying to cheat and weaken the theorem by adding a hypothesis that makes the proof trivial.</p>
 <p>What then pushed Claude over the hump for most of the theorems that I wanted to prove was providing my pen-and-paper proof strategy (described at a sufficient level of rigor), and asking it to
 mechanize the steps in that proof. Given this general strategy, Claude was very successful at converting the less-rigorous pen-and-paper strategy into the corresponding Lean program, and was able
 to introduce the necessary helper lemmas required to fill in the holes of the pen-and-paper strategies. The conversion of these pen-and-paper strategies required somewhere between 30 minutes and multiple hours
@@ -1209,8 +1208,8 @@ For large proofs, manually breaking up the proofs into component lemmas, proving
 was in place, Claude was able to make tweaks to proofs, produce similar proofs to existing proofs, and grind away at large case analyses without tiring.</p>
 <p>This approach of &ldquo;prove on pen-and-paper, then let Claude convert that into Lean&rdquo; allowed me to produce a mechanization of every theorem that I was able to get a pen-and-paper proof for,
 and only took roughly a <em>week and a half</em> of work. This time span for a mechanization is unheard of, and with relatively low investment from my side, we gained significant confidence
-in both the existing Weft paper and our new proposals. A fantastic trade-off, and I will be considering how to leverage this technology for more of my work going forwards.</p>
-<h2 id="why-did-it-work">Why did it work?</h2>
+in both the existing Weft paper and our new proposals. A fantastic trade-off, and I will be considering how to leverage this technology for more of my work going forward.</p>
+<h1 id="why-did-it-work">Why Did It Work?</h1>
 <p>An important question to ask is what are the characteristics of my situation that allowed for such a productive outcome? I don&rsquo;t have concrete ablation studies over what actually
 matters here, but my intuition is that the overall setup of the environment that the LLM is placed in for this formal verification work heavily matters. The setup of the Weft formal framework
 itself is extremely well done, and the properties and definitions used to express the theorems to prove are very carefully chosen. As such, the formal system is simple, and provides significant
@@ -1221,17 +1220,29 @@ go significantly faster than me. More familiarity with these systems would mean 
 mechanized, and better suggestions about the concrete strategies for the LLMs to take. It also feels to me that the resulting proofs are overly complex, brittle, and have significant
 redundancy with each other (complaints that many have about LLMs in standard software development). A more skilled hand would be able to guide the LLM away from these outcomes.</p>
 <p>Finally, despite the success that many mathematicians are finding with LLMs developing proofs of theorems (what I&rsquo;m referring to as a pen-and-paper proof), I didn&rsquo;t have much success with
-using Claude to generate the initial arguments for why a theorem is true. I found that generally Claude produced &ldquo;reasonable-looking garbage&rdquo;, where on the surface the argument seemed plausible,
+using Claude to generate the initial arguments for why a theorem is true. I found that generally Claude produced &ldquo;plausible-looking garbage&rdquo;, where on the surface the argument seemed plausible,
 but seriously reading the output made it clear that gaping holes were present. The difference in the Lean environment is that the Lean type-checker provides extremely detailed feedback
 to the LLM at every step about which assumptions can be made and which steps are allowed to be taken at any point. This makes the act of proof development in the proof assistant
-more of a verifiable synthesis problem of fitting the &ldquo;right-shaped objects&rdquo; into the &ldquo;right-shaped holes&rdquo;, where reinforcement-learning-based methods have been shown to be successful for decades.
+more of a verifiable synthesis problem of fitting different objects into the &ldquo;right-shaped holes&rdquo;, where reinforcement-learning methods have been shown to be successful for decades.
 In terms of using LLMs to assist my development of pen-and-paper proofs, I&rsquo;ve found that working with the LLM to construct counterexamples to my hypotheses is much more productive (again,
 an easily verifiable task).</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>The capabilities of modern LLMs have caused the costs of proof mechanization to fall tremenedously, to the point that mechanization is now relatively accessible to computing experts who don&rsquo;t have a deep background in
+proof engineering within modern proof assistants. Being able to think formally and rigorously is still required, and care must be taken to steer the LLM in the right way to correctly
+model the formal structure of the problem and state the desired theorems. But, much of the drudgery and low-level details of working within the proof assistant are magically automated by
+modern LLMs! I encourage an interested reader to play around with mechanization and verification of their own work, or to take their favorite paper for a spin in the proof
+assistant and see how much of it can be mechanized.</p>
+<h1 id="acknowledgements">Acknowledgements</h1>
+<p>Thanks to Rupanshu Soi for feedback on this post.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>Potential sources of issues would be bugs in the type-checker of the proof assistant itself.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>There is a large community of researchers and practitioners who do want to look at the implementations of these proofs, such as Lean&rsquo;s MathLib community, as a way of gaining deeper understanding
+about the proof itself, and for sustainably building large ecosystems of mechanized theorems. In my case, I mostly just want to check that the theorems I think are true are indeed true.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Potential sources of issues would be bugs in the type-checker of the proof assistant itself.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
