@@ -23,7 +23,7 @@ and experience using LLMs, along with my experience and workflows using LLMs for
 
 # The Speedup From Using LLMs
 
-As a parallel computing researcher, I would be remiss to not reference [Amdahl's Law](https://en.wikipedia.org/wiki/Amdahl%27s_law). Amdahl's Law describes the maximum achievable speedup
+As a parallel computing researcher, I would be remiss not to reference [Amdahl's Law](https://en.wikipedia.org/wiki/Amdahl%27s_law). Amdahl's Law describes the maximum achievable speedup
 for a parallel system, stating that the total speedup is limited by the sequential components of the computation. For example, if half of my workload must be run sequentially, then the speedup
 I could gain from using a parallel computer is at most 2x! Amdahl's Law is relevant when examining what kind of speedup we can experience when leveraging LLMs for part of our own workflows.
 
@@ -40,14 +40,14 @@ is limited only by how fast the LLM can generate it. In my work, the dispatching
 I achieve good uplift from LLMs.
 
 So why is this discussion relevant? Programs in proof assistant languages (like Lean) are precisely the kinds of programs where we don't actually need to look at the code to be sure of correctness! As
-long as we state the theorem (function type) that we want to prove correctly (i.e. it *captures* our [proof intention](https://cutfree.net/notes/autoformalization.html)), then any proof (implementation of the function) that satisfies the type-checker
+long as we state the theorem (function type) that we want to prove correctly (i.e., it *captures* our [proof intention](https://cutfree.net/notes/autoformalization.html)), then any proof (implementation of the function) that satisfies the type-checker
 of the proof assistant is a valid program, and we never need to look at the implementation if we don't want to! So my experience, and that of [many others](https://arxiv.org/abs/2605.01660) at this point, is that leveraging 
 LLMs for generation of proofs is an area where we can truly achieve 10-100x speedups. In my case, writing the proofs that Claude has been generating for me would have likely taken me months to gain the
 skills to complete, and more months to actually write.
 
 # A Little About Proof Assistants
 
-My background is in programming systems, focusing on compilers and runtime systems for modern parallel computers. I have generally focused on the performance side of the world, where I leverage
+My background is in programming systems, focusing on compilers and runtime systems for modern parallel computers. I have generally focused on the performance side, where I leverage
 the structure of thinking about formal languages to develop program representations and optimizations. However, I don't usually write large proofs over these systems, and have never mechanized
 a large result. I have *some* experience with Lean, where I am not at all an expert, but I know enough to be dangerous. This means having worked through the first two volumes of
 [Software Foundations](https://softwarefoundations.cis.upenn.edu/), a set of introductory materials about proof assistants. I'm not going to go into much detail about proof assistants in this post, 
@@ -68,7 +68,7 @@ proofs was a research direction itself ([sel4](https://en.wikipedia.org/wiki/SeL
 In industry, only the most critical components of software systems could be considered for formal verification due to the engineering cost of doing so.
 
 The point of this post is to raise awareness about how LLMs have completely changed the costs of performing formal verification, which may hopefully entice others with backgrounds similar to mine 
-as myself to add formal verification as a more accessible tool to gain increased confidence in their work.
+to add formal verification as a more accessible tool to gain increased confidence in their work.
 
 # My Workflow
 
@@ -121,3 +121,11 @@ Furthermore, even though I was successful in mechanizing the proofs I cared abou
 go significantly faster than me. More familiarity with these systems would mean better guidance for the LLM, pen-and-paper proofs that more closely align with what would actually be
 mechanized, and better suggestions about the concrete strategies for the LLMs to take. It also feels to me that the resulting proofs are overly complex, brittle, and have significant
 redundancy with each other (complaints that many have about LLMs in standard software development). A more skilled hand would be able to guide the LLM away from these outcomes.
+
+Finally, despite the success that many mathematicians are finding with LLMs developing proofs of theorems (what I'm referring to as a pen-and-paper proof), I didn't have much success with
+using Claude to generate the initial arguments for why a theorem is true. I found that generally Claude produced "reasonable-looking garbage", where on the surface the argument seemed plausible,
+but seriously reading the output made it clear that gaping holes were present. The difference in the Lean environment is that the Lean type-checker provides extremely detailed feedback
+to the LLM at every step about which assumptions can be made and which steps are allowed to be taken at any point. This makes the act of proof development in the proof assistant
+more of a verifiable synthesis problem of fitting the "right-shaped objects" into the "right-shaped holes", where reinforcement-learning-based methods have been shown to be successful for decades.
+In terms of using LLMs to assist my development of pen-and-paper proofs, I've found that working with the LLM to construct counterexamples to my hypotheses is much more productive (again,
+an easily verifiable task).
