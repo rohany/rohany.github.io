@@ -43,7 +43,7 @@ I achieve good uplift from LLMs.
 Why is this discussion relevant? Programs in proof assistants like Lean are precisely the kinds of programs where we don't actually need to look at the code to be sure of correctness! As
 long as we state the theorem (function type) that we want to prove correctly (i.e., it *captures* our [proof intention](https://cutfree.net/notes/autoformalization.html)), then any proof (implementation of the function) that satisfies the type-checker
 of the proof assistant is a valid program, and we never need to look at the implementation if we don't want to[^1]! So my experience, and that of [many others](https://arxiv.org/abs/2605.01660) at this point, is that leveraging 
-LLMs for generation of proofs is an area where we can truly achieve 10-100x speedups. In my case, writing the proofs that Claude has been generating for me would have likely taken me months to gain the
+LLMs for generation of proofs is an area where we can truly achieve 10-100x speedups. In my case, writing the proofs that Claude has been generating for me over the course of a few days would have likely taken me months to gain the
 skills to complete, and more months to actually write.
 
 [^1]: There is a large community of researchers and practitioners who do want to look at the implementations of these proofs, such as Lean's MathLib community, as a way of gaining deeper understanding
