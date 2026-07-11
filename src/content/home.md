@@ -4,17 +4,16 @@ title = "Home"
 
 # About
 
-I am a computer science PhD student at Stanford University,
-working on compilers and parallel programming systems. I am
-advised by [Alex Aiken](http://theory.stanford.edu/~aiken/)
-and [Fredrik Kjolstad](http://fredrikbk.com/). I am also a part-time
+I am currently a member of the technical staff at Anthropic. I recently
+completed a PhD in computer science at Stanford University, focusing
+on compilers and parallel programming systems. I was advised by [Alex Aiken](http://theory.stanford.edu/~aiken/)
+and [Fredrik Kjolstad](http://fredrikbk.com/). During my PhD, I was also a part-time
 researcher at NVIDIA working with [Michael Garland](https://mgarland.org/)
 and [Mike Bauer](https://lightsighter.org/). 
 Before that, I was a software engineer at 
-[Cockroach Labs](https://www.cockroachlabs.com/) helping to build
-[CockroachDB](https://github.com/cockroachdb/cockroach).
-I am fortunate to be supported by an NSF Graduate Research Fellowship, an NVIDIA
-Graduate Fellowship and a Jane Street Graduate Research Fellowship.
+[Cockroach Labs](https://www.cockroachlabs.com/). I completed my undergraduate
+at Carnegie Mellon University, where I was advised by [Sam Westrick](http://www.cs.cmu.edu/~swestric/)
+and [Umut Acar](http://www.umut-acar.org/).
 
 Outside of work, you can find me lifting weights, playing [tennis](https://clubtennis.stanford.edu/), 
 [cooking](https://www.instagram.com/brohanstercooks/) and (over) eating.
@@ -30,22 +29,10 @@ I've started a blog, which is available [here](https://rohany.github.io/blog/). 
 
 # Research
 
-I'm broadly interested in programming languages and computer systems.
-My recent research focuses on the intersection of these fields, in the topic of parallel computing.
-
-I also worked in this area at Carnegie Mellon, where I collaborated with [Sam Westrick](http://www.cs.cmu.edu/~swestric/)
-and was advised by [Umut Acar](http://www.umut-acar.org/).
-
-Some projects I've worked on include:
-* Warp Specialization and Software Pipelining for Tensor Core GPUs
-* Understanding Overheads in Parallel Programming Systems
-* Programming languages for emerging GPU architectures
-* Composable parallel programming
-* Compiling tensor algebra DSLs to supercomputers
-* Automatic mapping of computation and data onto heterogenous architectures
-* Memory management systems for parallel functional languages
-* Parallel algorithms for [subgraph isomorphism](https://en.wikipedia.org/wiki/Subgraph_isomorphism_problem)
-* Parallel functional sequence data structures
+I'm broadly interested in programming languages and computer systems. My research focuses on the intersection of these fields,
+in the topic of parallel computing. I've been involved in a variety of research directions, including programming systems for modern
+distributed and accelerated machines, compilation of dense and sparse tensor algebra, and parallel functional languages.
+See my publications and blog for more information.
 
 Some links to software projects I have taken a part in developing, some more than others:
 
