@@ -96,6 +96,7 @@ ACM Symposium on Parallel Algorithms and Architectures (SPAA) 2019.
 
 ## Other writings
 
+* Extensions to the Weft race-detection algorithm ([PDF](reports/weft++.pdf)).
 * My application statement for the NVIDIA Graduate Fellowship ([PDF](reports/nvidia-fellowship-proposal.pdf)).
 * My qualifying examination report on distributed task-based runtime systems ([PDF](reports/quals.pdf)).
 * Blog post about online schema changes in CockroachDB ([link](https://www.cockroachlabs.com/blog/online-primary-key-changes/)).
