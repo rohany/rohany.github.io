@@ -46,6 +46,9 @@ Some links to software projects I have taken a part in developing, some more tha
 
 * [Preprint] On the Duality of Task and Actor Programming Models. **Rohan Yadav**, Joseph Guman, Sean Treichler, Michael Garland, Alex Aiken, Fredrik Kjolstad, Michael Bauer ([PDF](publications/actor-task-duality.pdf))
 
+* Partitioning Unstructured Sparse Tensor Algebra for Load-Balanced Parallel Execution. International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS) 2027.
+Atharva Chougule, Alexander J Root, Rubens Lacouture, Bobby Yan, **Rohan Yadav**, Fredrik Kjolstad ([PDF](publications/asplos2027-nacho.pdf))
+
 * Optimal Software Pipelining and Warp Specialization for Tensor Core GPUs. Proceedings of the Symposium on Operating System Design and Implementation (OSDI) 2026. Rupanshu Soi, **Rohan Yadav**, Fredrik Kjolstad, Alex Aiken, Maryam Dehnavi, Michael Garland, Michael Bauer ([PDF](publications/twill.pdf))
 
 * KDRSolvers: Scalable, Flexible, Task-Oriented Krylov Solvers. Proceedings of the Workshop on the Parallel Applications Workshop, Alternatives to MPI+X (PAW-ATM) 2025.
